@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>auth0 on michalsn</title>
-    <link>http://example.org/tags/auth0/</link>
+    <link>https://michalsn.dev/tags/auth0/</link>
     <description>Recent content in auth0 on michalsn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 06 Jun 2021 15:51:17 +0200</lastBuildDate><atom:link href="http://example.org/tags/auth0/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Jun 2021 15:51:17 +0200</lastBuildDate><atom:link href="https://michalsn.dev/tags/auth0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Integrating CodeIgniter 4 with Auth0</title>
-      <link>http://example.org/posts/integrating-codeigniter-4-with-auth0/</link>
+      <link>https://michalsn.dev/posts/integrating-codeigniter-4-with-auth0/</link>
       <pubDate>Sun, 06 Jun 2021 15:51:17 +0200</pubDate>
       
-      <guid>http://example.org/posts/integrating-codeigniter-4-with-auth0/</guid>
+      <guid>https://michalsn.dev/posts/integrating-codeigniter-4-with-auth0/</guid>
       <description>&lt;p&gt;Integration with &lt;a href=&#34;https://auth0.com/&#34;&gt;Auth0&lt;/a&gt; is quite simple and comes down to a few steps. I assume you already have an account on Auth0 so you just need to install the library via &lt;a href=&#34;https://getcomposer.org/&#34;&gt;Composer&lt;/a&gt;:&lt;/p&gt;</description>
     </item>
     

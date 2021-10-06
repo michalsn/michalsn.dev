@@ -2,52 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://example.org/posts/codeigniter-4-mix-versioning/</loc>
+    <loc>https://michalsn.dev/posts/codeigniter-4-mix-versioning/</loc>
     <lastmod>2021-08-25T21:05:40+02:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/codeigniter4/</loc>
+    <loc>https://michalsn.dev/tags/codeigniter4/</loc>
     <lastmod>2021-08-25T21:05:40+02:00</lastmod>
   </url><url>
-    <loc>http://example.org/</loc>
+    <loc>https://michalsn.dev/</loc>
     <lastmod>2021-08-25T21:05:40+02:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/mix/</loc>
+    <loc>https://michalsn.dev/tags/mix/</loc>
     <lastmod>2021-08-25T21:05:40+02:00</lastmod>
   </url><url>
-    <loc>http://example.org/posts/</loc>
+    <loc>https://michalsn.dev/posts/</loc>
     <lastmod>2021-08-25T21:05:40+02:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/</loc>
+    <loc>https://michalsn.dev/tags/</loc>
     <lastmod>2021-08-25T21:05:40+02:00</lastmod>
   </url><url>
-    <loc>http://example.org/posts/codeigniter-4-mix/</loc>
+    <loc>https://michalsn.dev/posts/codeigniter-4-mix/</loc>
     <lastmod>2021-08-23T23:04:33+02:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/auth0/</loc>
+    <loc>https://michalsn.dev/tags/auth0/</loc>
     <lastmod>2021-06-06T15:51:17+02:00</lastmod>
   </url><url>
-    <loc>http://example.org/posts/integrating-codeigniter-4-with-auth0/</loc>
+    <loc>https://michalsn.dev/posts/integrating-codeigniter-4-with-auth0/</loc>
     <lastmod>2021-06-06T15:51:17+02:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/dropzone/</loc>
+    <loc>https://michalsn.dev/tags/dropzone/</loc>
     <lastmod>2021-05-09T16:49:45+02:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/s3/</loc>
+    <loc>https://michalsn.dev/tags/s3/</loc>
     <lastmod>2021-05-09T16:49:45+02:00</lastmod>
   </url><url>
-    <loc>http://example.org/posts/upload-files-directly-to-s3-with-dropzonejs-and-codeigniter-4/</loc>
+    <loc>https://michalsn.dev/posts/upload-files-directly-to-s3-with-dropzonejs-and-codeigniter-4/</loc>
     <lastmod>2021-05-09T16:49:45+02:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/uuid/</loc>
+    <loc>https://michalsn.dev/tags/uuid/</loc>
     <lastmod>2021-04-24T18:24:51+02:00</lastmod>
   </url><url>
-    <loc>http://example.org/posts/uuid-with-codeigniter-4/</loc>
+    <loc>https://michalsn.dev/posts/uuid-with-codeigniter-4/</loc>
     <lastmod>2021-04-24T18:24:51+02:00</lastmod>
   </url><url>
-    <loc>http://example.org/archives/</loc>
+    <loc>https://michalsn.dev/archives/</loc>
   </url><url>
-    <loc>http://example.org/categories/</loc>
+    <loc>https://michalsn.dev/categories/</loc>
   </url><url>
-    <loc>http://example.org/search/</loc>
+    <loc>https://michalsn.dev/search/</loc>
   </url>
 </urlset>

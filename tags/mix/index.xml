@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>mix on michalsn</title>
-    <link>http://example.org/tags/mix/</link>
+    <link>https://michalsn.dev/tags/mix/</link>
     <description>Recent content in mix on michalsn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 25 Aug 2021 21:05:40 +0200</lastBuildDate><atom:link href="http://example.org/tags/mix/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 25 Aug 2021 21:05:40 +0200</lastBuildDate><atom:link href="https://michalsn.dev/tags/mix/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CodeIgniter 4 &#43; Mix with versioning</title>
-      <link>http://example.org/posts/codeigniter-4-mix-versioning/</link>
+      <link>https://michalsn.dev/posts/codeigniter-4-mix-versioning/</link>
       <pubDate>Wed, 25 Aug 2021 21:05:40 +0200</pubDate>
       
-      <guid>http://example.org/posts/codeigniter-4-mix-versioning/</guid>
+      <guid>https://michalsn.dev/posts/codeigniter-4-mix-versioning/</guid>
       <description>&lt;p&gt;Last time I showed you how to easily integrate Mix with CodeIgniter 4. This time we&amp;rsquo;ll complete the integration process by implementing a helper which will make using versioned assets very convenient and easy.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>CodeIgniter 4 &#43; Mix</title>
-      <link>http://example.org/posts/codeigniter-4-mix/</link>
+      <link>https://michalsn.dev/posts/codeigniter-4-mix/</link>
       <pubDate>Mon, 23 Aug 2021 23:04:33 +0200</pubDate>
       
-      <guid>http://example.org/posts/codeigniter-4-mix/</guid>
+      <guid>https://michalsn.dev/posts/codeigniter-4-mix/</guid>
       <description>&lt;p&gt;Today we are going to look at configuring CodeIgniter4 in conjunction with &lt;a href=&#34;https://laravel.com/docs/8.x/mix&#34;&gt;Mix&lt;/a&gt;. Mix is one of the components that comes with the Laravel framework.&lt;/p&gt;</description>
     </item>
     

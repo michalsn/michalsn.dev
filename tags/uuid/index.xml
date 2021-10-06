@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>uuid on michalsn</title>
-    <link>http://example.org/tags/uuid/</link>
+    <link>https://michalsn.dev/tags/uuid/</link>
     <description>Recent content in uuid on michalsn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 24 Apr 2021 18:24:51 +0200</lastBuildDate><atom:link href="http://example.org/tags/uuid/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Apr 2021 18:24:51 +0200</lastBuildDate><atom:link href="https://michalsn.dev/tags/uuid/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>UUID with CodeIgniter 4</title>
-      <link>http://example.org/posts/uuid-with-codeigniter-4/</link>
+      <link>https://michalsn.dev/posts/uuid-with-codeigniter-4/</link>
       <pubDate>Sat, 24 Apr 2021 18:24:51 +0200</pubDate>
       
-      <guid>http://example.org/posts/uuid-with-codeigniter-4/</guid>
+      <guid>https://michalsn.dev/posts/uuid-with-codeigniter-4/</guid>
       <description>&lt;p&gt;Up until now, working with UUIDs and CodeIgniter 4 hasn&amp;rsquo;t been much fun, but that has now changed with the &lt;a href=&#34;https://github.com/michalsn/codeigniter4-uuid&#34;&gt;codeigniter4-uuid&lt;/a&gt; library.&lt;/p&gt;</description>
     </item>
     
