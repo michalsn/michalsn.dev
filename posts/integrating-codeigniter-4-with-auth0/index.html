@@ -1,0 +1,272 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>Integrating CodeIgniter 4 with Auth0 | michalsn</title>
+<meta name=keywords content="auth0,codeigniter4">
+<meta name=description content="Integration with Auth0 is quite simple and comes down to a few steps. I assume you already have an account on Auth0 so you just need to install the library via Composer:">
+<meta name=author content>
+<link rel=canonical href=http://example.org/posts/integrating-codeigniter-4-with-auth0/>
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.b9ff4cc257e914dab489bd18086151800e18f91456a5174bf28489210227a659.css integrity="sha256-uf9MwlfpFNq0ib0YCGFRgA4Y+RRWpRdL8oSJIQInplk=" rel="preload stylesheet" as=style>
+<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=http://example.org/favicon.ico>
+<link rel=icon type=image/png sizes=16x16 href=http://example.org/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=http://example.org/favicon-32x32.png>
+<link rel=apple-touch-icon href=http://example.org/apple-touch-icon.png>
+<link rel=mask-icon href=http://example.org/safari-pinned-tab.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.88.1">
+<meta property="og:title" content="Integrating CodeIgniter 4 with Auth0">
+<meta property="og:description" content="Integration with Auth0 is quite simple and comes down to a few steps. I assume you already have an account on Auth0 so you just need to install the library via Composer:">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://example.org/posts/integrating-codeigniter-4-with-auth0/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-06-06T15:51:17+02:00">
+<meta property="article:modified_time" content="2021-06-06T15:51:17+02:00"><meta property="og:site_name" content="michalsn">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Integrating CodeIgniter 4 with Auth0">
+<meta name=twitter:description content="Integration with Auth0 is quite simple and comes down to a few steps. I assume you already have an account on Auth0 so you just need to install the library via Composer:">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"http://example.org/posts/"},{"@type":"ListItem","position":2,"name":"Integrating CodeIgniter 4 with Auth0","item":"http://example.org/posts/integrating-codeigniter-4-with-auth0/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Integrating CodeIgniter 4 with Auth0","name":"Integrating CodeIgniter 4 with Auth0","description":"Integration with Auth0 is quite simple and comes down to a few steps. I assume you already have an account on Auth0 so you just need to install the library via Composer:\n","keywords":["auth0","codeigniter4"],"articleBody":"Integration with Auth0 is quite simple and comes down to a few steps. I assume you already have an account on Auth0 so you just need to install the library via Composer:\ncomposer require auth0/auth0-php To get started, we need to create a configuration file app/Config/Auth0.php. It is a good idea to leave the configuration values in the file empty and add them via the .env file. This will ensure that your wraliw data doesn’t end up about the repository.\nNext, we’ll create the main class that will allow Auth0 to write data to the session. To do this, we will implement the interface provided by Auth0. We need to create a file: app/Libraries/Auth0SessionStorage:\nsession = service('session'); } /** * Persists $value on $_SESSION, identified by $key. * * @param string $key Session key to set. * @param mixed $value Value to use. * * @return void */ public function set(string $key, $value): void { $this-session-set($this-prefix . $key, $value); } /** * Gets persisted values identified by $key. * If the value is not set, returns $default. * * @param string $key Session key to set. * @param mixed $default Default to return if nothing was found. * * @return mixed */ public function get(string $key, $default = null) { return $this-session-get($this-prefix . $key) ?? $default; } /** * Removes a persisted value identified by $key. * * @param string $key Session key to delete. * * @return void */ public function delete(string $key): void { $this-session-remove($this-prefix . $key); } } The last step is to create a service to handle everything conveniently. Let’s edit app/Config/Services.php file:\n$config-domain, 'client_id' = $config-clientId, 'client_secret' = $config-clientSecret, 'redirect_uri' = $config-redirectUri, 'scope' = $config-scope, 'store' = new Auth0SessionStore(), ]; return new Auth0($config); } } All that’s left is to test the whole thing and create a controller app/Controllers/Auth.php.\nnamespace App\\Controllers; class Auth extends BaseController { public function callback() { return view('auth', ['user' = service('auth0')-getUser()]); } public function login() { service('auth0')-login(); } public function logout() { $config = config('auth0'); service('auth0')-logout(); $logoutUrl = sprintf('https://%s/v2/logout?client_id=%s\u0026returnTo=%s', $config-domain, $config-clientId, site_url()); $this-response-setHeader('Location', $logoutUrl); } } And then there’s the app/Views/auth.php view:\n  Auth0 Sample    \"Logout\n\"Login\n  ","wordCount":"519","inLanguage":"en","datePublished":"2021-06-06T15:51:17+02:00","dateModified":"2021-06-06T15:51:17+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.org/posts/integrating-codeigniter-4-with-auth0/"},"publisher":{"@type":"Organization","name":"michalsn","logo":{"@type":"ImageObject","url":"http://example.org/favicon.ico"}}}</script>
+</head>
+<body id=top>
+<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
+<noscript>
+<style type=text/css>#theme-toggle,.top-link{display:none}</style>
+<style>@media(prefers-color-scheme:dark){:root{--theme:#1d1e20;--entry:#2e2e33;--primary:rgba(255, 255, 255, 0.84);--secondary:rgba(255, 255, 255, 0.56);--tertiary:rgba(255, 255, 255, 0.16);--content:rgba(255, 255, 255, 0.74);--hljs-bg:#2e2e33;--code-bg:#37383e;--border:#333}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
+</noscript>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=http://example.org/ accesskey=h title="michalsn (Alt + H)">michalsn</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=http://example.org/archives title=Archive>
+<span>Archive</span>
+</a>
+</li>
+<li>
+<a href=http://example.org/tags title=Tags>
+<span>Tags</span>
+</a>
+</li>
+<li>
+<a href=http://example.org/search title="Search (Alt + /)" accesskey=/>
+<span>Search</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<h1 class=post-title>
+Integrating CodeIgniter 4 with Auth0
+</h1>
+<div class=post-meta>June 6, 2021&nbsp;·&nbsp;3 min
+</div>
+</header>
+<div class=post-content><p>Integration with <a href=https://auth0.com/>Auth0</a> is quite simple and comes down to a few steps. I assume you already have an account on Auth0 so you just need to install the library via <a href=https://getcomposer.org/>Composer</a>:</p>
+<pre tabindex=0><code>composer require auth0/auth0-php
+</code></pre><p>To get started, we need to create a configuration file <strong>app/Config/Auth0.php</strong>. It is a good idea to leave the configuration values in the file empty and add them via the <strong>.env</strong> file. This will ensure that your wraliw data doesn&rsquo;t end up about the repository.</p>
+<pre tabindex=0><code>&lt;?php
+
+namespace Config;
+
+use CodeIgniter\Config\BaseConfig;
+
+class Auth0 extends BaseConfig
+{
+    public $domain = 'your domain';
+
+    public $clientId = 'your client id';
+
+    public $clientSecret = 'your client secret';
+
+    public $redirectUri = 'redirect url';
+
+    public $scope = 'scope';
+}
+</code></pre><p>Next, we&rsquo;ll create the main class that will allow Auth0 to write data to the session. To do this, we will implement the interface provided by Auth0. We need to create a file: <strong>app/Libraries/Auth0SessionStorage</strong>:</p>
+<pre tabindex=0><code>&lt;?php
+
+namespace App\Libraries;
+
+use Auth0\SDK\Store\StoreInterface;
+
+class Auth0SessionStore implements StoreInterface
+{
+    /**
+     * Session object
+     *
+     * @var \CodeIgniter\Session\Session;
+     */
+    protected $session;
+
+    /**
+     * Session variable prefix
+     *
+     * @var string
+     */
+    protected $prefix = 'auth0_';
+
+    /**
+     * CodeIgniterSessionStore constructor.
+     */
+    public function __construct()
+    {
+        $this-&gt;session = service('session');
+    }
+
+    /**
+     * Persists $value on $_SESSION, identified by $key.
+     *
+     * @param string $key   Session key to set.
+     * @param mixed  $value Value to use.
+     *
+     * @return void
+     */
+    public function set(string $key, $value): void
+    {
+        $this-&gt;session-&gt;set($this-&gt;prefix . $key, $value);
+    }
+
+    /**
+    * Gets persisted values identified by $key.
+    * If the value is not set, returns $default.
+    *
+    * @param string $key     Session key to set.
+    * @param mixed  $default Default to return if nothing was found.
+    *
+    * @return mixed
+    */
+    public function get(string $key, $default = null)
+    {
+        return $this-&gt;session-&gt;get($this-&gt;prefix . $key) ?? $default;
+    }
+
+    /**
+     * Removes a persisted value identified by $key.
+     *
+     * @param string $key Session key to delete.
+     *
+     * @return void
+     */
+    public function delete(string $key): void
+    {
+        $this-&gt;session-&gt;remove($this-&gt;prefix . $key);
+    }
+}
+</code></pre><p>The last step is to create a service to handle everything conveniently. Let&rsquo;s edit <strong>app/Config/Services.php</strong> file:</p>
+<pre tabindex=0><code>&lt;?php
+
+namespace Config;
+
+use Auth0\SDK\Auth0;
+use Auth0\SDK\Exception\CoreException;
+use App\Libraries\Auth0SessionStore;
+use Config\Services as BaseService;
+
+class Services extends BaseService
+{
+    /**
+     * The Auth0 service.
+     *
+     * @param boolean $getShared
+     *
+     * @return Auth0
+     * @throws CoreException
+     */
+    public static function auth0(bool $getShared = true)
+    {
+        if ($getShared)
+        {
+            return static::getSharedInstance('auth0');
+        }
+
+        $config = config('Auth0');
+        $config = [
+            'domain'        =&gt; $config-&gt;domain,
+            'client_id'     =&gt; $config-&gt;clientId,
+            'client_secret' =&gt; $config-&gt;clientSecret,
+            'redirect_uri'  =&gt; $config-&gt;redirectUri,
+            'scope'         =&gt; $config-&gt;scope,
+            'store'         =&gt; new Auth0SessionStore(),
+        ];
+
+        return new Auth0($config);
+    }
+}
+</code></pre><p>All that&rsquo;s left is to test the whole thing and create a controller <strong>app/Controllers/Auth.php</strong>.</p>
+<pre tabindex=0><code>namespace App\Controllers;
+
+class Auth extends BaseController
+{
+    public function callback()
+    {
+        return view('auth', ['user' =&gt; service('auth0')-&gt;getUser()]);
+    }
+
+    public function login()
+    {
+        service('auth0')-&gt;login();
+    }
+
+    public function logout()
+    {
+        $config = config('auth0');
+        service('auth0')-&gt;logout();
+
+        $logoutUrl = sprintf('https://%s/v2/logout?client_id=%s&amp;returnTo=%s', $config-&gt;domain, $config-&gt;clientId, site_url());
+        $this-&gt;response-&gt;setHeader('Location', $logoutUrl);
+    }
+}
+</code></pre><p>And then there&rsquo;s the <strong>app/Views/auth.php</strong> view:</p>
+<pre tabindex=0><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Auth0 Sample&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;?php if ($user): ?&gt;
+        &lt;h1&gt;&lt;?= $user['name']; ?&gt;&lt;/h1&gt;
+        &lt;p&gt;&lt;a href=&quot;&lt;?= site_url('auth/logout'); ?&gt;&quot;&gt;Logout&lt;/a&gt;&lt;/p&gt;
+    &lt;?php else: ?&gt;
+        &lt;p&gt;&lt;a href=&quot;&lt;?= site_url('auth/login'); ?&gt;&quot;&gt;Login&lt;/a&gt;&lt;/p&gt;
+    &lt;?php endif; ?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=http://example.org/tags/auth0/>auth0</a></li>
+<li><a href=http://example.org/tags/codeigniter4/>codeigniter4</a></li>
+</ul>
+</footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2021 <a href=http://example.org/>michalsn</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+</span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)">
+<button class=top-link id=top-link type=button accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</button>
+</a>
+<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+<script>document.querySelectorAll('pre > code').forEach(b=>{const c=b.parentNode.parentNode,a=document.createElement('button');a.classList.add('copy-code'),a.innerText='copy';function d(){a.innerText='copied!',setTimeout(()=>{a.innerText='copy'},2e3)}a.addEventListener('click',e=>{if('clipboard'in navigator){navigator.clipboard.writeText(b.textContent),d();return}const a=document.createRange();a.selectNodeContents(b);const c=window.getSelection();c.removeAllRanges(),c.addRange(a);try{document.execCommand('copy'),d()}catch(a){}c.removeRange(a)}),c.classList.contains("highlight")?c.appendChild(a):c.parentNode.firstChild==c||(b.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?b.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(a):b.parentNode.appendChild(a))})</script>
+</body>
+</html>
