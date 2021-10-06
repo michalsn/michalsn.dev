@@ -1,0 +1,63 @@
+baseURL: http://example.org/
+languageCode: en-us
+title: michalsn
+theme: "PaperMod"
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+# googleAnalytics: UA-123-45
+
+minify:
+    disableXML: true
+    # minifyOutput: true
+
+menu:
+  main:
+    - name: Archive
+      url: archives
+      weight: 1
+    - name: Tags
+      url: tags
+      weight: 2
+    - name: Search
+      url: "search"
+      weight: 3
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+params:
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  title: michalsn
+  description: "michalsn dev blog"
+  keywords: [Blog, Developer]
+  # author: Me
+  # author: ["Me", "You"] # multiple authors
+  # images: ["<link or path of image for opengraph, twitter-cards>"]
+  DateFormat: "January 2, 2006"
+  defaultTheme: auto # dark, light
+  disableThemeToggle: false
+
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: false
+  ShowBreadCrumbs: false
+  ShowCodeCopyButtons: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: false
+  hidemeta: false
+  hideSummary: false
+  showtoc: false
+  tocopen: false
+
+socialIcons:
+  - name: github
+    url: "https://github.com/adityatelange/hugo-PaperMod"
