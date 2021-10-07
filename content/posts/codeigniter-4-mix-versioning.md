@@ -112,9 +112,9 @@ class Mix extends BaseConfig
 
 There is a good chance that you won't need to change anything in the configuration file, because you will only be using local resources, but you can change a few settings if you need to.
 
-How to use this helper? It's very simple - just enter *ordinary* file name and helper will add appropriate query string, based on **mix-manifest.json** file generated during asset compilation.
+How to use this helper? It's very simple - just enter an *ordinary* file name and helper will add appropriate query string, based on **mix-manifest.json** file generated during asset compilation.
 
-If this is what our asset configuration file will look like (**webpack.mix.js**):
+This is what our asset configuration file will look like (**webpack.mix.js**):
 
 ```
 let mix = require('laravel-mix');

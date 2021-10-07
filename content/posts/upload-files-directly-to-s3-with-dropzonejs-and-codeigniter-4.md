@@ -40,7 +40,7 @@ myDropzone = new Dropzone('#myDropzone', {
 });
 ```
 
-Let's also take a look at the **calculateMD5** function. We need it to be sure that the uploaded file was uploaded correctly - it's our checksum.
+Let's take a look at the **calculateMD5** function. We need it to be sure that the uploaded file was uploaded correctly - it's our checksum.
 
 ```
 function calculateMD5(blob) {

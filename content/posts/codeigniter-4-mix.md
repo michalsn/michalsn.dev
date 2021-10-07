@@ -5,7 +5,7 @@ tags: ["mix", "codeigniter4"]
 draft: false
 ---
 
-Today we are going to look at configuring CodeIgniter4 in conjunction with [Mix](https://laravel.com/docs/8.x/mix). Mix is one of the components that comes with the Laravel framework.
+Today we are going to look at configuring CodeIgniter 4 in conjunction with [Mix](https://laravel.com/docs/8.x/mix). Mix is one of the components that comes with the Laravel framework.
 
 <!--more-->
 

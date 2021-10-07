@@ -9,7 +9,7 @@ Up until now, working with UUIDs and CodeIgniter 4 hasn't been much fun, but tha
 
 <!--more-->
 
-Admittedly, working with UUID was not a big challenge when we were working with the Model class, but in order to do it "nicely", we had to use events. Everything would be fine until our application itself would not need to use Events. Then it would be a mess, because we would have to add UUID support to our existing Events code.
+Admittedly, working with UUID was not a big challenge when we were working with the Model class, but in order to do it "nicely", we had to use [Model Events](https://codeigniter4.github.io/userguide/models/model.html#model-events). Everything would be fine until our application itself would not need to use Model Events. Then it would be a mess, because we would have to add UUID support to our existing Events code.
 
 That is why a special library was created, which extends Model class and gives possibility to work with UUID. No matter if we want to store identifiers as text or bytes - everything is handled automatically.
 

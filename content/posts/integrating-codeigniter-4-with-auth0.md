@@ -5,7 +5,7 @@ tags: ["auth0", "codeigniter4"]
 draft: false
 ---
 
-Integration with [Auth0](https://auth0.com/) is quite simple and comes down to a few steps. I assume you already have an account on Auth0 so you just need to install the library via [Composer](https://getcomposer.org/):
+Integration with [Auth0](https://auth0.com/) is quite simple and comes down to a few steps. I assume you already have your Auth0 account so you just need to install the library via [Composer](https://getcomposer.org/):
 
 <!--more-->
 
@@ -13,7 +13,7 @@ Integration with [Auth0](https://auth0.com/) is quite simple and comes down to a
 composer require auth0/auth0-php
 ```
 
-To get started, we need to create a configuration file **app/Config/Auth0.php**. It is a good idea to leave the configuration values in the file empty and add them via the **.env** file. This will ensure that your wraliw data doesn't end up about the repository.
+To get started, we need to create a configuration file **app/Config/Auth0.php**. It is a good idea to leave the configuration values in the file empty and add them via the **.env** file. This will ensure that your sensitive data doesn't end up in the repository.
 
 ```
 <?php
