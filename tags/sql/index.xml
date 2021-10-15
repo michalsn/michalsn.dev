@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>sql on michalsn</title>
+    <link>https://michalsn.dev/tags/sql/</link>
+    <description>Recent content in sql on michalsn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Oct 2021 13:10:11 +0200</lastBuildDate><atom:link href="https://michalsn.dev/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4</title>
+      <link>https://michalsn.dev/posts/insert-on-duplicate-key-update-with-codeigniter-4/</link>
+      <pubDate>Fri, 15 Oct 2021 13:10:11 +0200</pubDate>
+      
+      <guid>https://michalsn.dev/posts/insert-on-duplicate-key-update-with-codeigniter-4/</guid>
+      <description>&lt;p&gt;I recently had to use a query with &lt;strong&gt;INSERT ON DUPLICATE KEY UPDATE&lt;/strong&gt;, but CodeIgniter 4 does not have built-in support for this type of query because it is not available in all database drivers.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -2,22 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://michalsn.dev/tags/codeigniter4/</loc>
+    <lastmod>2021-10-15T13:10:11+02:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/insert-on-duplicate-key-update-with-codeigniter-4/</loc>
+    <lastmod>2021-10-15T13:10:11+02:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/mariadb/</loc>
+    <lastmod>2021-10-15T13:10:11+02:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/</loc>
+    <lastmod>2021-10-15T13:10:11+02:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/mysql/</loc>
+    <lastmod>2021-10-15T13:10:11+02:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/</loc>
+    <lastmod>2021-10-15T13:10:11+02:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/sql/</loc>
+    <lastmod>2021-10-15T13:10:11+02:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/</loc>
+    <lastmod>2021-10-15T13:10:11+02:00</lastmod>
+  </url><url>
     <loc>https://michalsn.dev/posts/codeigniter-4-mix-versioning/</loc>
     <lastmod>2021-08-25T21:05:40+02:00</lastmod>
   </url><url>
-    <loc>https://michalsn.dev/tags/codeigniter4/</loc>
-    <lastmod>2021-08-25T21:05:40+02:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/</loc>
-    <lastmod>2021-08-25T21:05:40+02:00</lastmod>
-  </url><url>
     <loc>https://michalsn.dev/tags/mix/</loc>
-    <lastmod>2021-08-25T21:05:40+02:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/posts/</loc>
-    <lastmod>2021-08-25T21:05:40+02:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/</loc>
     <lastmod>2021-08-25T21:05:40+02:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/posts/codeigniter-4-mix/</loc>
