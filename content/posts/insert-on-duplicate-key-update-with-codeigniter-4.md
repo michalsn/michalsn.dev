@@ -37,12 +37,56 @@ trait ExtraModelMethods
     {
         $data = $this->transformDataToArray($data, 'update');
 
-        $builder = $this->builder();
-        $update  = $builder->set($data, '', $escape)->getCompiledUpdate(false);
-        $insert  = $builder->set($this->primaryKey, $id, $escape)->getCompiledInsert();
+        // Validate data before saving.
+        if (! $this->skipValidation && ! $this->cleanRules(true)->validate($data)) {
+            return false;
+        }
 
+        // Must be called first so we don't
+        // strip out updated_at values.
+        $data = $this->doProtectFields($data);
+
+        // doProtectFields() can further remove elements from
+        // $data so we need to check for empty dataset again
+        if (empty($data)) {
+            throw DataException::forEmptyDataset('update');
+        }
+
+        // Set created_at and updated_at with same time
+        $date = $this->setDate();
+
+        if ($this->useTimestamps && $this->createdField && ! array_key_exists($this->createdField, $data)) {
+            $data[$this->createdField] = $date;
+        }
+
+        if ($this->useTimestamps && $this->updatedField && ! array_key_exists($this->updatedField, $data)) {
+            $data[$this->updatedField] = $date;
+        }
+
+        $builder = $this->builder();
+        $insert  = $builder->set($this->primaryKey, $id, $escape)->set($data, '', $escape)->getCompiledInsert();
+
+        // Remove created_at field in case of update query
+        if ($data[$this->createdField]) {
+            unset($data[$this->createdField]);
+        }
+        $update = $builder->set($data, '', $escape)->getCompiledUpdate();
         $update = preg_replace('/UPDATE[\s\S]+? SET /', '', $update);
-        return $builder->db()->query(sprintf('%s ON DUPLICATE KEY UPDATE %s', $insert, $update));
+
+        // Prepare event
+        $eventData = [
+            'id'     => $id,
+            'data'   => $data,
+            'result' => $builder->db()->query(sprintf('%s ON DUPLICATE KEY UPDATE %s', $insert, $update)),
+        ];
+
+        if ($this->tempAllowCallbacks) {
+            $this->trigger('afterUpdate', $eventData);
+        }
+
+        $this->tempAllowCallbacks = $this->allowCallbacks;
+
+        return $eventData['result'];
     }
 }
 ```
