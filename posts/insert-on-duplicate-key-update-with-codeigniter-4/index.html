@@ -30,7 +30,7 @@
 <meta name=twitter:title content="INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4">
 <meta name=twitter:description content="I recently had to use a query with INSERT ON DUPLICATE KEY UPDATE, but CodeIgniter 4 does not have built-in support for this type of query because it is not available in all database drivers.">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://michalsn.dev/posts/"},{"@type":"ListItem","position":2,"name":"INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4","item":"https://michalsn.dev/posts/insert-on-duplicate-key-update-with-codeigniter-4/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4","name":"INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4","description":"I recently had to use a query with INSERT ON DUPLICATE KEY UPDATE, but CodeIgniter 4 does not have built-in support for this type of query because it is not available in all database drivers.\n","keywords":["mysql","mariadb","sql","codeigniter4"],"articleBody":"I recently had to use a query with INSERT ON DUPLICATE KEY UPDATE, but CodeIgniter 4 does not have built-in support for this type of query because it is not available in all database drivers.\nTo start with a basic question - why not use a query with REPLACE? There are several reasons:\n If we are dealing with a table that has a field with AUTO INCREMENT, it is then incremented every time. If we have some foreign key relations with ON DELETE CASCADE option, then this it gonna be a mess, because we will automatically delete data from other tables The last reason is the slowness of queries with REPLACE. Each time we try to perform INSERT, if the data is already there, we perform DELETE operation and then another INSERT.  The INSERT ON DUPLICATE KEY UPDATE query comes to the rescue. It is a remedy for all the above problems.\nOkay, let’s see how we can add support for this type of query to CodeIgniter 4. We will create a Trait class:\nnamespace App\\Traits; trait ExtraModelMethods { /** * Insert on duplicate key update * * @param int|string $id Unique key * @param array|object $data Data * @param bool $escape Escape * * @return bool */ public function insertOnDuplicateUpdate($id, $data, bool $escape = null): bool { $data = $this-transformDataToArray($data, 'update'); $builder = $this-builder(); $update = $builder-set($data, '', $escape)-getCompiledUpdate(false); $insert = $builder-set($this-primaryKey, $id, $escape)-getCompiledInsert(); $update = preg_replace('/UPDATE[\\s\\S]+? SET /', '', $update); return $builder-db()-query(sprintf('%s ON DUPLICATE KEY UPDATE %s', $insert, $update)); } } To use the new method in our model we just need to import our Trait class:\nuse App\\Traits\\ExtraModelMethods; use CodeIgniter\\Model; class ExampleModel extends Model { use ExtraModelMethods; } ","wordCount":"281","inLanguage":"en","datePublished":"2021-10-15T13:10:11+02:00","dateModified":"2021-10-15T13:10:11+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://michalsn.dev/posts/insert-on-duplicate-key-update-with-codeigniter-4/"},"publisher":{"@type":"Organization","name":"michalsn","logo":{"@type":"ImageObject","url":"https://michalsn.dev/favicon.ico"}}}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4","name":"INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4","description":"I recently had to use a query with INSERT ON DUPLICATE KEY UPDATE, but CodeIgniter 4 does not have built-in support for this type of query because it is not available in all database drivers.\n","keywords":["mysql","mariadb","sql","codeigniter4"],"articleBody":"I recently had to use a query with INSERT ON DUPLICATE KEY UPDATE, but CodeIgniter 4 does not have built-in support for this type of query because it is not available in all database drivers.\nTo start with a basic question - why not use a query with REPLACE? There are several reasons:\n If we are dealing with a table that has a field with AUTO INCREMENT, it is then incremented every time. If we have some foreign key relations with ON DELETE CASCADE option, then this it gonna be a mess, because we will automatically delete data from other tables The last reason is the slowness of queries with REPLACE. Each time we try to perform INSERT, if the data is already there, we perform DELETE operation and then another INSERT.  The INSERT ON DUPLICATE KEY UPDATE query comes to the rescue. It is a remedy for all the above problems.\nOkay, let’s see how we can add support for this type of query to CodeIgniter 4. We will create a Trait class:\nnamespace App\\Traits; trait ExtraModelMethods { /** * Insert on duplicate key update * * @param int|string $id Unique key * @param array|object $data Data * @param bool $escape Escape * * @return bool */ public function insertOnDuplicateUpdate($id, $data, bool $escape = null): bool { $data = $this-transformDataToArray($data, 'update'); // Validate data before saving. if (! $this-skipValidation \u0026\u0026 ! $this-cleanRules(true)-validate($data)) { return false; } // Must be called first so we don't // strip out updated_at values. $data = $this-doProtectFields($data); // doProtectFields() can further remove elements from // $data so we need to check for empty dataset again if (empty($data)) { throw DataException::forEmptyDataset('update'); } // Set created_at and updated_at with same time $date = $this-setDate(); if ($this-useTimestamps \u0026\u0026 $this-createdField \u0026\u0026 ! array_key_exists($this-createdField, $data)) { $data[$this-createdField] = $date; } if ($this-useTimestamps \u0026\u0026 $this-updatedField \u0026\u0026 ! array_key_exists($this-updatedField, $data)) { $data[$this-updatedField] = $date; } $builder = $this-builder(); $insert = $builder-set($this-primaryKey, $id, $escape)-set($data, '', $escape)-getCompiledInsert(); // Remove created_at field in case of update query if ($data[$this-createdField]) { unset($data[$this-createdField]); } $update = $builder-set($data, '', $escape)-getCompiledUpdate(); $update = preg_replace('/UPDATE[\\s\\S]+? SET /', '', $update); // Prepare event $eventData = [ 'id' = $id, 'data' = $data, 'result' = $builder-db()-query(sprintf('%s ON DUPLICATE KEY UPDATE %s', $insert, $update)), ]; if ($this-tempAllowCallbacks) { $this-trigger('afterUpdate', $eventData); } $this-tempAllowCallbacks = $this-allowCallbacks; return $eventData['result']; } } To use the new method in our model we just need to import our Trait class:\nuse App\\Traits\\ExtraModelMethods; use CodeIgniter\\Model; class ExampleModel extends Model { use ExtraModelMethods; } ","wordCount":"414","inLanguage":"en","datePublished":"2021-10-15T13:10:11+02:00","dateModified":"2021-10-15T13:10:11+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://michalsn.dev/posts/insert-on-duplicate-key-update-with-codeigniter-4/"},"publisher":{"@type":"Organization","name":"michalsn","logo":{"@type":"ImageObject","url":"https://michalsn.dev/favicon.ico"}}}</script>
 </head>
 <body id=top>
 <script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
@@ -101,12 +101,56 @@ trait ExtraModelMethods
     {
         $data = $this-&gt;transformDataToArray($data, 'update');
 
-        $builder = $this-&gt;builder();
-        $update  = $builder-&gt;set($data, '', $escape)-&gt;getCompiledUpdate(false);
-        $insert  = $builder-&gt;set($this-&gt;primaryKey, $id, $escape)-&gt;getCompiledInsert();
+        // Validate data before saving.
+        if (! $this-&gt;skipValidation &amp;&amp; ! $this-&gt;cleanRules(true)-&gt;validate($data)) {
+            return false;
+        }
 
+        // Must be called first so we don't
+        // strip out updated_at values.
+        $data = $this-&gt;doProtectFields($data);
+
+        // doProtectFields() can further remove elements from
+        // $data so we need to check for empty dataset again
+        if (empty($data)) {
+            throw DataException::forEmptyDataset('update');
+        }
+
+        // Set created_at and updated_at with same time
+        $date = $this-&gt;setDate();
+
+        if ($this-&gt;useTimestamps &amp;&amp; $this-&gt;createdField &amp;&amp; ! array_key_exists($this-&gt;createdField, $data)) {
+            $data[$this-&gt;createdField] = $date;
+        }
+
+        if ($this-&gt;useTimestamps &amp;&amp; $this-&gt;updatedField &amp;&amp; ! array_key_exists($this-&gt;updatedField, $data)) {
+            $data[$this-&gt;updatedField] = $date;
+        }
+
+        $builder = $this-&gt;builder();
+        $insert  = $builder-&gt;set($this-&gt;primaryKey, $id, $escape)-&gt;set($data, '', $escape)-&gt;getCompiledInsert();
+
+        // Remove created_at field in case of update query
+        if ($data[$this-&gt;createdField]) {
+            unset($data[$this-&gt;createdField]);
+        }
+        $update = $builder-&gt;set($data, '', $escape)-&gt;getCompiledUpdate();
         $update = preg_replace('/UPDATE[\s\S]+? SET /', '', $update);
-        return $builder-&gt;db()-&gt;query(sprintf('%s ON DUPLICATE KEY UPDATE %s', $insert, $update));
+
+        // Prepare event
+        $eventData = [
+            'id'     =&gt; $id,
+            'data'   =&gt; $data,
+            'result' =&gt; $builder-&gt;db()-&gt;query(sprintf('%s ON DUPLICATE KEY UPDATE %s', $insert, $update)),
+        ];
+
+        if ($this-&gt;tempAllowCallbacks) {
+            $this-&gt;trigger('afterUpdate', $eventData);
+        }
+
+        $this-&gt;tempAllowCallbacks = $this-&gt;allowCallbacks;
+
+        return $eventData['result'];
     }
 }
 </code></pre><p>To use the new method in our model we just need to import our <strong>Trait</strong> class:</p>
