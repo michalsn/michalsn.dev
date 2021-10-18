@@ -10,7 +10,7 @@ Integration with [Auth0](https://auth0.com/) is quite simple and comes down to a
 <!--more-->
 
 ```
-composer require auth0/auth0-php
+composer require auth0/auth0-php "^7.9"
 ```
 
 To get started, we need to create a configuration file **app/Config/Auth0.php**. It is a good idea to leave the configuration values in the file empty and add them via the **.env** file. This will ensure that your sensitive data doesn't end up in the repository.
