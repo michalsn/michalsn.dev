@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>subdomain on michalsn</title>
+    <link>https://michalsn.dev/tags/subdomain/</link>
+    <description>Recent content in subdomain on michalsn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 Oct 2021 11:42:57 +0200</lastBuildDate><atom:link href="https://michalsn.dev/tags/subdomain/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setting dynamic subdomains for every user account</title>
+      <link>https://michalsn.dev/posts/setting-dynamic-subdomains-for-every-user-account/</link>
+      <pubDate>Mon, 18 Oct 2021 11:42:57 +0200</pubDate>
+      
+      <guid>https://michalsn.dev/posts/setting-dynamic-subdomains-for-every-user-account/</guid>
+      <description>&lt;p&gt;What if we want every user in our application to have his data served through his own subdomain? I will show you how to do it in CodeIgniter 4 framework.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
