@@ -6,7 +6,25 @@
     <description>Recent content in Tags on michalsn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Oct 2021 11:42:57 +0200</lastBuildDate><atom:link href="https://michalsn.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 Nov 2021 16:10:35 +0200</lastBuildDate><atom:link href="https://michalsn.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cname</title>
+      <link>https://michalsn.dev/tags/cname/</link>
+      <pubDate>Mon, 22 Nov 2021 16:10:35 +0200</pubDate>
+      
+      <guid>https://michalsn.dev/tags/cname/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>domain</title>
+      <link>https://michalsn.dev/tags/domain/</link>
+      <pubDate>Mon, 22 Nov 2021 16:10:35 +0200</pubDate>
+      
+      <guid>https://michalsn.dev/tags/domain/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>codeigniter4</title>
       <link>https://michalsn.dev/tags/codeigniter4/</link>

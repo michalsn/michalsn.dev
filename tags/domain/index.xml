@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>domain on michalsn</title>
+    <link>https://michalsn.dev/tags/domain/</link>
+    <description>Recent content in domain on michalsn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 22 Nov 2021 16:10:35 +0200</lastBuildDate><atom:link href="https://michalsn.dev/tags/domain/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Verification of CNAME record for custom domain</title>
+      <link>https://michalsn.dev/posts/verify-cname-for-domain/</link>
+      <pubDate>Mon, 22 Nov 2021 16:10:35 +0200</pubDate>
+      
+      <guid>https://michalsn.dev/posts/verify-cname-for-domain/</guid>
+      <description>&lt;p&gt;When we give users option to connect their own domain to our service, we must also check that the DNS record has the correct &lt;code&gt;CNAME&lt;/code&gt; settings before we approve such a domain.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
