@@ -1,6 +1,6 @@
 ---
 title: "Verification of CNAME record for custom domain"
-date: 2021-11-23T16:10:35+02:00
+date: 2021-11-22T16:10:35+02:00
 tags: ["domain", "cname"]
 draft: false
 ---
