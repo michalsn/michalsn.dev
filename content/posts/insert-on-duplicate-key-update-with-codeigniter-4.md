@@ -236,17 +236,17 @@ class Home extends BaseController
 
     public function add()
     {
-        $profileModel = model(ProfileModel:class);
+        $profileModel = model(ProfileModel::class);
 
         $profileModel->insertOnDuplicateUpdate([
-            'user_id => 1,
-            'name'   => 'James',
+            'user_id' => 1,
+            'name'    => 'James',
         ]);
     }
 
     public function edit()
     {
-        $profileModel = model(ProfileModel:class);
+        $profileModel = model(ProfileModel::class);
 
         $profileModel->insertOnDuplicateUpdate([
             'user_id' => 1,
