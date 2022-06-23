@@ -256,6 +256,6 @@ class Home extends BaseController
 }
 ```
 
-After calling the **add()** method, we should have an entry in the table with one entry and name "James". After calling the **edit()** method, we should still have one entry in the table, but this time with the name "Frank".
+After calling the **add()** method, we should have one entry in the table with the name "James". After calling the **edit()** method, we should still have one entry in the table, but this time with the name "Frank".
 
-Because the **user_id** column is unique, new data is added only if the value for this column is unique, otherwise the data is updated.
+Because the **user_id** column is unique, new data is added only if the value for this column is unique. Otherwise, the data is updated.
