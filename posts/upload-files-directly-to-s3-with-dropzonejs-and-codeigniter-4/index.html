@@ -1,290 +1,176 @@
-<!doctype html><html lang=en dir=auto>
-<head><meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta name=robots content="index, follow">
-<title>Upload files directly to S3 with Dropzone.js | michalsn</title>
-<meta name=keywords content="s3,dropzone,codeigniter4">
-<meta name=description content="Uploading files directly to S3 requires a few changes to the way Dropzone handles uploads, but it&rsquo;s nothing particularly difficult.">
-<meta name=author content>
-<link rel=canonical href=https://michalsn.dev/posts/upload-files-directly-to-s3-with-dropzonejs-and-codeigniter-4/>
-<link crossorigin=anonymous href=/assets/css/stylesheet.min.b9ff4cc257e914dab489bd18086151800e18f91456a5174bf28489210227a659.css integrity="sha256-uf9MwlfpFNq0ib0YCGFRgA4Y+RRWpRdL8oSJIQInplk=" rel="preload stylesheet" as=style>
-<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
-<link rel=icon href=https://michalsn.dev/favicon.ico>
-<link rel=icon type=image/png sizes=16x16 href=https://michalsn.dev/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://michalsn.dev/favicon-32x32.png>
-<link rel=apple-touch-icon href=https://michalsn.dev/apple-touch-icon.png>
-<link rel=mask-icon href=https://michalsn.dev/safari-pinned-tab.svg>
-<meta name=theme-color content="#2e2e33">
-<meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.89.4">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-74HSH0WCPE"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-74HSH0WCPE',{anonymize_ip:!1})}</script>
-<meta property="og:title" content="Upload files directly to S3 with Dropzone.js">
-<meta property="og:description" content="Uploading files directly to S3 requires a few changes to the way Dropzone handles uploads, but it&rsquo;s nothing particularly difficult.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://michalsn.dev/posts/upload-files-directly-to-s3-with-dropzonejs-and-codeigniter-4/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2021-05-09T16:49:45+02:00">
-<meta property="article:modified_time" content="2021-05-09T16:49:45+02:00"><meta property="og:site_name" content="michalsn">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="Upload files directly to S3 with Dropzone.js">
-<meta name=twitter:description content="Uploading files directly to S3 requires a few changes to the way Dropzone handles uploads, but it&rsquo;s nothing particularly difficult.">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://michalsn.dev/posts/"},{"@type":"ListItem","position":2,"name":"Upload files directly to S3 with Dropzone.js","item":"https://michalsn.dev/posts/upload-files-directly-to-s3-with-dropzonejs-and-codeigniter-4/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Upload files directly to S3 with Dropzone.js","name":"Upload files directly to S3 with Dropzone.js","description":"Uploading files directly to S3 requires a few changes to the way Dropzone handles uploads, but it\u0026rsquo;s nothing particularly difficult.\n","keywords":["s3","dropzone","codeigniter4"],"articleBody":"Uploading files directly to S3 requires a few changes to the way Dropzone handles uploads, but it’s nothing particularly difficult.\nWhat we will need?\n Dropzone.js SparkMD5 CodeIgniter 4 AWS SDK for PHP  Let’s start by initializing Dropzone - the key method here is transformFile, which will make us get a presigned URL.\nconst baseUrl = ''; myDropzone = new Dropzone('#myDropzone', { acceptedFiles: \"image/jpeg,image/jpg\", clickable: \".select-photos-btn\", maxFilesize: 100, url: '#', method: 'post', timeout: 0, thumbnailMethod: 'crop', resizeQuality: 0.9, transformFile: async function (file, done) { file.md5 = await calculateMD5(file); let initData = await initUpload(file.name, file.type, file.md5); file.presign = initData.presign; file.fileName = initData.name; done(file); } }); Let’s take a look at the calculateMD5 function. We need it to be sure that the uploaded file was uploaded correctly - it’s our checksum.\nfunction calculateMD5(blob) { return new Promise(function (resolve, reject) { let reader = new FileReader(); reader.readAsBinaryString(blob); reader.onloadend = function () { let hash = btoa(SparkMD5.hashBinary(reader.result, true)); resolve(hash); }; }); } Once we have calculated the checksum, we can initiate the file upload:\nfunction initUpload(name, contentType, md5) { return new Promise(function (resolve, reject) { $.ajax({ url: baseUrl + 'home/init_upload', data: {'file': name, 'content_type': contentType, 'md5': md5}, headers: {'X-Requested-With': 'XMLHttpRequest'}, type: 'POST' }) .done(function (respond) { if (respond.status) { resolve(respond.data); } else { reject() } }) .fail(function () { reject() }); }); } It’s time for the server part. For this, we need to install CodeIgniter 4 and the AWS library:\ncomposer create-project codeigniter4/appstarter codeigniter-dropzonejs --no-dev composer require aws/aws-sdk-php In the Home controller, we need to create a init_upload method. This method will be quite large. We could avoid it, for example, by creating a special Service to handle tasks related to S3, but because the example is to be as basic as possible, we will put everything in one place:\nuse App\\Controllers\\BaseController; use Aws\\S3\\PostObjectV4; use Aws\\S3\\S3Client; use CodeIgniter\\Exceptions\\PageNotFoundException; class Home extends BaseController { ... public function init_upload() { if (! $this-request-isAjax()) { throw new PageNotFoundException(); } if ($this-request-getMethod() !== 'post') { throw new PageNotFoundException(); } if (! $file = $this-request-getPost('file')) { throw new PageNotFoundException(); } if (! $contentType = $this-request-getPost('content_type')) { throw new PageNotFoundException(); } if (! $md5 = $this-request-getPost('md5')) { throw new PageNotFoundException(); } if (! in_array($contentType, ['image/jpeg', 'image/jpg'])) { throw new PageNotFoundException(); } $file = service('security')-sanitizeFilename($file); $client = new S3Client([ 'version' = 'latest', 'region' = 'type your S3 region here', 'signature' = 'v4', 'credentials' = [ 'key' = 'type your aws key here', 'secret' = 'type your aws secret here', ], ]); $bucket = 'type your bucket name here'; $formInputs = [ 'acl' = 'private', 'key' = $file, 'success_action_status' = '201', 'content-md5' = $md5, 'content-type' = $contentType, ]; $options = [ ['acl' = 'private'], ['bucket' = $bucket], ['success_action_status' = '201'], ['content-md5' = $md5], ['content-type' = $contentType], ['content-length-range', 0, 1024 * 1024 * 100], ['starts-with', '$key', $file], ]; $postObject = new PostObjectV4( $client, $bucket, $formInputs, $options, '+15 minutes' ); $formAttributes = $postObject-getFormAttributes(); $formInputs = $postObject-getFormInputs(); return $this-response-setJSON([ 'status' = 1, 'data' = [ 'name' = $file, 'presign' = [ 'attributes' = $attributes, 'inputs' = $inputs ] ] ]); } } Once we have the presigned URL generated, we need to force Dropzone to use it when uploading the file. We also need to include additional fields and attributes that will describe the exact file we are uploading. We do it this way:\nmyDropzone.on(\"sending\", function (file, xhr, formData) { xhr.open(this.options.method, file.presign.attributes.action, true); Object.keys(file.presign.inputs).forEach(function (key) { formData.append(key, file.presign.inputs[key]); }); let _send = xhr.send xhr.send = function () { _send.call(xhr, formData) } }); All that remains now is to handle the success or failure of the upload. In the case of success, we need to change the final name of the file, which may have changed if the name contained forbidden characters:\nmyDropzone.on(\"success\", function (file) { let elem = $(file.previewElement); elem.find('div[data-dz-name]').text(file.fileName); }); If an error is returned, we should also display an appropriate message. For this purpose, we need to parse the XML response:\nmyDropzone.on(\"error\", function (file, message) { if (file \u0026\u0026 message) { if (message.startsWith('(.*?)/g.exec(message); message = search[1]; this.emit(\"error\", file, message); } } }); This way we can prepare a special upload link and upload the file to S3 using Dropzone.js. Then, S3 will verify the integrity of the file and check that it has the correct parameters that were specified when the special signed URL was generated.\n","wordCount":"721","inLanguage":"en","datePublished":"2021-05-09T16:49:45+02:00","dateModified":"2021-05-09T16:49:45+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://michalsn.dev/posts/upload-files-directly-to-s3-with-dropzonejs-and-codeigniter-4/"},"publisher":{"@type":"Organization","name":"michalsn","logo":{"@type":"ImageObject","url":"https://michalsn.dev/favicon.ico"}}}</script>
-</head>
-<body id=top>
-<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
-<noscript>
-<style type=text/css>#theme-toggle,.top-link{display:none}</style>
-<style>@media(prefers-color-scheme:dark){:root{--theme:#1d1e20;--entry:#2e2e33;--primary:rgba(255, 255, 255, 0.84);--secondary:rgba(255, 255, 255, 0.56);--tertiary:rgba(255, 255, 255, 0.16);--content:rgba(255, 255, 255, 0.74);--hljs-bg:#2e2e33;--code-bg:#37383e;--border:#333}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
-</noscript>
-<header class=header>
-<nav class=nav>
-<div class=logo>
-<a href=https://michalsn.dev/ accesskey=h title="michalsn (Alt + H)">michalsn</a>
-<span class=logo-switches>
-<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-</button>
-</span>
-</div>
-<ul id=menu>
-<li>
-<a href=https://michalsn.dev/archives title=Archive>
-<span>Archive</span>
-</a>
-</li>
-<li>
-<a href=https://michalsn.dev/tags title=Tags>
-<span>Tags</span>
-</a>
-</li>
-<li>
-<a href=https://michalsn.dev/search title="Search (Alt + /)" accesskey=/>
-<span>Search</span>
-</a>
-</li>
-</ul>
-</nav>
-</header>
-<main class=main>
-<article class=post-single>
-<header class=post-header>
-<h1 class=post-title>
-Upload files directly to S3 with Dropzone.js
-</h1>
-<div class=post-meta>May 9, 2021&nbsp;·&nbsp;4 min
-</div>
-</header>
-<div class=post-content><p>Uploading files directly to S3 requires a few changes to the way Dropzone handles uploads, but it&rsquo;s nothing particularly difficult.</p>
-<p>What we will need?</p>
-<ul>
-<li><a href=https://www.dropzone.dev/js/>Dropzone.js</a></li>
-<li><a href=https://github.com/satazor/js-spark-md5>SparkMD5</a></li>
-<li><a href=https://github.com/codeigniter4/CodeIgniter4>CodeIgniter 4</a></li>
-<li><a href=https://github.com/aws/aws-sdk-php>AWS SDK for PHP</a></li>
-</ul>
-<p>Let&rsquo;s start by initializing Dropzone - the key method here is <strong>transformFile</strong>, which will make us get a presigned URL.</p>
-<pre tabindex=0><code>const baseUrl = '&lt;?= base_url(); ?&gt;';
-
-myDropzone = new Dropzone('#myDropzone', {
-    acceptedFiles: &quot;image/jpeg,image/jpg&quot;,
-    clickable: &quot;.select-photos-btn&quot;,
-    maxFilesize: 100,
-    url: '#',
-    method: 'post',
-    timeout: 0,
-    thumbnailMethod: 'crop',
-    resizeQuality: 0.9,
-    transformFile: async function (file, done) {
-        file.md5 = await calculateMD5(file);
-        let initData  = await initUpload(file.name, file.type, file.md5);
-        file.presign  = initData.presign;
-        file.fileName = initData.name;
-
-        done(file);
-    }
-});
-</code></pre><p>Let&rsquo;s take a look at the <strong>calculateMD5</strong> function. We need it to be sure that the uploaded file was uploaded correctly - it&rsquo;s our checksum.</p>
-<pre tabindex=0><code>function calculateMD5(blob) {
-    return new Promise(function (resolve, reject) {
-        let reader = new FileReader();
-        reader.readAsBinaryString(blob);
-        reader.onloadend = function () {
-            let hash = btoa(SparkMD5.hashBinary(reader.result, true));
-            resolve(hash);
-        };
-    });
-}
-</code></pre><p>Once we have calculated the checksum, we can initiate the file upload:</p>
-<pre tabindex=0><code>function initUpload(name, contentType, md5) {
-    return new Promise(function (resolve, reject) {
-        $.ajax({
-            url: baseUrl + 'home/init_upload',
-            data: {'file': name, 'content_type': contentType, 'md5': md5},
-            headers: {'X-Requested-With': 'XMLHttpRequest'},
-            type: 'POST'
-        })
-        .done(function (respond) {
-            if (respond.status) {
-                resolve(respond.data);
-            } else {
-                reject()
-            }
-        })
-        .fail(function () {
-            reject()
-        });
-    });
-}
-</code></pre><p>It&rsquo;s time for the server part. For this, we need to install <strong>CodeIgniter 4</strong> and the <strong>AWS</strong> library:</p>
-<pre tabindex=0><code>composer create-project codeigniter4/appstarter codeigniter-dropzonejs --no-dev
-</code></pre><pre tabindex=0><code>composer require aws/aws-sdk-php
-</code></pre><p>In the <strong>Home</strong> controller, we need to create a <strong>init_upload</strong> method. This method will be quite large. We could avoid it, for example, by creating a special Service to handle tasks related to S3, but because the example is to be as basic as possible, we will put everything in one place:</p>
-<pre tabindex=0><code>use App\Controllers\BaseController;
-use Aws\S3\PostObjectV4;
-use Aws\S3\S3Client;
-use CodeIgniter\Exceptions\PageNotFoundException;
-
-class Home extends BaseController
-{
-    ...
-
-    public function init_upload()
-    {
-        if (! $this-&gt;request-&gt;isAjax()) {
-            throw new PageNotFoundException();
-        }
-
-        if ($this-&gt;request-&gt;getMethod() !== 'post') {
-            throw new PageNotFoundException();
-        }
-
-        if (! $file = $this-&gt;request-&gt;getPost('file')) {
-            throw new PageNotFoundException();
-        }
-
-        if (! $contentType = $this-&gt;request-&gt;getPost('content_type')) {
-            throw new PageNotFoundException();
-        }
-
-        if (! $md5 = $this-&gt;request-&gt;getPost('md5')) {
-            throw new PageNotFoundException();
-        }
-
-        if (! in_array($contentType, ['image/jpeg', 'image/jpg'])) {
-            throw new PageNotFoundException();
-        }
-
-        $file = service('security')-&gt;sanitizeFilename($file);
-
-        $client = new S3Client([
-            'version'     =&gt; 'latest',
-            'region'      =&gt; 'type your S3 region here',
-            'signature'   =&gt; 'v4',
-            'credentials' =&gt; [
-                'key'     =&gt; 'type your aws key here',
-                'secret'  =&gt; 'type your aws secret here',
-            ],
-        ]);
-
-        $bucket = 'type your bucket name here';
-
-        $formInputs = [
-            'acl'                   =&gt; 'private',
-            'key'                   =&gt; $file,
-            'success_action_status' =&gt; '201',
-            'content-md5'           =&gt; $md5,
-            'content-type'          =&gt; $contentType,
-        ];
-
-        $options = [
-            ['acl'                   =&gt; 'private'],
-            ['bucket'                =&gt; $bucket],
-            ['success_action_status' =&gt; '201'],
-            ['content-md5'           =&gt; $md5],
-            ['content-type'          =&gt; $contentType],
-            ['content-length-range', 0, 1024 * 1024 * 100],
-            ['starts-with', '$key', $file],
-        ];
-
-        $postObject = new PostObjectV4(
-            $client,
-            $bucket,
-            $formInputs,
-            $options,
-            '+15 minutes'
-        );
-
-        $formAttributes = $postObject-&gt;getFormAttributes();
-        $formInputs     = $postObject-&gt;getFormInputs();
-        
-        return $this-&gt;response-&gt;setJSON([
-            'status' =&gt; 1, 
-            'data'   =&gt; [
-                'name'    =&gt; $file, 
-                'presign' =&gt; [
-                    'attributes' =&gt; $attributes, 
-                    'inputs'     =&gt; $inputs
-                ]
-            ]
-        ]);
-
-    }
-}
-</code></pre><p>Once we have the presigned URL generated, we need to force Dropzone to use it when uploading the file. We also need to include additional fields and attributes that will describe the exact file we are uploading. We do it this way:</p>
-<pre tabindex=0><code>myDropzone.on(&quot;sending&quot;, function (file, xhr, formData) {
-    xhr.open(this.options.method, file.presign.attributes.action, true);
-
-    Object.keys(file.presign.inputs).forEach(function (key) {
-        formData.append(key, file.presign.inputs[key]);
-    });
-
-    let _send = xhr.send
-    xhr.send = function () {
-        _send.call(xhr, formData)
-    }
-});
-</code></pre><p>All that remains now is to handle the success or failure of the upload. In the case of success, we need to change the final name of the file, which may have changed if the name contained forbidden characters:</p>
-<pre tabindex=0><code>myDropzone.on(&quot;success&quot;, function (file) {
-    let elem = $(file.previewElement);
-    elem.find('div[data-dz-name]').text(file.fileName);
-});
-</code></pre><p>If an error is returned, we should also display an appropriate message. For this purpose, we need to parse the XML response:</p>
-<pre tabindex=0><code>myDropzone.on(&quot;error&quot;, function (file, message) {
-    if (file &amp;&amp; message) {
-        if (message.startsWith('&lt;?xml version')) {
-            const search = /&lt;Message&gt;(.*?)&lt;\/Message&gt;/g.exec(message);
-            message = search[1];
-            this.emit(&quot;error&quot;, file, message);
-        }
-    }
-});
-</code></pre><p>This way we can prepare a special upload link and upload the file to S3 using Dropzone.js. Then, S3 will verify the integrity of the file and check that it has the correct parameters that were specified when the special signed URL was generated.</p>
-</div>
-<footer class=post-footer>
-<ul class=post-tags>
-<li><a href=https://michalsn.dev/tags/s3/>s3</a></li>
-<li><a href=https://michalsn.dev/tags/dropzone/>dropzone</a></li>
-<li><a href=https://michalsn.dev/tags/codeigniter4/>codeigniter4</a></li>
-</ul>
-</footer>
-</article>
-</main>
-<footer class=footer>
-<span>&copy; 2021 <a href=https://michalsn.dev/>michalsn</a></span>
-<span>
-Powered by
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Upload files directly to S3 with Dropzone.js | michalsn</title><meta name=keywords content="s3,dropzone,codeigniter4"><meta name=description content="Uploading files directly to S3 requires a few changes to the way Dropzone handles uploads, but it&rsquo;s nothing particularly difficult."><meta name=author content><link rel=canonical href=https://michalsn.dev/posts/upload-files-directly-to-s3-with-dropzonejs-and-codeigniter-4/><link crossorigin=anonymous href=/assets/css/stylesheet.min.b9ff4cc257e914dab489bd18086151800e18f91456a5174bf28489210227a659.css integrity="sha256-uf9MwlfpFNq0ib0YCGFRgA4Y+RRWpRdL8oSJIQInplk=" rel="preload stylesheet" as=style><script defer crossorigin=anonymous src=/assets/js/highlight.min.e85ad0406048e8176e1c7661b25d5c69297ddfe41dc4124cf75ecb99a4f7b3d1.js integrity="sha256-6FrQQGBI6BduHHZhsl1caSl93+QdxBJM917LmaT3s9E=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://michalsn.dev/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://michalsn.dev/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://michalsn.dev/favicon-32x32.png><link rel=apple-touch-icon href=https://michalsn.dev/apple-touch-icon.png><link rel=mask-icon href=https://michalsn.dev/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><meta name=generator content="Hugo 0.101.0"><script async src="https://www.googletagmanager.com/gtag/js?id=G-74HSH0WCPE"></script>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-74HSH0WCPE",{anonymize_ip:!1})}</script><meta property="og:title" content="Upload files directly to S3 with Dropzone.js"><meta property="og:description" content="Uploading files directly to S3 requires a few changes to the way Dropzone handles uploads, but it&rsquo;s nothing particularly difficult."><meta property="og:type" content="article"><meta property="og:url" content="https://michalsn.dev/posts/upload-files-directly-to-s3-with-dropzonejs-and-codeigniter-4/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2021-05-09T16:49:45+02:00"><meta property="article:modified_time" content="2021-05-09T16:49:45+02:00"><meta property="og:site_name" content="michalsn"><meta name=twitter:card content="summary"><meta name=twitter:title content="Upload files directly to S3 with Dropzone.js"><meta name=twitter:description content="Uploading files directly to S3 requires a few changes to the way Dropzone handles uploads, but it&rsquo;s nothing particularly difficult."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://michalsn.dev/posts/"},{"@type":"ListItem","position":2,"name":"Upload files directly to S3 with Dropzone.js","item":"https://michalsn.dev/posts/upload-files-directly-to-s3-with-dropzonejs-and-codeigniter-4/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Upload files directly to S3 with Dropzone.js","name":"Upload files directly to S3 with Dropzone.js","description":"Uploading files directly to S3 requires a few changes to the way Dropzone handles uploads, but it\u0026rsquo;s nothing particularly difficult.\n","keywords":["s3","dropzone","codeigniter4"],"articleBody":"Uploading files directly to S3 requires a few changes to the way Dropzone handles uploads, but it’s nothing particularly difficult.\nWhat we will need?\nDropzone.js SparkMD5 CodeIgniter 4 AWS SDK for PHP Let’s start by initializing Dropzone - the key method here is transformFile, which will make us get a presigned URL.\nconst baseUrl = '\u003c?= base_url(); ?\u003e'; myDropzone = new Dropzone('#myDropzone', { acceptedFiles: \"image/jpeg,image/jpg\", clickable: \".select-photos-btn\", maxFilesize: 100, url: '#', method: 'post', timeout: 0, thumbnailMethod: 'crop', resizeQuality: 0.9, transformFile: async function (file, done) { file.md5 = await calculateMD5(file); let initData = await initUpload(file.name, file.type, file.md5); file.presign = initData.presign; file.fileName = initData.name; done(file); } }); Let’s take a look at the calculateMD5 function. We need it to be sure that the uploaded file was uploaded correctly - it’s our checksum.\nfunction calculateMD5(blob) { return new Promise(function (resolve, reject) { let reader = new FileReader(); reader.readAsBinaryString(blob); reader.onloadend = function () { let hash = btoa(SparkMD5.hashBinary(reader.result, true)); resolve(hash); }; }); } Once we have calculated the checksum, we can initiate the file upload:\nfunction initUpload(name, contentType, md5) { return new Promise(function (resolve, reject) { $.ajax({ url: baseUrl + 'home/init_upload', data: {'file': name, 'content_type': contentType, 'md5': md5}, headers: {'X-Requested-With': 'XMLHttpRequest'}, type: 'POST' }) .done(function (respond) { if (respond.status) { resolve(respond.data); } else { reject() } }) .fail(function () { reject() }); }); } It’s time for the server part. For this, we need to install CodeIgniter 4 and the AWS library:\ncomposer create-project codeigniter4/appstarter codeigniter-dropzonejs --no-dev composer require aws/aws-sdk-php In the Home controller, we need to create a init_upload method. This method will be quite large. We could avoid it, for example, by creating a special Service to handle tasks related to S3, but because the example is to be as basic as possible, we will put everything in one place:\nuse App\\Controllers\\BaseController; use Aws\\S3\\PostObjectV4; use Aws\\S3\\S3Client; use CodeIgniter\\Exceptions\\PageNotFoundException; class Home extends BaseController { ... public function init_upload() { if (! $this-\u003erequest-\u003eisAjax()) { throw new PageNotFoundException(); } if ($this-\u003erequest-\u003egetMethod() !== 'post') { throw new PageNotFoundException(); } if (! $file = $this-\u003erequest-\u003egetPost('file')) { throw new PageNotFoundException(); } if (! $contentType = $this-\u003erequest-\u003egetPost('content_type')) { throw new PageNotFoundException(); } if (! $md5 = $this-\u003erequest-\u003egetPost('md5')) { throw new PageNotFoundException(); } if (! in_array($contentType, ['image/jpeg', 'image/jpg'])) { throw new PageNotFoundException(); } $file = service('security')-\u003esanitizeFilename($file); $client = new S3Client([ 'version' =\u003e 'latest', 'region' =\u003e 'type your S3 region here', 'signature' =\u003e 'v4', 'credentials' =\u003e [ 'key' =\u003e 'type your aws key here', 'secret' =\u003e 'type your aws secret here', ], ]); $bucket = 'type your bucket name here'; $formInputs = [ 'acl' =\u003e 'private', 'key' =\u003e $file, 'success_action_status' =\u003e '201', 'content-md5' =\u003e $md5, 'content-type' =\u003e $contentType, ]; $options = [ ['acl' =\u003e 'private'], ['bucket' =\u003e $bucket], ['success_action_status' =\u003e '201'], ['content-md5' =\u003e $md5], ['content-type' =\u003e $contentType], ['content-length-range', 0, 1024 * 1024 * 100], ['starts-with', '$key', $file], ]; $postObject = new PostObjectV4( $client, $bucket, $formInputs, $options, '+15 minutes' ); $formAttributes = $postObject-\u003egetFormAttributes(); $formInputs = $postObject-\u003egetFormInputs(); return $this-\u003eresponse-\u003esetJSON([ 'status' =\u003e 1, 'data' =\u003e [ 'name' =\u003e $file, 'presign' =\u003e [ 'attributes' =\u003e $attributes, 'inputs' =\u003e $inputs ] ] ]); } } Once we have the presigned URL generated, we need to force Dropzone to use it when uploading the file. We also need to include additional fields and attributes that will describe the exact file we are uploading. We do it this way:\nmyDropzone.on(\"sending\", function (file, xhr, formData) { xhr.open(this.options.method, file.presign.attributes.action, true); Object.keys(file.presign.inputs).forEach(function (key) { formData.append(key, file.presign.inputs[key]); }); let _send = xhr.send xhr.send = function () { _send.call(xhr, formData) } }); All that remains now is to handle the success or failure of the upload. In the case of success, we need to change the final name of the file, which may have changed if the name contained forbidden characters:\nmyDropzone.on(\"success\", function (file) { let elem = $(file.previewElement); elem.find('div[data-dz-name]').text(file.fileName); }); If an error is returned, we should also display an appropriate message. For this purpose, we need to parse the XML response:\nmyDropzone.on(\"error\", function (file, message) { if (file \u0026\u0026 message) { if (message.startsWith('\u003c?xml version')) { const search = /(.*?)\u003c\\/Message\u003e/g.exec(message); message = search[1]; this.emit(\"error\", file, message); } } }); This way we can prepare a special upload link and upload the file to S3 using Dropzone.js. Then, S3 will verify the integrity of the file and check that it has the correct parameters that were specified when the special signed URL was generated.\n","wordCount":"721","inLanguage":"en","datePublished":"2021-05-09T16:49:45+02:00","dateModified":"2021-05-09T16:49:45+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://michalsn.dev/posts/upload-files-directly-to-s3-with-dropzonejs-and-codeigniter-4/"},"publisher":{"@type":"Organization","name":"michalsn","logo":{"@type":"ImageObject","url":"https://michalsn.dev/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><noscript><style type=text/css>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:#1d1e20;--entry:#2e2e33;--primary:rgba(255, 255, 255, 0.84);--secondary:rgba(255, 255, 255, 0.56);--tertiary:rgba(255, 255, 255, 0.16);--content:rgba(255, 255, 255, 0.74);--hljs-bg:#2e2e33;--code-bg:#37383e;--border:#333}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><header class=header><nav class=nav><div class=logo><a href=https://michalsn.dev/ accesskey=h title="michalsn (Alt + H)">michalsn</a>
+<span class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></span></div><ul id=menu><li><a href=https://michalsn.dev/archives title=Archive><span>Archive</span></a></li><li><a href=https://michalsn.dev/tags title=Tags><span>Tags</span></a></li><li><a href=https://michalsn.dev/search title="Search (Alt + /)" accesskey=/><span>Search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class=post-title>Upload files directly to S3 with Dropzone.js</h1><div class=post-meta>May 9, 2021&nbsp;·&nbsp;4 min</div></header><div class=post-content><p>Uploading files directly to S3 requires a few changes to the way Dropzone handles uploads, but it&rsquo;s nothing particularly difficult.</p><p>What we will need?</p><ul><li><a href=https://www.dropzone.dev/js/>Dropzone.js</a></li><li><a href=https://github.com/satazor/js-spark-md5>SparkMD5</a></li><li><a href=https://github.com/codeigniter4/CodeIgniter4>CodeIgniter 4</a></li><li><a href=https://github.com/aws/aws-sdk-php>AWS SDK for PHP</a></li></ul><p>Let&rsquo;s start by initializing Dropzone - the key method here is <strong>transformFile</strong>, which will make us get a presigned URL.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>baseUrl</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;&lt;?= base_url(); ?&gt;&#39;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>myDropzone</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Dropzone</span>(<span style=color:#e6db74>&#39;#myDropzone&#39;</span>, {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>acceptedFiles</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;image/jpeg,image/jpg&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>clickable</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;.select-photos-btn&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>maxFilesize</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>100</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>url</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;#&#39;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>method</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;post&#39;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>timeout</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>0</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>thumbnailMethod</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;crop&#39;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>resizeQuality</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>0.9</span>,
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>transformFile</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>async</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>file</span>, <span style=color:#a6e22e>done</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>file</span>.<span style=color:#a6e22e>md5</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>calculateMD5</span>(<span style=color:#a6e22e>file</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>initData</span>  <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>initUpload</span>(<span style=color:#a6e22e>file</span>.<span style=color:#a6e22e>name</span>, <span style=color:#a6e22e>file</span>.<span style=color:#a6e22e>type</span>, <span style=color:#a6e22e>file</span>.<span style=color:#a6e22e>md5</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>file</span>.<span style=color:#a6e22e>presign</span>  <span style=color:#f92672>=</span> <span style=color:#a6e22e>initData</span>.<span style=color:#a6e22e>presign</span>;
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>file</span>.<span style=color:#a6e22e>fileName</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>initData</span>.<span style=color:#a6e22e>name</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>done</span>(<span style=color:#a6e22e>file</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>});
+</span></span></code></pre></div><p>Let&rsquo;s take a look at the <strong>calculateMD5</strong> function. We need it to be sure that the uploaded file was uploaded correctly - it&rsquo;s our checksum.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>calculateMD5</span>(<span style=color:#a6e22e>blob</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> Promise(<span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>resolve</span>, <span style=color:#a6e22e>reject</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>reader</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>FileReader</span>();
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>reader</span>.<span style=color:#a6e22e>readAsBinaryString</span>(<span style=color:#a6e22e>blob</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>reader</span>.<span style=color:#a6e22e>onloadend</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>hash</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>btoa</span>(<span style=color:#a6e22e>SparkMD5</span>.<span style=color:#a6e22e>hashBinary</span>(<span style=color:#a6e22e>reader</span>.<span style=color:#a6e22e>result</span>, <span style=color:#66d9ef>true</span>));
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>resolve</span>(<span style=color:#a6e22e>hash</span>);
+</span></span><span style=display:flex><span>        };
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Once we have calculated the checksum, we can initiate the file upload:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>initUpload</span>(<span style=color:#a6e22e>name</span>, <span style=color:#a6e22e>contentType</span>, <span style=color:#a6e22e>md5</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> Promise(<span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>resolve</span>, <span style=color:#a6e22e>reject</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>$</span>.<span style=color:#a6e22e>ajax</span>({
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>url</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>baseUrl</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39;home/init_upload&#39;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>data</span><span style=color:#f92672>:</span> {<span style=color:#e6db74>&#39;file&#39;</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>name</span>, <span style=color:#e6db74>&#39;content_type&#39;</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>contentType</span>, <span style=color:#e6db74>&#39;md5&#39;</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>md5</span>},
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>headers</span><span style=color:#f92672>:</span> {<span style=color:#e6db74>&#39;X-Requested-With&#39;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;XMLHttpRequest&#39;</span>},
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;POST&#39;</span>
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>done</span>(<span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>respond</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>respond</span>.<span style=color:#a6e22e>status</span>) {
+</span></span><span style=display:flex><span>                <span style=color:#a6e22e>resolve</span>(<span style=color:#a6e22e>respond</span>.<span style=color:#a6e22e>data</span>);
+</span></span><span style=display:flex><span>            } <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>                <span style=color:#a6e22e>reject</span>()
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>fail</span>(<span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>reject</span>()
+</span></span><span style=display:flex><span>        });
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>It&rsquo;s time for the server part. For this, we need to install <strong>CodeIgniter 4</strong> and the <strong>AWS</strong> library:</p><pre tabindex=0><code class=language-cli data-lang=cli>composer create-project codeigniter4/appstarter codeigniter-dropzonejs --no-dev
+</code></pre><pre tabindex=0><code class=language-cli data-lang=cli>composer require aws/aws-sdk-php
+</code></pre><p>In the <strong>Home</strong> controller, we need to create a <strong>init_upload</strong> method. This method will be quite large. We could avoid it, for example, by creating a special Service to handle tasks related to S3, but because the example is to be as basic as possible, we will put everything in one place:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=display:flex><span><span style=color:#66d9ef>use</span> <span style=color:#a6e22e>App\Controllers\BaseController</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>use</span> <span style=color:#a6e22e>Aws\S3\PostObjectV4</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>use</span> <span style=color:#a6e22e>Aws\S3\S3Client</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>use</span> <span style=color:#a6e22e>CodeIgniter\Exceptions\PageNotFoundException</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Home</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>BaseController</span>
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#f92672>...</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>init_upload</span>()
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span> $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>request</span><span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>isAjax</span>()) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>PageNotFoundException</span>();
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> ($this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>request</span><span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>getMethod</span>() <span style=color:#f92672>!==</span> <span style=color:#e6db74>&#39;post&#39;</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>PageNotFoundException</span>();
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span> $file <span style=color:#f92672>=</span> $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>request</span><span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>getPost</span>(<span style=color:#e6db74>&#39;file&#39;</span>)) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>PageNotFoundException</span>();
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span> $contentType <span style=color:#f92672>=</span> $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>request</span><span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>getPost</span>(<span style=color:#e6db74>&#39;content_type&#39;</span>)) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>PageNotFoundException</span>();
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span> $md5 <span style=color:#f92672>=</span> $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>request</span><span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>getPost</span>(<span style=color:#e6db74>&#39;md5&#39;</span>)) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>PageNotFoundException</span>();
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span> <span style=color:#a6e22e>in_array</span>($contentType, [<span style=color:#e6db74>&#39;image/jpeg&#39;</span>, <span style=color:#e6db74>&#39;image/jpg&#39;</span>])) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>PageNotFoundException</span>();
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        $file <span style=color:#f92672>=</span> <span style=color:#a6e22e>service</span>(<span style=color:#e6db74>&#39;security&#39;</span>)<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>sanitizeFilename</span>($file);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        $client <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>S3Client</span>([
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;version&#39;</span>     <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;latest&#39;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;region&#39;</span>      <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;type your S3 region here&#39;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;signature&#39;</span>   <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;v4&#39;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;credentials&#39;</span> <span style=color:#f92672>=&gt;</span> [
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;key&#39;</span>     <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;type your aws key here&#39;</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;secret&#39;</span>  <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;type your aws secret here&#39;</span>,
+</span></span><span style=display:flex><span>            ],
+</span></span><span style=display:flex><span>        ]);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        $bucket <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;type your bucket name here&#39;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        $formInputs <span style=color:#f92672>=</span> [
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;acl&#39;</span>                   <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;private&#39;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;key&#39;</span>                   <span style=color:#f92672>=&gt;</span> $file,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;success_action_status&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;201&#39;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;content-md5&#39;</span>           <span style=color:#f92672>=&gt;</span> $md5,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;content-type&#39;</span>          <span style=color:#f92672>=&gt;</span> $contentType,
+</span></span><span style=display:flex><span>        ];
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        $options <span style=color:#f92672>=</span> [
+</span></span><span style=display:flex><span>            [<span style=color:#e6db74>&#39;acl&#39;</span>                   <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;private&#39;</span>],
+</span></span><span style=display:flex><span>            [<span style=color:#e6db74>&#39;bucket&#39;</span>                <span style=color:#f92672>=&gt;</span> $bucket],
+</span></span><span style=display:flex><span>            [<span style=color:#e6db74>&#39;success_action_status&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;201&#39;</span>],
+</span></span><span style=display:flex><span>            [<span style=color:#e6db74>&#39;content-md5&#39;</span>           <span style=color:#f92672>=&gt;</span> $md5],
+</span></span><span style=display:flex><span>            [<span style=color:#e6db74>&#39;content-type&#39;</span>          <span style=color:#f92672>=&gt;</span> $contentType],
+</span></span><span style=display:flex><span>            [<span style=color:#e6db74>&#39;content-length-range&#39;</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1024</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>1024</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>100</span>],
+</span></span><span style=display:flex><span>            [<span style=color:#e6db74>&#39;starts-with&#39;</span>, <span style=color:#e6db74>&#39;$key&#39;</span>, $file],
+</span></span><span style=display:flex><span>        ];
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        $postObject <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>PostObjectV4</span>(
+</span></span><span style=display:flex><span>            $client,
+</span></span><span style=display:flex><span>            $bucket,
+</span></span><span style=display:flex><span>            $formInputs,
+</span></span><span style=display:flex><span>            $options,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;+15 minutes&#39;</span>
+</span></span><span style=display:flex><span>        );
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        $formAttributes <span style=color:#f92672>=</span> $postObject<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>getFormAttributes</span>();
+</span></span><span style=display:flex><span>        $formInputs     <span style=color:#f92672>=</span> $postObject<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>getFormInputs</span>();
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>response</span><span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>setJSON</span>([
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;status&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#ae81ff>1</span>, 
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;data&#39;</span>   <span style=color:#f92672>=&gt;</span> [
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;name&#39;</span>    <span style=color:#f92672>=&gt;</span> $file, 
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;presign&#39;</span> <span style=color:#f92672>=&gt;</span> [
+</span></span><span style=display:flex><span>                    <span style=color:#e6db74>&#39;attributes&#39;</span> <span style=color:#f92672>=&gt;</span> $attributes, 
+</span></span><span style=display:flex><span>                    <span style=color:#e6db74>&#39;inputs&#39;</span>     <span style=color:#f92672>=&gt;</span> $inputs
+</span></span><span style=display:flex><span>                ]
+</span></span><span style=display:flex><span>            ]
+</span></span><span style=display:flex><span>        ]);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Once we have the presigned URL generated, we need to force Dropzone to use it when uploading the file. We also need to include additional fields and attributes that will describe the exact file we are uploading. We do it this way:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>myDropzone</span>.<span style=color:#a6e22e>on</span>(<span style=color:#e6db74>&#34;sending&#34;</span>, <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>file</span>, <span style=color:#a6e22e>xhr</span>, <span style=color:#a6e22e>formData</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>xhr</span>.<span style=color:#a6e22e>open</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>options</span>.<span style=color:#a6e22e>method</span>, <span style=color:#a6e22e>file</span>.<span style=color:#a6e22e>presign</span>.<span style=color:#a6e22e>attributes</span>.<span style=color:#a6e22e>action</span>, <span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    Object.<span style=color:#a6e22e>keys</span>(<span style=color:#a6e22e>file</span>.<span style=color:#a6e22e>presign</span>.<span style=color:#a6e22e>inputs</span>).<span style=color:#a6e22e>forEach</span>(<span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>key</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>formData</span>.<span style=color:#a6e22e>append</span>(<span style=color:#a6e22e>key</span>, <span style=color:#a6e22e>file</span>.<span style=color:#a6e22e>presign</span>.<span style=color:#a6e22e>inputs</span>[<span style=color:#a6e22e>key</span>]);
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>_send</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>xhr</span>.<span style=color:#a6e22e>send</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>xhr</span>.<span style=color:#a6e22e>send</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> () {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>_send</span>.<span style=color:#a6e22e>call</span>(<span style=color:#a6e22e>xhr</span>, <span style=color:#a6e22e>formData</span>)
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>});
+</span></span></code></pre></div><p>All that remains now is to handle the success or failure of the upload. In the case of success, we need to change the final name of the file, which may have changed if the name contained forbidden characters:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>myDropzone</span>.<span style=color:#a6e22e>on</span>(<span style=color:#e6db74>&#34;success&#34;</span>, <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>file</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>elem</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>$</span>(<span style=color:#a6e22e>file</span>.<span style=color:#a6e22e>previewElement</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>elem</span>.<span style=color:#a6e22e>find</span>(<span style=color:#e6db74>&#39;div[data-dz-name]&#39;</span>).<span style=color:#a6e22e>text</span>(<span style=color:#a6e22e>file</span>.<span style=color:#a6e22e>fileName</span>);
+</span></span><span style=display:flex><span>});
+</span></span></code></pre></div><p>If an error is returned, we should also display an appropriate message. For this purpose, we need to parse the XML response:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#a6e22e>myDropzone</span>.<span style=color:#a6e22e>on</span>(<span style=color:#e6db74>&#34;error&#34;</span>, <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>file</span>, <span style=color:#a6e22e>message</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>file</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>message</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>message</span>.<span style=color:#a6e22e>startsWith</span>(<span style=color:#e6db74>&#39;&lt;?xml version&#39;</span>)) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>search</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>/&lt;Message&gt;(.*?)&lt;\/Message&gt;/g</span>.<span style=color:#a6e22e>exec</span>(<span style=color:#a6e22e>message</span>);
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>message</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>search</span>[<span style=color:#ae81ff>1</span>];
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>emit</span>(<span style=color:#e6db74>&#34;error&#34;</span>, <span style=color:#a6e22e>file</span>, <span style=color:#a6e22e>message</span>);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>});
+</span></span></code></pre></div><p>This way we can prepare a special upload link and upload the file to S3 using Dropzone.js. Then, S3 will verify the integrity of the file and check that it has the correct parameters that were specified when the special signed URL was generated.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://michalsn.dev/tags/s3/>s3</a></li><li><a href=https://michalsn.dev/tags/dropzone/>dropzone</a></li><li><a href=https://michalsn.dev/tags/codeigniter4/>codeigniter4</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2022 <a href=https://michalsn.dev/>michalsn</a></span>
+<span>Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
-</span>
-</footer>
-<a href=#top aria-label="go to top" title="Go to Top (Alt + G)">
-<button class=top-link id=top-link type=button accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
-</button>
-</a>
-<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
-<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
-<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
-<script>document.querySelectorAll('pre > code').forEach(b=>{const c=b.parentNode.parentNode,a=document.createElement('button');a.classList.add('copy-code'),a.innerText='copy';function d(){a.innerText='copied!',setTimeout(()=>{a.innerText='copy'},2e3)}a.addEventListener('click',e=>{if('clipboard'in navigator){navigator.clipboard.writeText(b.textContent),d();return}const a=document.createRange();a.selectNodeContents(b);const c=window.getSelection();c.removeAllRanges(),c.addRange(a);try{document.execCommand('copy'),d()}catch(a){}c.removeRange(a)}),c.classList.contains("highlight")?c.appendChild(a):c.parentNode.firstChild==c||(b.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?b.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(a):b.parentNode.appendChild(a))})</script>
-</body>
-</html>
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)"><button class=top-link id=top-link type=button accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg></button></a>
+<script>let menu=document.getElementById("menu");menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerText="copy";function s(){t.innerText="copied!",setTimeout(()=>{t.innerText="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>

@@ -1,194 +1,221 @@
-<!doctype html><html lang=en dir=auto>
-<head><meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta name=robots content="index, follow">
-<title>INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4 | michalsn</title>
-<meta name=keywords content="mysql,mariadb,sql,codeigniter4">
-<meta name=description content="I recently had to use a query with INSERT ON DUPLICATE KEY UPDATE, but CodeIgniter 4 does not have built-in support for this type of query because it is not available in all database drivers.">
-<meta name=author content>
-<link rel=canonical href=https://michalsn.dev/posts/insert-on-duplicate-key-update-with-codeigniter-4/>
-<link crossorigin=anonymous href=/assets/css/stylesheet.min.b9ff4cc257e914dab489bd18086151800e18f91456a5174bf28489210227a659.css integrity="sha256-uf9MwlfpFNq0ib0YCGFRgA4Y+RRWpRdL8oSJIQInplk=" rel="preload stylesheet" as=style>
-<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
-<link rel=icon href=https://michalsn.dev/favicon.ico>
-<link rel=icon type=image/png sizes=16x16 href=https://michalsn.dev/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://michalsn.dev/favicon-32x32.png>
-<link rel=apple-touch-icon href=https://michalsn.dev/apple-touch-icon.png>
-<link rel=mask-icon href=https://michalsn.dev/safari-pinned-tab.svg>
-<meta name=theme-color content="#2e2e33">
-<meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.89.4">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-74HSH0WCPE"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-74HSH0WCPE',{anonymize_ip:!1})}</script>
-<meta property="og:title" content="INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4">
-<meta property="og:description" content="I recently had to use a query with INSERT ON DUPLICATE KEY UPDATE, but CodeIgniter 4 does not have built-in support for this type of query because it is not available in all database drivers.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://michalsn.dev/posts/insert-on-duplicate-key-update-with-codeigniter-4/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2021-10-15T13:10:11+02:00">
-<meta property="article:modified_time" content="2021-10-15T13:10:11+02:00"><meta property="og:site_name" content="michalsn">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4">
-<meta name=twitter:description content="I recently had to use a query with INSERT ON DUPLICATE KEY UPDATE, but CodeIgniter 4 does not have built-in support for this type of query because it is not available in all database drivers.">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://michalsn.dev/posts/"},{"@type":"ListItem","position":2,"name":"INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4","item":"https://michalsn.dev/posts/insert-on-duplicate-key-update-with-codeigniter-4/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4","name":"INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4","description":"I recently had to use a query with INSERT ON DUPLICATE KEY UPDATE, but CodeIgniter 4 does not have built-in support for this type of query because it is not available in all database drivers.\n","keywords":["mysql","mariadb","sql","codeigniter4"],"articleBody":"I recently had to use a query with INSERT ON DUPLICATE KEY UPDATE, but CodeIgniter 4 does not have built-in support for this type of query because it is not available in all database drivers.\nTo start with a basic question - why not use a query with REPLACE? There are several reasons:\n If we are dealing with a table that has a field with AUTO INCREMENT, it is then incremented every time. If we have some foreign key relations with ON DELETE CASCADE option, then this it gonna be a mess, because we will automatically delete data from other tables The last reason is the slowness of queries with REPLACE. Each time we try to perform INSERT, if the data is already there, we perform DELETE operation and then another INSERT.  The INSERT ON DUPLICATE KEY UPDATE query comes to the rescue. It is a remedy for all the above problems.\nOkay, let’s see how we can add support for this type of query to CodeIgniter 4. We will create a Trait class:\nnamespace App\\Traits; trait ExtraModelMethods { /** * Insert on duplicate key update * * @param int|string $id Unique key * @param array|object $data Data * @param bool $escape Escape * * @return bool */ public function insertOnDuplicateUpdate($id, $data, bool $escape = null): bool { $data = $this-transformDataToArray($data, 'update'); // Validate data before saving. if (! $this-skipValidation \u0026\u0026 ! $this-cleanRules(true)-validate($data)) { return false; } // Must be called first so we don't // strip out updated_at values. $data = $this-doProtectFields($data); // doProtectFields() can further remove elements from // $data so we need to check for empty dataset again if (empty($data)) { throw DataException::forEmptyDataset('update'); } // Set created_at and updated_at with same time $date = $this-setDate(); if ($this-useTimestamps \u0026\u0026 $this-createdField \u0026\u0026 ! array_key_exists($this-createdField, $data)) { $data[$this-createdField] = $date; } if ($this-useTimestamps \u0026\u0026 $this-updatedField \u0026\u0026 ! array_key_exists($this-updatedField, $data)) { $data[$this-updatedField] = $date; } $builder = $this-builder(); $insert = $builder-set($this-primaryKey, $id, $escape)-set($data, '', $escape)-getCompiledInsert(); // Remove created_at field in case of update query if ($data[$this-createdField]) { unset($data[$this-createdField]); } $update = $builder-set($data, '', $escape)-getCompiledUpdate(); $update = preg_replace('/UPDATE[\\s\\S]+? SET /', '', $update); // Prepare event $eventData = [ 'id' = $id, 'data' = $data, 'result' = $builder-db()-query(sprintf('%s ON DUPLICATE KEY UPDATE %s', $insert, $update)), ]; if ($this-tempAllowCallbacks) { $this-trigger('afterUpdate', $eventData); } $this-tempAllowCallbacks = $this-allowCallbacks; return $eventData['result']; } } To use the new method in our model we just need to import our Trait class:\nuse App\\Traits\\ExtraModelMethods; use CodeIgniter\\Model; class ExampleModel extends Model { use ExtraModelMethods; } ","wordCount":"414","inLanguage":"en","datePublished":"2021-10-15T13:10:11+02:00","dateModified":"2021-10-15T13:10:11+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://michalsn.dev/posts/insert-on-duplicate-key-update-with-codeigniter-4/"},"publisher":{"@type":"Organization","name":"michalsn","logo":{"@type":"ImageObject","url":"https://michalsn.dev/favicon.ico"}}}</script>
-</head>
-<body id=top>
-<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
-<noscript>
-<style type=text/css>#theme-toggle,.top-link{display:none}</style>
-<style>@media(prefers-color-scheme:dark){:root{--theme:#1d1e20;--entry:#2e2e33;--primary:rgba(255, 255, 255, 0.84);--secondary:rgba(255, 255, 255, 0.56);--tertiary:rgba(255, 255, 255, 0.16);--content:rgba(255, 255, 255, 0.74);--hljs-bg:#2e2e33;--code-bg:#37383e;--border:#333}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
-</noscript>
-<header class=header>
-<nav class=nav>
-<div class=logo>
-<a href=https://michalsn.dev/ accesskey=h title="michalsn (Alt + H)">michalsn</a>
-<span class=logo-switches>
-<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-</button>
-</span>
-</div>
-<ul id=menu>
-<li>
-<a href=https://michalsn.dev/archives title=Archive>
-<span>Archive</span>
-</a>
-</li>
-<li>
-<a href=https://michalsn.dev/tags title=Tags>
-<span>Tags</span>
-</a>
-</li>
-<li>
-<a href=https://michalsn.dev/search title="Search (Alt + /)" accesskey=/>
-<span>Search</span>
-</a>
-</li>
-</ul>
-</nav>
-</header>
-<main class=main>
-<article class=post-single>
-<header class=post-header>
-<h1 class=post-title>
-INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4
-</h1>
-<div class=post-meta>October 15, 2021&nbsp;·&nbsp;2 min
-</div>
-</header>
-<div class=post-content><p>I recently had to use a query with <strong>INSERT ON DUPLICATE KEY UPDATE</strong>, but CodeIgniter 4 does not have built-in support for this type of query because it is not available in all database drivers.</p>
-<p>To start with a basic question - why not use a query with <strong>REPLACE</strong>? There are several reasons:</p>
-<ul>
-<li>If we are dealing with a table that has a field with <strong>AUTO INCREMENT</strong>, it is then incremented every time.</li>
-<li>If we have some foreign key relations with <strong>ON DELETE CASCADE</strong> option, then this it gonna be a mess, because we will automatically delete data from other tables</li>
-<li>The last reason is the slowness of queries with <strong>REPLACE</strong>. Each time we try to perform <strong>INSERT</strong>, if the data is already there, we perform <strong>DELETE</strong> operation and then another <strong>INSERT</strong>.</li>
-</ul>
-<p>The <strong>INSERT ON DUPLICATE KEY UPDATE</strong> query comes to the rescue. It is a remedy for all the above problems.</p>
-<p>Okay, let&rsquo;s see how we can add support for this type of query to CodeIgniter 4. We will create a <strong>Trait</strong> class:</p>
-<pre tabindex=0><code>namespace App\Traits;
-
-trait ExtraModelMethods
-{
-    /**
-     * Insert on duplicate key update
-     *
-     * @param int|string   $id     Unique key
-     * @param array|object $data   Data
-     * @param bool         $escape Escape
-     *
-     * @return bool
-     */
-    public function insertOnDuplicateUpdate($id, $data, bool $escape = null): bool
-    {
-        $data = $this-&gt;transformDataToArray($data, 'update');
-
-        // Validate data before saving.
-        if (! $this-&gt;skipValidation &amp;&amp; ! $this-&gt;cleanRules(true)-&gt;validate($data)) {
-            return false;
-        }
-
-        // Must be called first so we don't
-        // strip out updated_at values.
-        $data = $this-&gt;doProtectFields($data);
-
-        // doProtectFields() can further remove elements from
-        // $data so we need to check for empty dataset again
-        if (empty($data)) {
-            throw DataException::forEmptyDataset('update');
-        }
-
-        // Set created_at and updated_at with same time
-        $date = $this-&gt;setDate();
-
-        if ($this-&gt;useTimestamps &amp;&amp; $this-&gt;createdField &amp;&amp; ! array_key_exists($this-&gt;createdField, $data)) {
-            $data[$this-&gt;createdField] = $date;
-        }
-
-        if ($this-&gt;useTimestamps &amp;&amp; $this-&gt;updatedField &amp;&amp; ! array_key_exists($this-&gt;updatedField, $data)) {
-            $data[$this-&gt;updatedField] = $date;
-        }
-
-        $builder = $this-&gt;builder();
-        $insert  = $builder-&gt;set($this-&gt;primaryKey, $id, $escape)-&gt;set($data, '', $escape)-&gt;getCompiledInsert();
-
-        // Remove created_at field in case of update query
-        if ($data[$this-&gt;createdField]) {
-            unset($data[$this-&gt;createdField]);
-        }
-        $update = $builder-&gt;set($data, '', $escape)-&gt;getCompiledUpdate();
-        $update = preg_replace('/UPDATE[\s\S]+? SET /', '', $update);
-
-        // Prepare event
-        $eventData = [
-            'id'     =&gt; $id,
-            'data'   =&gt; $data,
-            'result' =&gt; $builder-&gt;db()-&gt;query(sprintf('%s ON DUPLICATE KEY UPDATE %s', $insert, $update)),
-        ];
-
-        if ($this-&gt;tempAllowCallbacks) {
-            $this-&gt;trigger('afterUpdate', $eventData);
-        }
-
-        $this-&gt;tempAllowCallbacks = $this-&gt;allowCallbacks;
-
-        return $eventData['result'];
-    }
-}
-</code></pre><p>To use the new method in our model we just need to import our <strong>Trait</strong> class:</p>
-<pre tabindex=0><code>use App\Traits\ExtraModelMethods;
-use CodeIgniter\Model;
-
-class ExampleModel extends Model
-{
-    use ExtraModelMethods;
-}
-
-</code></pre>
-</div>
-<footer class=post-footer>
-<ul class=post-tags>
-<li><a href=https://michalsn.dev/tags/mysql/>mysql</a></li>
-<li><a href=https://michalsn.dev/tags/mariadb/>mariadb</a></li>
-<li><a href=https://michalsn.dev/tags/sql/>sql</a></li>
-<li><a href=https://michalsn.dev/tags/codeigniter4/>codeigniter4</a></li>
-</ul>
-</footer>
-</article>
-</main>
-<footer class=footer>
-<span>&copy; 2021 <a href=https://michalsn.dev/>michalsn</a></span>
-<span>
-Powered by
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4 | michalsn</title><meta name=keywords content="mysql,mariadb,sql,codeigniter4"><meta name=description content="I recently had to use a query with INSERT ON DUPLICATE KEY UPDATE, but CodeIgniter 4 does not have built-in support for this type of query because it is not available in all database drivers."><meta name=author content><link rel=canonical href=https://michalsn.dev/posts/insert-on-duplicate-key-update-with-codeigniter-4/><link crossorigin=anonymous href=/assets/css/stylesheet.min.b9ff4cc257e914dab489bd18086151800e18f91456a5174bf28489210227a659.css integrity="sha256-uf9MwlfpFNq0ib0YCGFRgA4Y+RRWpRdL8oSJIQInplk=" rel="preload stylesheet" as=style><script defer crossorigin=anonymous src=/assets/js/highlight.min.e85ad0406048e8176e1c7661b25d5c69297ddfe41dc4124cf75ecb99a4f7b3d1.js integrity="sha256-6FrQQGBI6BduHHZhsl1caSl93+QdxBJM917LmaT3s9E=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://michalsn.dev/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://michalsn.dev/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://michalsn.dev/favicon-32x32.png><link rel=apple-touch-icon href=https://michalsn.dev/apple-touch-icon.png><link rel=mask-icon href=https://michalsn.dev/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><meta name=generator content="Hugo 0.101.0"><script async src="https://www.googletagmanager.com/gtag/js?id=G-74HSH0WCPE"></script>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-74HSH0WCPE",{anonymize_ip:!1})}</script><meta property="og:title" content="INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4"><meta property="og:description" content="I recently had to use a query with INSERT ON DUPLICATE KEY UPDATE, but CodeIgniter 4 does not have built-in support for this type of query because it is not available in all database drivers."><meta property="og:type" content="article"><meta property="og:url" content="https://michalsn.dev/posts/insert-on-duplicate-key-update-with-codeigniter-4/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2021-10-15T13:10:11+02:00"><meta property="article:modified_time" content="2021-10-15T13:10:11+02:00"><meta property="og:site_name" content="michalsn"><meta name=twitter:card content="summary"><meta name=twitter:title content="INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4"><meta name=twitter:description content="I recently had to use a query with INSERT ON DUPLICATE KEY UPDATE, but CodeIgniter 4 does not have built-in support for this type of query because it is not available in all database drivers."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://michalsn.dev/posts/"},{"@type":"ListItem","position":2,"name":"INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4","item":"https://michalsn.dev/posts/insert-on-duplicate-key-update-with-codeigniter-4/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4","name":"INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4","description":"I recently had to use a query with INSERT ON DUPLICATE KEY UPDATE, but CodeIgniter 4 does not have built-in support for this type of query because it is not available in all database drivers.\n","keywords":["mysql","mariadb","sql","codeigniter4"],"articleBody":"I recently had to use a query with INSERT ON DUPLICATE KEY UPDATE, but CodeIgniter 4 does not have built-in support for this type of query because it is not available in all database drivers.\nTo start with a basic question - why not use a query with REPLACE? There are several reasons:\nIf we are dealing with a table that has a field with AUTO INCREMENT, it is then incremented every time. If we have some foreign key relations with ON DELETE CASCADE option, then this it gonna be a mess, because we will automatically delete data from other tables The last reason is the slowness of queries with REPLACE. Each time we try to perform INSERT, if the data is already there, we perform DELETE operation and then another INSERT. The INSERT ON DUPLICATE KEY UPDATE query comes to the rescue. It is a remedy for all the above problems.\nOkay, let’s see how we can add support for this type of query to CodeIgniter 4. We will create a Trait class:\n// app/Traits/ExtraModelMethods.php namespace App\\Traits; use CodeIgniter\\Database\\Exceptions\\DataException; use InvalidArgumentException; use ReflectionException; use stdClass; trait ExtraModelMethods { /** * Insert on duplicate key update * * @param array|object $data Data * @param bool $escape Escape * @throws ReflectionException */ public function insertOnDuplicateUpdate($data, ?bool $escape = null): bool { if (! empty($data)) { $data = $this-\u003etransformAllDataToArray($data, 'update'); } // Validate data before saving. if (! $this-\u003eskipValidation \u0026\u0026 ! $this-\u003ecleanRules(true)-\u003evalidate($data)) { return false; } // Must be called first so we don't // strip out updated_at values. $data = $this-\u003edoProtectFields($data); // doProtectFields() can further remove elements from // $data so we need to check for empty dataset again if (empty($data)) { throw DataException::forEmptyDataset('update'); } // Set created_at and updated_at with same time $date = $this-\u003esetDate(); if ($this-\u003euseTimestamps \u0026\u0026 $this-\u003ecreatedField \u0026\u0026 ! array_key_exists($this-\u003ecreatedField, $data)) { $data[$this-\u003ecreatedField] = $date; } if ($this-\u003euseTimestamps \u0026\u0026 $this-\u003eupdatedField) { $data[$this-\u003eupdatedField] = $date; } $builder = $this-\u003ebuilder(); $insert = $builder-\u003eset($data, '', $escape)-\u003egetCompiledInsert(); // Remove created_at field in case of update query if ($data[$this-\u003ecreatedField]) { unset($data[$this-\u003ecreatedField]); } $update = $builder-\u003eset($data, '', $escape)-\u003egetCompiledUpdate(); $update = preg_replace('/UPDATE[\\s\\S]+? SET /', '', $update); // Prepare event $eventData = [ 'id' =\u003e $this-\u003egetIdValue($data), 'data' =\u003e $data, 'result' =\u003e $builder-\u003edb()-\u003equery(sprintf('%s ON DUPLICATE KEY UPDATE %s', $insert, $update)), ]; if ($this-\u003etempAllowCallbacks) { $this-\u003etrigger('afterUpdate', $eventData); } $this-\u003etempAllowCallbacks = $this-\u003eallowCallbacks; return $eventData['result']; } /** * Transform data to array * * @param array|object|null $data Data * @param string $type Type of data (insert|update) * * @throws DataException * @throws InvalidArgumentException * @throws ReflectionException */ protected function transformAllDataToArray($data, string $type): array { if (! in_array($type, ['insert', 'update'], true)) { throw new InvalidArgumentException(sprintf('Invalid type \"%s\" used upon transforming data to array.', $type)); } if (empty($data)) { throw DataException::forEmptyDataset($type); } // If $data is using a custom class with public or protected // properties representing the collection elements, we need to grab // them as an array. if (is_object($data) \u0026\u0026 ! $data instanceof stdClass) { $data = $this-\u003eobjectToArray($data, false, true); } // If it's still a stdClass, go ahead and convert to // an array so doProtectFields and other model methods // don't have to do special checks. if (is_object($data)) { $data = (array) $data; } // If it's still empty here, means $data is no change or is empty object if (empty($data)) { throw DataException::forEmptyDataset($type); } return $data; } } To use the new method in our model we just need to import our Trait class:\n// app/Models/ProfileModel.php namespace App\\Models; use App\\Traits\\ExtraModelMethods; use CodeIgniter\\Model; class ProfileModel extends Model { use ExtraModelMethods; protected $table = 'profile_table'; ... } Let’s create an example migration file to test this. In console we type:\nphp spark make:migration AddProfileTable And then inside our migration file we will create table with the unique identifier.\n// app/Database/Migrations/2021-10-15-101102_AddProfileTable.php namespace App\\Database\\Migrations; use CodeIgniter\\Database\\Migration; class AddProfileTable extends Migration { public function up() { $this-\u003eforge-\u003eaddField([ 'id' =\u003e [ 'type' =\u003e 'INT', 'constraint' =\u003e '11', 'unsigned' =\u003e true, 'null' =\u003e false, 'auto_increment' =\u003e true, ], 'user_id' =\u003e [ 'type' =\u003e 'INT', 'constraint' =\u003e '11', 'unsigned' =\u003e true, 'null' =\u003e false, ], 'name' =\u003e [ 'type' =\u003e 'VARCHAR', 'constraint' =\u003e '128', 'null' =\u003e true, ], 'created_at' =\u003e [ 'type' =\u003e 'DATETIME', 'null' =\u003e false, ], 'updated_at' =\u003e [ 'type' =\u003e 'DATETIME', 'null' =\u003e false, ], ]); $this-\u003eforge-\u003eaddKey('id', true); $this-\u003eforge-\u003eaddUniqueKey('user_id'); $this-\u003eforge-\u003ecreateTable('profile_table'); } public function down() { $this-\u003eforge-\u003edropTable('profile_table'); } } Now, we can test it out in our controller. Let’s edit Home controller by adding new methods:\n// app/Controllers/Home.php namespace App\\Controllers; use App\\Models\\ProfileModel; class Home extends BaseController { public function index() { return view('welcome_message'); } public function add() { $profileModel = model(ProfileModel:class); $profileModel-\u003einsertOnDuplicateUpdate([ 'user_id =\u003e 1, 'name' =\u003e 'James', ]); } public function edit() { $profileModel = model(ProfileModel:class); $profileModel-\u003einsertOnDuplicateUpdate([ 'user_id' =\u003e 1, 'name' =\u003e 'Frank', ]); } } After calling the add() method, we should have an entry in the table with one entry and name “James”. After calling the edit() method, we should still have one entry in the table, but this time with the name “Frank”.\nBecause the user_id column is unique, new data is added only if the value for this column is unique, otherwise the data is updated.\n","wordCount":"848","inLanguage":"en","datePublished":"2021-10-15T13:10:11+02:00","dateModified":"2021-10-15T13:10:11+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://michalsn.dev/posts/insert-on-duplicate-key-update-with-codeigniter-4/"},"publisher":{"@type":"Organization","name":"michalsn","logo":{"@type":"ImageObject","url":"https://michalsn.dev/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><noscript><style type=text/css>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:#1d1e20;--entry:#2e2e33;--primary:rgba(255, 255, 255, 0.84);--secondary:rgba(255, 255, 255, 0.56);--tertiary:rgba(255, 255, 255, 0.16);--content:rgba(255, 255, 255, 0.74);--hljs-bg:#2e2e33;--code-bg:#37383e;--border:#333}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><header class=header><nav class=nav><div class=logo><a href=https://michalsn.dev/ accesskey=h title="michalsn (Alt + H)">michalsn</a>
+<span class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></span></div><ul id=menu><li><a href=https://michalsn.dev/archives title=Archive><span>Archive</span></a></li><li><a href=https://michalsn.dev/tags title=Tags><span>Tags</span></a></li><li><a href=https://michalsn.dev/search title="Search (Alt + /)" accesskey=/><span>Search</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class=post-title>INSERT ON DUPLICATE KEY UPDATE with CodeIgniter 4</h1><div class=post-meta>October 15, 2021&nbsp;·&nbsp;4 min</div></header><div class=post-content><p>I recently had to use a query with <strong>INSERT ON DUPLICATE KEY UPDATE</strong>, but CodeIgniter 4 does not have built-in support for this type of query because it is not available in all database drivers.</p><p>To start with a basic question - why not use a query with <strong>REPLACE</strong>? There are several reasons:</p><ul><li>If we are dealing with a table that has a field with <strong>AUTO INCREMENT</strong>, it is then incremented every time.</li><li>If we have some foreign key relations with <strong>ON DELETE CASCADE</strong> option, then this it gonna be a mess, because we will automatically delete data from other tables</li><li>The last reason is the slowness of queries with <strong>REPLACE</strong>. Each time we try to perform <strong>INSERT</strong>, if the data is already there, we perform <strong>DELETE</strong> operation and then another <strong>INSERT</strong>.</li></ul><p>The <strong>INSERT ON DUPLICATE KEY UPDATE</strong> query comes to the rescue. It is a remedy for all the above problems.</p><p>Okay, let&rsquo;s see how we can add support for this type of query to CodeIgniter 4. We will create a <strong>Trait</strong> class:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=display:flex><span><span style=color:#75715e>// app/Traits/ExtraModelMethods.php
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>App\Traits</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>use</span> <span style=color:#a6e22e>CodeIgniter\Database\Exceptions\DataException</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>use</span> <span style=color:#a6e22e>InvalidArgumentException</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>use</span> <span style=color:#a6e22e>ReflectionException</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>use</span> <span style=color:#66d9ef>stdClass</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>trait</span> <span style=color:#a6e22e>ExtraModelMethods</span>
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>/**
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>     * Insert on duplicate key update
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>     *
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>     * @param array|object $data Data
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>     * @param bool $escape Escape
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>     * @throws ReflectionException
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>     */</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>insertOnDuplicateUpdate</span>($data, <span style=color:#f92672>?</span><span style=color:#a6e22e>bool</span> $escape <span style=color:#f92672>=</span> <span style=color:#66d9ef>null</span>)<span style=color:#f92672>:</span> <span style=color:#a6e22e>bool</span>
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span> <span style=color:#66d9ef>empty</span>($data)) {
+</span></span><span style=display:flex><span>            $data <span style=color:#f92672>=</span> $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>transformAllDataToArray</span>($data, <span style=color:#e6db74>&#39;update&#39;</span>);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Validate data before saving.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span> $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>skipValidation</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#f92672>!</span> $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>cleanRules</span>(<span style=color:#66d9ef>true</span>)<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>validate</span>($data)) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Must be called first so we don&#39;t
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>// strip out updated_at values.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        $data <span style=color:#f92672>=</span> $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>doProtectFields</span>($data);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// doProtectFields() can further remove elements from
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>// $data so we need to check for empty dataset again
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>if</span> (<span style=color:#66d9ef>empty</span>($data)) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>throw</span> <span style=color:#a6e22e>DataException</span><span style=color:#f92672>::</span><span style=color:#a6e22e>forEmptyDataset</span>(<span style=color:#e6db74>&#39;update&#39;</span>);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Set created_at and updated_at with same time
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        $date <span style=color:#f92672>=</span> $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>setDate</span>();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> ($this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>useTimestamps</span> <span style=color:#f92672>&amp;&amp;</span> $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>createdField</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#f92672>!</span> <span style=color:#a6e22e>array_key_exists</span>($this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>createdField</span>, $data)) {
+</span></span><span style=display:flex><span>            $data[$this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>createdField</span>] <span style=color:#f92672>=</span> $date;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> ($this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>useTimestamps</span> <span style=color:#f92672>&amp;&amp;</span> $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>updatedField</span>) {
+</span></span><span style=display:flex><span>            $data[$this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>updatedField</span>] <span style=color:#f92672>=</span> $date;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        $builder <span style=color:#f92672>=</span> $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>builder</span>();
+</span></span><span style=display:flex><span>        $insert  <span style=color:#f92672>=</span> $builder<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>set</span>($data, <span style=color:#e6db74>&#39;&#39;</span>, $escape)<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>getCompiledInsert</span>();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Remove created_at field in case of update query
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>if</span> ($data[$this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>createdField</span>]) {
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>unset</span>($data[$this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>createdField</span>]);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        $update <span style=color:#f92672>=</span> $builder<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>set</span>($data, <span style=color:#e6db74>&#39;&#39;</span>, $escape)<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>getCompiledUpdate</span>();
+</span></span><span style=display:flex><span>        $update <span style=color:#f92672>=</span> <span style=color:#a6e22e>preg_replace</span>(<span style=color:#e6db74>&#39;/UPDATE[\s\S]+? SET /&#39;</span>, <span style=color:#e6db74>&#39;&#39;</span>, $update);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Prepare event
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        $eventData <span style=color:#f92672>=</span> [
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;id&#39;</span>     <span style=color:#f92672>=&gt;</span> $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>getIdValue</span>($data),
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;data&#39;</span>   <span style=color:#f92672>=&gt;</span> $data,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;result&#39;</span> <span style=color:#f92672>=&gt;</span> $builder<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>db</span>()<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>query</span>(<span style=color:#a6e22e>sprintf</span>(<span style=color:#e6db74>&#39;%s ON DUPLICATE KEY UPDATE %s&#39;</span>, $insert, $update)),
+</span></span><span style=display:flex><span>        ];
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> ($this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>tempAllowCallbacks</span>) {
+</span></span><span style=display:flex><span>            $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>trigger</span>(<span style=color:#e6db74>&#39;afterUpdate&#39;</span>, $eventData);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>tempAllowCallbacks</span> <span style=color:#f92672>=</span> $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>allowCallbacks</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> $eventData[<span style=color:#e6db74>&#39;result&#39;</span>];
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>/**
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>     * Transform data to array
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>     *
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>     * @param array|object|null $data Data
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>     * @param string            $type Type of data (insert|update)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>     *
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>     * @throws DataException
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>     * @throws InvalidArgumentException
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>     * @throws ReflectionException
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>     */</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>protected</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>transformAllDataToArray</span>($data, <span style=color:#a6e22e>string</span> $type)<span style=color:#f92672>:</span> <span style=color:#66d9ef>array</span>
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span> <span style=color:#a6e22e>in_array</span>($type, [<span style=color:#e6db74>&#39;insert&#39;</span>, <span style=color:#e6db74>&#39;update&#39;</span>], <span style=color:#66d9ef>true</span>)) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>InvalidArgumentException</span>(<span style=color:#a6e22e>sprintf</span>(<span style=color:#e6db74>&#39;Invalid type &#34;%s&#34; used upon transforming data to array.&#39;</span>, $type));
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#66d9ef>empty</span>($data)) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>throw</span> <span style=color:#a6e22e>DataException</span><span style=color:#f92672>::</span><span style=color:#a6e22e>forEmptyDataset</span>($type);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// If $data is using a custom class with public or protected
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>// properties representing the collection elements, we need to grab
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>// them as an array.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>is_object</span>($data) <span style=color:#f92672>&amp;&amp;</span> <span style=color:#f92672>!</span> $data <span style=color:#a6e22e>instanceof</span> <span style=color:#66d9ef>stdClass</span>) {
+</span></span><span style=display:flex><span>            $data <span style=color:#f92672>=</span> $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>objectToArray</span>($data, <span style=color:#66d9ef>false</span>, <span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// If it&#39;s still a stdClass, go ahead and convert to
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>// an array so doProtectFields and other model methods
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>// don&#39;t have to do special checks.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>is_object</span>($data)) {
+</span></span><span style=display:flex><span>            $data <span style=color:#f92672>=</span> (<span style=color:#66d9ef>array</span>) $data;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// If it&#39;s still empty here, means $data is no change or is empty object
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>if</span> (<span style=color:#66d9ef>empty</span>($data)) {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>throw</span> <span style=color:#a6e22e>DataException</span><span style=color:#f92672>::</span><span style=color:#a6e22e>forEmptyDataset</span>($type);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> $data;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>To use the new method in our model we just need to import our <strong>Trait</strong> class:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=display:flex><span><span style=color:#75715e>// app/Models/ProfileModel.php
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>App\Models</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>use</span> <span style=color:#a6e22e>App\Traits\ExtraModelMethods</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>use</span> <span style=color:#a6e22e>CodeIgniter\Model</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ProfileModel</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>Model</span>
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>use</span> <span style=color:#a6e22e>ExtraModelMethods</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>protected</span> $table <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;profile_table&#39;</span>;
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#f92672>...</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Let&rsquo;s create an example <strong>migration</strong> file to test this. In console we type:</p><pre tabindex=0><code class=language-cli data-lang=cli>php spark make:migration AddProfileTable
+</code></pre><p>And then inside our migration file we will create table with the unique identifier.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=display:flex><span><span style=color:#75715e>// app/Database/Migrations/2021-10-15-101102_AddProfileTable.php
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>App\Database\Migrations</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>use</span> <span style=color:#a6e22e>CodeIgniter\Database\Migration</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>AddProfileTable</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>Migration</span>
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>up</span>()
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>forge</span><span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>addField</span>([
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;id&#39;</span> <span style=color:#f92672>=&gt;</span> [
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;type&#39;</span>           <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;INT&#39;</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;constraint&#39;</span>     <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;11&#39;</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;unsigned&#39;</span>       <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;null&#39;</span>           <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;auto_increment&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+</span></span><span style=display:flex><span>            ],
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;user_id&#39;</span> <span style=color:#f92672>=&gt;</span> [
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;type&#39;</span>       <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;INT&#39;</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;constraint&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;11&#39;</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;unsigned&#39;</span>   <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;null&#39;</span>       <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+</span></span><span style=display:flex><span>            ],
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;name&#39;</span> <span style=color:#f92672>=&gt;</span> [
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;type&#39;</span>       <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;VARCHAR&#39;</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;constraint&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;128&#39;</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;null&#39;</span>       <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>true</span>,
+</span></span><span style=display:flex><span>            ],
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;created_at&#39;</span> <span style=color:#f92672>=&gt;</span> [
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;type&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;DATETIME&#39;</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;null&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+</span></span><span style=display:flex><span>            ],
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;updated_at&#39;</span> <span style=color:#f92672>=&gt;</span> [
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;type&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#39;DATETIME&#39;</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;null&#39;</span> <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>false</span>,
+</span></span><span style=display:flex><span>            ],
+</span></span><span style=display:flex><span>        ]);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>forge</span><span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>addKey</span>(<span style=color:#e6db74>&#39;id&#39;</span>, <span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>forge</span><span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>addUniqueKey</span>(<span style=color:#e6db74>&#39;user_id&#39;</span>);
+</span></span><span style=display:flex><span>        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>forge</span><span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>createTable</span>(<span style=color:#e6db74>&#39;profile_table&#39;</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>down</span>()
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        $this<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>forge</span><span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>dropTable</span>(<span style=color:#e6db74>&#39;profile_table&#39;</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Now, we can test it out in our controller. Let&rsquo;s edit <strong>Home</strong> controller by adding new methods:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-php data-lang=php><span style=display:flex><span><span style=color:#75715e>// app/Controllers/Home.php
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>namespace</span> <span style=color:#a6e22e>App\Controllers</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>use</span> <span style=color:#a6e22e>App\Models\ProfileModel</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Home</span> <span style=color:#66d9ef>extends</span> <span style=color:#a6e22e>BaseController</span>
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>index</span>()
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>view</span>(<span style=color:#e6db74>&#39;welcome_message&#39;</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>add</span>()
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        $profileModel <span style=color:#f92672>=</span> <span style=color:#a6e22e>model</span>(<span style=color:#a6e22e>ProfileModel</span><span style=color:#f92672>:</span><span style=color:#a6e22e>class</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        $profileModel<span style=color:#f92672>-&gt;</span><span style=color:#a6e22e>insertOnDuplicateUpdate</span>([
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;user_id =&gt; 1,
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>            &#39;</span><span style=color:#a6e22e>name</span><span style=color:#e6db74>&#39;   =&gt; &#39;</span><span style=color:#a6e22e>James</span><span style=color:#e6db74>&#39;,
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        ]);
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    public function edit()
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        $profileModel = model(ProfileModel:class);
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        $profileModel-&gt;insertOnDuplicateUpdate([
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>            &#39;</span><span style=color:#a6e22e>user_id</span><span style=color:#e6db74>&#39; =&gt; 1,
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>            &#39;</span><span style=color:#a6e22e>name</span><span style=color:#e6db74>&#39;    =&gt; &#39;</span><span style=color:#a6e22e>Frank</span><span style=color:#960050;background-color:#1e0010>&#39;</span>,
+</span></span><span style=display:flex><span>        ]);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>After calling the <strong>add()</strong> method, we should have an entry in the table with one entry and name &ldquo;James&rdquo;. After calling the <strong>edit()</strong> method, we should still have one entry in the table, but this time with the name &ldquo;Frank&rdquo;.</p><p>Because the <strong>user_id</strong> column is unique, new data is added only if the value for this column is unique, otherwise the data is updated.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://michalsn.dev/tags/mysql/>mysql</a></li><li><a href=https://michalsn.dev/tags/mariadb/>mariadb</a></li><li><a href=https://michalsn.dev/tags/sql/>sql</a></li><li><a href=https://michalsn.dev/tags/codeigniter4/>codeigniter4</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2022 <a href=https://michalsn.dev/>michalsn</a></span>
+<span>Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
-</span>
-</footer>
-<a href=#top aria-label="go to top" title="Go to Top (Alt + G)">
-<button class=top-link id=top-link type=button accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
-</button>
-</a>
-<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
-<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
-<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
-<script>document.querySelectorAll('pre > code').forEach(b=>{const c=b.parentNode.parentNode,a=document.createElement('button');a.classList.add('copy-code'),a.innerText='copy';function d(){a.innerText='copied!',setTimeout(()=>{a.innerText='copy'},2e3)}a.addEventListener('click',e=>{if('clipboard'in navigator){navigator.clipboard.writeText(b.textContent),d();return}const a=document.createRange();a.selectNodeContents(b);const c=window.getSelection();c.removeAllRanges(),c.addRange(a);try{document.execCommand('copy'),d()}catch(a){}c.removeRange(a)}),c.classList.contains("highlight")?c.appendChild(a):c.parentNode.firstChild==c||(b.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?b.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(a):b.parentNode.appendChild(a))})</script>
-</body>
-</html>
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)"><button class=top-link id=top-link type=button accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg></button></a>
+<script>let menu=document.getElementById("menu");menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerText="copy";function s(){t.innerText="copied!",setTimeout(()=>{t.innerText="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
