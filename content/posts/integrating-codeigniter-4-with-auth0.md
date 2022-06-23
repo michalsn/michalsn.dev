@@ -9,15 +9,13 @@ Integration with [Auth0](https://auth0.com/) is quite simple and comes down to a
 
 <!--more-->
 
-```
+```cli
 composer require auth0/auth0-php "^7.9"
 ```
 
 To get started, we need to create a configuration file **app/Config/Auth0.php**. It is a good idea to leave the configuration values in the file empty and add them via the **.env** file. This will ensure that your sensitive data doesn't end up in the repository.
 
-```
-<?php
-
+```php
 namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
@@ -38,9 +36,7 @@ class Auth0 extends BaseConfig
 
 Next, we'll create the main class that will allow Auth0 to write data to the session. To do this, we will implement the interface provided by Auth0. We need to create a file: **app/Libraries/Auth0SessionStorage**:
 
-```
-<?php
-
+```php
 namespace App\Libraries;
 
 use Auth0\SDK\Store\StoreInterface;
@@ -112,9 +108,7 @@ class Auth0SessionStore implements StoreInterface
 
 The last step is to create a service to handle everything conveniently. Let's edit **app/Config/Services.php** file:
 
-```
-<?php
-
+```php
 namespace Config;
 
 use Auth0\SDK\Auth0;
@@ -156,7 +150,7 @@ class Services extends BaseService
 
 All that's left is to test the whole thing and create a controller **app/Controllers/Auth.php**.
 
-```
+```php
 namespace App\Controllers;
 
 class Auth extends BaseController

@@ -17,7 +17,7 @@ What we will need?
 
 Let's start by initializing Dropzone - the key method here is **transformFile**, which will make us get a presigned URL.
 
-```
+```js
 const baseUrl = '<?= base_url(); ?>';
 
 myDropzone = new Dropzone('#myDropzone', {
@@ -42,7 +42,7 @@ myDropzone = new Dropzone('#myDropzone', {
 
 Let's take a look at the **calculateMD5** function. We need it to be sure that the uploaded file was uploaded correctly - it's our checksum.
 
-```
+```js
 function calculateMD5(blob) {
     return new Promise(function (resolve, reject) {
         let reader = new FileReader();
@@ -57,7 +57,7 @@ function calculateMD5(blob) {
 
 Once we have calculated the checksum, we can initiate the file upload:
 
-```
+```js
 function initUpload(name, contentType, md5) {
     return new Promise(function (resolve, reject) {
         $.ajax({
@@ -82,16 +82,16 @@ function initUpload(name, contentType, md5) {
 
 It's time for the server part. For this, we need to install **CodeIgniter 4** and the **AWS** library:
 
-```
+```cli
 composer create-project codeigniter4/appstarter codeigniter-dropzonejs --no-dev
 ```
-```
+```cli
 composer require aws/aws-sdk-php
 ```
 
 In the **Home** controller, we need to create a **init_upload** method. This method will be quite large. We could avoid it, for example, by creating a special Service to handle tasks related to S3, but because the example is to be as basic as possible, we will put everything in one place:
 
-```
+```php
 use App\Controllers\BaseController;
 use Aws\S3\PostObjectV4;
 use Aws\S3\S3Client;
@@ -187,7 +187,7 @@ class Home extends BaseController
 
 Once we have the presigned URL generated, we need to force Dropzone to use it when uploading the file. We also need to include additional fields and attributes that will describe the exact file we are uploading. We do it this way:
 
-```
+```js
 myDropzone.on("sending", function (file, xhr, formData) {
     xhr.open(this.options.method, file.presign.attributes.action, true);
 
@@ -204,7 +204,7 @@ myDropzone.on("sending", function (file, xhr, formData) {
 
 All that remains now is to handle the success or failure of the upload. In the case of success, we need to change the final name of the file, which may have changed if the name contained forbidden characters:
 
-```
+```js
 myDropzone.on("success", function (file) {
     let elem = $(file.previewElement);
     elem.find('div[data-dz-name]').text(file.fileName);
@@ -213,7 +213,7 @@ myDropzone.on("success", function (file) {
 
 If an error is returned, we should also display an appropriate message. For this purpose, we need to parse the XML response:
 
-```
+```js
 myDropzone.on("error", function (file, message) {
     if (file && message) {
         if (message.startsWith('<?xml version')) {

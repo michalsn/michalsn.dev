@@ -11,9 +11,7 @@ When we give users option to connect their own domain to our service, we must al
 
 We can use a simple helper that will do the verification:
 
-```
-<?php
-
+```php
 /**
  * Verify CNAME for domain
  *
@@ -42,7 +40,7 @@ function verifyCname(string $host): bool
 
 It would be good to verify beforehand that the hostname given by the user is correct, or at least has a chance to be correct. For this purpose, we can use the list of available domains:
 
-```
+```cli
 https://github.com/incognico/list-of-top-level-domains
 ```
 

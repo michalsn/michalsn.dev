@@ -15,15 +15,13 @@ That is why a special library was created, which extends Model class and gives p
 
 Installation via composer:
 
-```
+```cli
 composer require michalsn/codeigniter4-uuid
 ```
 
 Then the only change we need to make is in the Model:
 
-```
-<?php
-
+```php
 namespace App\Models;
 
 use Michalsn\Uuid\UuidModel;

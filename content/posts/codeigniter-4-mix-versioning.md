@@ -13,7 +13,7 @@ Why do we even need this helper? Mix can generate versioned versions of files. I
 
 We need to create a file **mix_helper.php** in **app/helpers/** directory:
 
-```
+```php
 if (! function_exists('mix')) {
     /**
      * Get the path to a versioned Mix file.
@@ -84,8 +84,7 @@ if (! function_exists('mix')) {
 
 Next, we create the **Mix.php** configuration file in the **app/config/** directory:
 
-```
-<?php
+```php
 namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
@@ -116,7 +115,7 @@ How to use this helper? It's very simple - just enter an *ordinary* file name an
 
 This is what our asset configuration file will look like (**webpack.mix.js**):
 
-```
+```js
 let mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'js')
@@ -125,13 +124,13 @@ mix.js('resources/js/app.js', 'js')
     .setPublicPath('public');
 ```
 And in our view we will apply a helper: 
-```
+```cli
 <link href="<?= mix('/css/app.css'); ?>" rel="stylesheet">
 ```
 
 This will get a link similar to this one:
 
-```
+```cli
 <link href="/css/app.css?id=a8b3deb4b7d26dcf51d2" rel="stylesheet">
 ```
 The same for JS files. Without the helper we would have to manually rename the versioned files every time.

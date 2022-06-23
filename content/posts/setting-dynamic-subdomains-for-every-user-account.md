@@ -21,7 +21,7 @@ With this in mind - the first thing we will do is to drop the **app.baseURL** va
 
 First things first - we have to edit the **app/Config/App.php** file and add two variables:
 
-```
+```php
     /**
      * --------------------------------------------------------------------------
      * Subdomain URL
@@ -48,7 +48,7 @@ First things first - we have to edit the **app/Config/App.php** file and add two
 
 We will now override the **subdomainURL** variable in the **.env** file and add our own variable for **baseURL**:
 
-```
+```cli
 baseURL = 'application.test' // yes, this is correct - we don't want to use app.baseURL
 app.subdomainURL = '.application.test'
 ```
@@ -59,7 +59,7 @@ The next thing will be to create some form of subdomain creation for each user. 
 
 If you keep the subdomain names in the database, then after each change you will have to update the cache in which you will keep informations about subdomains. Let's make an example model method:
 
-```
+```php
 public function updateSubdomainCache()
 {
     $results   = $this->builder()->select('account_id, subdomain')->get()->getResult();
@@ -76,7 +76,7 @@ public function updateSubdomainCache()
 
 Now that we have almost everything we need, we can move on to overriding **baseURL** address and make it work for subdomains. We are going to use **Config/Registrar** class which you can read more about [here](https://codeigniter4.github.io/userguide/general/configuration.html?#registrars):
 
-```
+```php
 namespace App\Config;
 
 class Registrar
@@ -109,7 +109,7 @@ class Registrar
 
 Finally, we need to define routing. The primary domain and subdomains will be distinguished using the **hostname** resolution trick:
 
-```
+```php
 // subdomains routes
 $routes->group('', [], function ($routes) {
     

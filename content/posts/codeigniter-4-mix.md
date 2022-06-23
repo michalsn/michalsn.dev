@@ -11,20 +11,20 @@ Today we are going to look at configuring CodeIgniter 4 in conjunction with [Mix
 
 The first thing we do is install CodeIgniter 4 using the command:
 
-```
+```cli
 composer create-project codeigniter4/appstarter codeigniter-mix --no-dev
 ```
 
 Next, we need to add Mix, which is basically an overlay of [webpack](https://webpack.js.org/). Basically, it would be enough to initialize Mix this way:
 
-```
+```cli
 npm init -y
 npm install laravel-mix --save-dev
 ```
 
 But instead, I will provide the contents of the entire **package.json** file:
 
-```
+```json
 {
     "private": true,
     "scripts": {
@@ -47,13 +47,13 @@ But instead, I will provide the contents of the entire **package.json** file:
 
 This file must be initialized via the command:
 
-```
+```cli
 npm install
 ```
 
 All the necessary components will be installed. All that remains is to create the **webpack.mix.js** file, which will allow us to define the various steps when compiling the JS and CSS files.
 
-```
+```js
 let mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'js')
@@ -77,13 +77,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 And then the **app.js** file, with the contents:
 
-```
+```js
 require('./bootstrap');
 ```
 
 The whole thing should look more or less like this:
 
-```
+```js
 /public
   /js
     - app.js
@@ -99,12 +99,12 @@ The whole thing should look more or less like this:
 
 Now we can compile everything using the command:
 
-```
+```cli
 npx mix
 ```
 
 or for the production version:
 
-```
+```cli
 npx mix -p
 ```
