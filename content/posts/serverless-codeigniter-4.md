@@ -1,6 +1,7 @@
 ---
 title: "Serverless Codeigniter 4"
 date: 2022-07-07T18:24:14+02:00
+tags: ["serverless", "bref", "aws", "codeigniter4"]
 draft: false
 ---
 
