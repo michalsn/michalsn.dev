@@ -1,7 +1,7 @@
 ---
 title: "Upload files directly to S3 with Dropzone.js"
 date: 2021-05-09T16:49:45+02:00
-tags: ["s3", "dropzone", "codeigniter4"]
+tags: ["s3", "aws", "dropzone", "codeigniter4"]
 draft: false
 ---
 
