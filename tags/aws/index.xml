@@ -18,5 +18,14 @@ Installation The first thing to do is to install the Serverless framework (if yo
 Follow all the steps from the &amp;ldquo;Serverless&amp;rdquo; section and come back here.</description>
     </item>
     
+    <item>
+      <title>Upload files directly to S3 with Dropzone.js</title>
+      <link>https://michalsn.dev/posts/upload-files-directly-to-s3-with-dropzonejs-and-codeigniter-4/</link>
+      <pubDate>Sun, 09 May 2021 16:49:45 +0200</pubDate>
+      
+      <guid>https://michalsn.dev/posts/upload-files-directly-to-s3-with-dropzonejs-and-codeigniter-4/</guid>
+      <description>&lt;p&gt;Uploading files directly to S3 requires a few changes to the way Dropzone handles uploads, but it&amp;rsquo;s nothing particularly difficult.&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>
