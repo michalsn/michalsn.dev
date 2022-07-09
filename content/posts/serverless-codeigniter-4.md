@@ -153,7 +153,7 @@ We can now upload our project. The first time deploy may take about 2 minutes.
 serverless deploy
 ```
 
-After navigating to the address that will be displayed to us in the console, we should see the standard landing page that CodeIgniter 4 presents.
+After navigating to the address that will be displayed to us in the console, we should see the standard landing page of CodeIgniter 4.
 
 Of course, usually we won't be serving entire websites, but rather providing an API.
 But if we come to run a full-fledged website, we should remember not to serve the static files through the Lambda function.
