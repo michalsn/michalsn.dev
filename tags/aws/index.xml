@@ -13,9 +13,7 @@
       <pubDate>Thu, 07 Jul 2022 18:24:14 +0200</pubDate>
       
       <guid>https://michalsn.dev/posts/serverless-codeigniter-4/</guid>
-      <description>Serverless has been very popular for several years now. When we need very high performance it can be a very good alternative to traditional server solutions. Therefore, this time we will try to run CodeIgniter 4 in a serverless environment.
-Installation The first thing to do is to install the Serverless framework (if you don&amp;rsquo;t already have it). You can read how to do that here: https://bref.sh/docs/installation.html
-Follow all the steps from the &amp;ldquo;Serverless&amp;rdquo; section and come back here.</description>
+      <description>&lt;p&gt;Serverless has been very popular for several years now. When we need very high performance it can be a very good alternative to traditional server solutions. Therefore, this time we will try to run CodeIgniter 4 in a serverless environment.&lt;/p&gt;</description>
     </item>
     
     <item>

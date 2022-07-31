@@ -6,7 +6,34 @@
     <description>Recent content in Tags on michalsn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Jul 2022 18:24:14 +0200</lastBuildDate><atom:link href="https://michalsn.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 Jul 2022 16:01:38 +0200</lastBuildDate><atom:link href="https://michalsn.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>codeigniter4</title>
+      <link>https://michalsn.dev/tags/codeigniter4/</link>
+      <pubDate>Sun, 31 Jul 2022 16:01:38 +0200</pubDate>
+      
+      <guid>https://michalsn.dev/tags/codeigniter4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>php</title>
+      <link>https://michalsn.dev/tags/php/</link>
+      <pubDate>Sun, 31 Jul 2022 16:01:38 +0200</pubDate>
+      
+      <guid>https://michalsn.dev/tags/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>subdomain</title>
+      <link>https://michalsn.dev/tags/subdomain/</link>
+      <pubDate>Sun, 31 Jul 2022 16:01:38 +0200</pubDate>
+      
+      <guid>https://michalsn.dev/tags/subdomain/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>aws</title>
       <link>https://michalsn.dev/tags/aws/</link>
@@ -22,15 +49,6 @@
       <pubDate>Thu, 07 Jul 2022 18:24:14 +0200</pubDate>
       
       <guid>https://michalsn.dev/tags/bref/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>codeigniter4</title>
-      <link>https://michalsn.dev/tags/codeigniter4/</link>
-      <pubDate>Thu, 07 Jul 2022 18:24:14 +0200</pubDate>
-      
-      <guid>https://michalsn.dev/tags/codeigniter4/</guid>
       <description></description>
     </item>
     
@@ -58,24 +76,6 @@
       <pubDate>Mon, 22 Nov 2021 16:10:35 +0200</pubDate>
       
       <guid>https://michalsn.dev/tags/domain/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>php</title>
-      <link>https://michalsn.dev/tags/php/</link>
-      <pubDate>Mon, 18 Oct 2021 11:42:57 +0200</pubDate>
-      
-      <guid>https://michalsn.dev/tags/php/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>subdomain</title>
-      <link>https://michalsn.dev/tags/subdomain/</link>
-      <pubDate>Mon, 18 Oct 2021 11:42:57 +0200</pubDate>
-      
-      <guid>https://michalsn.dev/tags/subdomain/</guid>
       <description></description>
     </item>
     

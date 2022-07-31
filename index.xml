@@ -6,16 +6,23 @@
     <description>Recent content on michalsn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Jul 2022 18:24:14 +0200</lastBuildDate><atom:link href="https://michalsn.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 Jul 2022 16:01:38 +0200</lastBuildDate><atom:link href="https://michalsn.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Generating a custom domain link in CodeIgniter 4</title>
+      <link>https://michalsn.dev/posts/generating-a-custom-domain-links-in-codeigniter-4/</link>
+      <pubDate>Sun, 31 Jul 2022 16:01:38 +0200</pubDate>
+      
+      <guid>https://michalsn.dev/posts/generating-a-custom-domain-links-in-codeigniter-4/</guid>
+      <description>&lt;p&gt;How can we handle generation of a custom domain link in CodeIgniter 4? Although this is not a built-in feature, we can deal with it in a fairly simple way.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Serverless Codeigniter 4</title>
       <link>https://michalsn.dev/posts/serverless-codeigniter-4/</link>
       <pubDate>Thu, 07 Jul 2022 18:24:14 +0200</pubDate>
       
       <guid>https://michalsn.dev/posts/serverless-codeigniter-4/</guid>
-      <description>Serverless has been very popular for several years now. When we need very high performance it can be a very good alternative to traditional server solutions. Therefore, this time we will try to run CodeIgniter 4 in a serverless environment.
-Installation The first thing to do is to install the Serverless framework (if you don&amp;rsquo;t already have it). You can read how to do that here: https://bref.sh/docs/installation.html
-Follow all the steps from the &amp;ldquo;Serverless&amp;rdquo; section and come back here.</description>
+      <description>&lt;p&gt;Serverless has been very popular for several years now. When we need very high performance it can be a very good alternative to traditional server solutions. Therefore, this time we will try to run CodeIgniter 4 in a serverless environment.&lt;/p&gt;</description>
     </item>
     
     <item>
