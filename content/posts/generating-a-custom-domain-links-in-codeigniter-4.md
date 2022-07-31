@@ -12,7 +12,7 @@ How can we handle generation of a custom domain link in CodeIgniter 4? Although 
 Suppose we have an application where each user account is served from its own domain. We can handle this scenarion quite simply through a simple helper:
 
 ```php
-// app/Helper/app_helper.php
+// app/Helpers/app_helper.php
 
 /**
  * Returns a site URL as defined by Host.
