@@ -36,7 +36,38 @@ And select the `0` option when asked about the type of apllication.
 
 ### Configuration
 
-CodeIgniter 4 requires the `Intl` extension. By default, this extension is disabled, so we need to enable it. 
+First things first. We should adjust the `serverless.yaml` file to our needs:
+
+```yaml
+service: serverless-codeigniter4
+
+provider:
+    name: aws
+    region: eu-central-1
+    runtime: provided.al2
+    memorySize: 512
+
+plugins:
+    - ./vendor/bref/bref
+
+functions:
+    api:
+        handler: public/index.php # point us to the CodeIgniter's index.php file
+        description: ''
+        timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)
+        layers:
+            - ${bref:layer.php-81-fpm}
+        events:
+            - httpApi: '*'
+
+# Exclude files from deployment
+package:
+    patterns:
+        - '!node_modules/**'
+        - '!tests/**'
+```
+
+Now we can move on. CodeIgniter 4 requires the `Intl` extension. By default, this extension is disabled, so we need to enable it. 
 To do this, we need to create a `php.ini` file that will be loaded when the instance is launched.
 
 In the root directory of our project, let's create the following path/file: `php/conf.d/php.ini` with the contents:
@@ -45,18 +76,22 @@ extension=intl
 ```
 
 Let's move on to CodeIgniter's configuration settings, because there are a few things we need to change.
-Let's create a copy of the `env` file under the name `.env`. Now let's edit the value for `CI_ENVIRONMENT`.
+Let's create a copy of the `env` file under the name `.env`. Now let's edit the value for `CI_ENVIRONMENT` and few others.
 
 ```cli 
 CI_ENVIRONMENT = development
+
+app.indexPage = ''
+app.uriProtocol = 'PATH_INFO';
 ```
-Just in case, so that in case of any errors we know what is happening - what errors we have.
+We change the `CI_ENVIRONMENT` just in case something goes wrong, so we can see the errors. Later we will go back to the `production` value.
+The change for the `uriProtocol` is necessary so the Lambda could recognize our routing.
 
 Next, we need to overwrite the paths for the `session` (if we will use it) and `cache` files. In the following example 
 we assume that we use a file handler for both the session and cache files.
 
 ```php
-// app/Config/Registar.php
+// app/Config/Registrar.php
 namespace App\Config;
 
 use RuntimeException;
@@ -156,6 +191,18 @@ serverless deploy
 ```
 
 After navigating to the address that will be displayed to us in the console, we should see the standard landing page of CodeIgniter 4.
+
+The last thing we should do is to update the `CI_ENVIRONMENT` and `baseURL` variables in the `.env` file:
+
+```cli
+CI_ENVIRONMENT = production
+
+app.baseURL = 'https://out-instance-number.execute-api.eu-central-1.amazonaws.com'
+```
+
+The value for `baseURL` should be the value displayed to us after deployment in the console.
+
+Now we should call `serverless deploy` one more time and we are all set.
 
 Of course, usually we won't be serving entire websites, but rather providing an API.
 But if we come to run a full-fledged website, we should remember not to serve the static files through the Lambda function.
