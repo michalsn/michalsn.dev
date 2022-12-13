@@ -6,7 +6,16 @@
     <description>Recent content in codeigniter4 on michalsn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Jul 2022 16:01:38 +0200</lastBuildDate><atom:link href="https://michalsn.dev/tags/codeigniter4/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Dec 2022 09:30:53 +0100</lastBuildDate><atom:link href="https://michalsn.dev/tags/codeigniter4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CodeIgniter HTMX</title>
+      <link>https://michalsn.dev/posts/codeigniter-htmx/</link>
+      <pubDate>Mon, 12 Dec 2022 09:30:53 +0100</pubDate>
+      
+      <guid>https://michalsn.dev/posts/codeigniter-htmx/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://htmx.org&#34;&gt;HTMX&lt;/a&gt; is gaining in popularity. No wonder, because in a world overflowing with Javascript-based sites that getting more and more complicated to achieve even tiny result, this solution turns out to be a pleasant return to the past - in quite a good way.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Generating a custom domain link in CodeIgniter 4</title>
       <link>https://michalsn.dev/posts/generating-a-custom-domain-links-in-codeigniter-4/</link>
