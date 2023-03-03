@@ -1,7 +1,7 @@
 ---
 title: "CodeIgniter Signed Url"
 date: 2022-12-28T10:11:43+01:00
-tags: ["signed-url", "codeigniter4"]
+tags: ["signed-url", "htmx", "codeigniter4"]
 draft: false
 ---
 
@@ -79,7 +79,7 @@ And the initial component call, with two separate instances:
     </div>
 
     <div class="col-sm-6 col-lg-3">
-        <?= view_cell('Michalsn\CodeIgniterDemoHtmx\Cells\CounterCell', ['count' => 5]); ?>
+        <?= view_cell('Michalsn\CodeIgniterDemoHtmx\Cells\Counter\CounterCell', ['count' => 5]); ?>
     </div>
 </div>
 ...
@@ -157,7 +157,7 @@ And our initial component calls:
     </div>
 
     <div class="col-sm-6 col-lg-3">
-        <?= view_cell('Michalsn\CodeIgniterDemoHtmx\Cells\CounterCell', ['count' => 5, 'incrementNumber' => 5]); ?>
+        <?= view_cell('Michalsn\CodeIgniterDemoHtmx\Cells\Counter\CounterCell', ['count' => 5, 'incrementNumber' => 5]); ?>
     </div>
 </div>
 ...
