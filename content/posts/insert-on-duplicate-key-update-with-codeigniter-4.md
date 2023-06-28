@@ -9,6 +9,10 @@ I recently had to use a query with **INSERT ON DUPLICATE KEY UPDATE**, but CodeI
 
 <!--more-->
 
+**Since version 4.3.0** there is a **upsert()** method that adds support for the described function to the core of the framework. You can read more about it in the [user guide](https://codeigniter.com/user_guide/database/query_builder.html#upserting-data).
+
+---
+
 To start with a basic question - why not use a query with **REPLACE**? There are several reasons:
 
 * If we are dealing with a table that has a field with **AUTO INCREMENT**, it is then incremented every time.
