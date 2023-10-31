@@ -1,6 +1,6 @@
 ---
 title: "CodeIgniter Tags"
-date: 2023-10-20T09:31:27+01:00
+date: 2023-09-28T09:31:27+01:00
 tags: ["tags", "codeigniter4"]
 draft: false
 ---
