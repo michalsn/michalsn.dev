@@ -9,10 +9,10 @@
     <lastBuildDate>Wed, 16 Aug 2023 18:31:53 +0100</lastBuildDate><atom:link href="https://michalsn.dev/tags/authentication/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Auth0 CodeIgniter 4 package</title>
-      <link>https://michalsn.dev/auth0-codeigniter-4-package/</link>
+      <link>https://michalsn.dev/posts/auth0-codeigniter-4-package/</link>
       <pubDate>Wed, 16 Aug 2023 18:31:53 +0100</pubDate>
       
-      <guid>https://michalsn.dev/auth0-codeigniter-4-package/</guid>
+      <guid>https://michalsn.dev/posts/auth0-codeigniter-4-package/</guid>
       <description>Auth0 is a cloud-based service that helps developers add secure user authentication and authorization features to their applications without having to build these components from scratch. Auth0 is designed to simplify the process of implementing user authentication, including features like single sign-on (SSO), multi-factor authentication (MFA), and social login.
 Auth0 allows you to add basic authentication functionality very quickly by delegating it to an external platform, but we should always consider whether such a solution definitely suits us.</description>
     </item>
