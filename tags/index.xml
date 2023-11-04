@@ -44,6 +44,33 @@
     </item>
     
     <item>
+      <title>auth0</title>
+      <link>https://michalsn.dev/tags/auth0/</link>
+      <pubDate>Wed, 16 Aug 2023 18:31:53 +0100</pubDate>
+      
+      <guid>https://michalsn.dev/tags/auth0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>authentication</title>
+      <link>https://michalsn.dev/tags/authentication/</link>
+      <pubDate>Wed, 16 Aug 2023 18:31:53 +0100</pubDate>
+      
+      <guid>https://michalsn.dev/tags/authentication/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kinde</title>
+      <link>https://michalsn.dev/tags/kinde/</link>
+      <pubDate>Thu, 27 Jul 2023 10:04:27 +0100</pubDate>
+      
+      <guid>https://michalsn.dev/tags/kinde/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>htmx</title>
       <link>https://michalsn.dev/tags/htmx/</link>
       <pubDate>Wed, 28 Dec 2022 10:11:43 +0100</pubDate>
@@ -157,15 +184,6 @@
       <pubDate>Wed, 25 Aug 2021 21:05:40 +0200</pubDate>
       
       <guid>https://michalsn.dev/tags/mix/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>auth0</title>
-      <link>https://michalsn.dev/tags/auth0/</link>
-      <pubDate>Sun, 06 Jun 2021 15:51:17 +0200</pubDate>
-      
-      <guid>https://michalsn.dev/tags/auth0/</guid>
       <description></description>
     </item>
     

@@ -29,6 +29,21 @@
     <loc>https://michalsn.dev/tags/tags/</loc>
     <lastmod>2023-09-28T09:31:27+01:00</lastmod>
   </url><url>
+    <loc>https://michalsn.dev/tags/auth0/</loc>
+    <lastmod>2023-08-16T18:31:53+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/auth0-codeigniter-4-package/</loc>
+    <lastmod>2023-08-16T18:31:53+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/authentication/</loc>
+    <lastmod>2023-08-16T18:31:53+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/kinde/</loc>
+    <lastmod>2023-07-27T10:04:27+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/using-kinde-with-codeigniter-4/</loc>
+    <lastmod>2023-07-27T10:04:27+01:00</lastmod>
+  </url><url>
     <loc>https://michalsn.dev/posts/codeigniter-signed-url/</loc>
     <lastmod>2022-12-28T10:11:43+01:00</lastmod>
   </url><url>
@@ -94,9 +109,6 @@
   </url><url>
     <loc>https://michalsn.dev/posts/codeigniter-4-mix/</loc>
     <lastmod>2021-08-23T23:04:33+02:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/auth0/</loc>
-    <lastmod>2021-06-06T15:51:17+02:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/posts/integrating-codeigniter-4-with-auth0/</loc>
     <lastmod>2021-06-06T15:51:17+02:00</lastmod>
