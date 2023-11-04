@@ -24,7 +24,7 @@ Now we have to copy a config file to our's app namespace:
 The last thing is to fill the config file with our credentials. You can read more about it in the [getting started](https://kinde.com/docs/developer-tools/php-sdk/) article.
 
 This package comes with predefined routes to: `login`, `register`, `logout` and for the `callback` URL (which is used to finalize authentication).
-THe best part is that you don't have to do anything but just use this URL's in your app. Since login and registration are done via Kinde site, everything is ready to use just few seconds after we fill the config file.
+The best part is that you don't have to do anything but just use this URL's in your app. Since login and registration are done via Kinde site, everything is ready to use just few seconds after we fill the config file.
 
 We also have a universal `kinde` filter that can serve as a guard for your app.
 
