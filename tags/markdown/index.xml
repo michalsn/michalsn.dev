@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>markdown on michalsn</title>
+    <link>https://michalsn.dev/tags/markdown/</link>
+    <description>Recent content in markdown on michalsn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 29 Dec 2023 12:17:23 +0100</lastBuildDate><atom:link href="https://michalsn.dev/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CodeIgniter Markdown Pages</title>
+      <link>https://michalsn.dev/posts/codeigniter-markdown-pages/</link>
+      <pubDate>Fri, 29 Dec 2023 12:17:23 +0100</pubDate>
+      
+      <guid>https://michalsn.dev/posts/codeigniter-markdown-pages/</guid>
+      <description>Markdown Pages project allows you to map Markdown files to collections and easily list or read data from them.
+In addition to the Markdown parser, we also have the ability to parse YAML sections, where you can put a lot of useful information.
+How to start:
+composer michalsn/codeigniter-markdown-pages Basic usage:
+$markdownPages = service(&amp;#39;markdownpages&amp;#39;, ROOTPATH . &amp;#39;pages&amp;#39;); // Get the first directory $dir = $markdownPages-&amp;gt;dirs()-&amp;gt;first(); echo $dir-&amp;gt;getName() // prints: Quick Start echo $dir-&amp;gt;getSlug() // prints: quick-start foreach($dir-&amp;gt;getFiles()-&amp;gt;items() as $file) { echo $file-&amp;gt;getName(); // prints: Installation echo $file-&amp;gt;getSlug(); // prints: installation echo $file-&amp;gt;getPath(); // prints: quick-start/installation echo $content-&amp;gt;parse()-&amp;gt;getContent(); // prints: parsed markdown from file echo $content-&amp;gt;parse()-&amp;gt;getMeta(); // prints: parsed YAML as key -&amp;gt; value } This project use Collection class pretty much everywhere so please get familiar with it to use this package comfortably.</description>
+    </item>
+    
+  </channel>
+</rss>
