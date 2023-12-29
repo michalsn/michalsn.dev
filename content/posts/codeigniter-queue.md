@@ -11,6 +11,8 @@ But what is a queue? It's a system that allows you to schedule and manage backgr
 
 Here is the project [repo](https://github.com/michalsn/codeigniter-queue).
 
+**Update 15/12/2023**: This project has become the [official CodeIgniter Queue](https://github.com/codeigniter4/queue) project. The repository has been moved to the CodeIgniter4 organization.
+
 First things first. Let's install the package:
 
     composer require michalsn/codeigniter-queue
