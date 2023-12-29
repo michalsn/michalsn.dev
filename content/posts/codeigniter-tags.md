@@ -14,7 +14,7 @@ Installation via composer is very simple:
 
     composer require michalsn/codeigniter-tags
 
-After that just need to migrate our database:
+After that we just need to migrate our database:
 
     php spark migrate --all
 
