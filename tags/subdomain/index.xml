@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>subdomain on michalsn</title>
+    <title>Subdomain on michalsn</title>
     <link>https://michalsn.dev/tags/subdomain/</link>
-    <description>Recent content in subdomain on michalsn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Subdomain on michalsn</description>
+    <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Jul 2022 16:01:38 +0200</lastBuildDate><atom:link href="https://michalsn.dev/tags/subdomain/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 Jul 2022 16:01:38 +0200</lastBuildDate>
+    <atom:link href="https://michalsn.dev/tags/subdomain/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Generating a custom domain link in CodeIgniter 4</title>
       <link>https://michalsn.dev/posts/generating-a-custom-domain-links-in-codeigniter-4/</link>
       <pubDate>Sun, 31 Jul 2022 16:01:38 +0200</pubDate>
-      
       <guid>https://michalsn.dev/posts/generating-a-custom-domain-links-in-codeigniter-4/</guid>
       <description>&lt;p&gt;How can we handle generation of a custom domain link in CodeIgniter 4? Although this is not a built-in feature, we can deal with it in a fairly simple way.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Setting dynamic subdomains for every user account</title>
       <link>https://michalsn.dev/posts/setting-dynamic-subdomains-for-every-user-account/</link>
       <pubDate>Mon, 18 Oct 2021 11:42:57 +0200</pubDate>
-      
       <guid>https://michalsn.dev/posts/setting-dynamic-subdomains-for-every-user-account/</guid>
       <description>&lt;p&gt;What if we want every user in our application to have his data served through his own subdomain? I will show you how to do it in CodeIgniter 4 framework.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -2,6 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://michalsn.dev/tags/embeddings/</loc>
+    <lastmod>2024-06-09T09:44:19+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/</loc>
+    <lastmod>2024-06-09T09:44:19+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/ollama/</loc>
+    <lastmod>2024-06-09T09:44:19+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/php/</loc>
+    <lastmod>2024-06-09T09:44:19+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/</loc>
+    <lastmod>2024-06-09T09:44:19+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/rag/</loc>
+    <lastmod>2024-06-09T09:44:19+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/</loc>
+    <lastmod>2024-06-09T09:44:19+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/working-with-php-ollama-and-embeddings/</loc>
+    <lastmod>2024-06-09T09:44:19+01:00</lastmod>
+  </url><url>
     <loc>https://michalsn.dev/posts/codeigniter-markdown-pages/</loc>
     <lastmod>2023-12-29T12:17:23+01:00</lastmod>
   </url><url>
@@ -9,15 +33,6 @@
     <lastmod>2023-12-29T12:17:23+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/markdown/</loc>
-    <lastmod>2023-12-29T12:17:23+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/</loc>
-    <lastmod>2023-12-29T12:17:23+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/posts/</loc>
-    <lastmod>2023-12-29T12:17:23+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/</loc>
     <lastmod>2023-12-29T12:17:23+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/yaml/</loc>
@@ -66,9 +81,6 @@
     <lastmod>2022-12-12T09:30:53+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/posts/generating-a-custom-domain-links-in-codeigniter-4/</loc>
-    <lastmod>2022-07-31T16:01:38+02:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/php/</loc>
     <lastmod>2022-07-31T16:01:38+02:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/subdomain/</loc>

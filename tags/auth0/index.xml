@@ -1,30 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>auth0 on michalsn</title>
+    <title>Auth0 on michalsn</title>
     <link>https://michalsn.dev/tags/auth0/</link>
-    <description>Recent content in auth0 on michalsn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Auth0 on michalsn</description>
+    <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Aug 2023 18:31:53 +0100</lastBuildDate><atom:link href="https://michalsn.dev/tags/auth0/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 16 Aug 2023 18:31:53 +0100</lastBuildDate>
+    <atom:link href="https://michalsn.dev/tags/auth0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Auth0 CodeIgniter 4 package</title>
       <link>https://michalsn.dev/posts/auth0-codeigniter-4-package/</link>
       <pubDate>Wed, 16 Aug 2023 18:31:53 +0100</pubDate>
-      
       <guid>https://michalsn.dev/posts/auth0-codeigniter-4-package/</guid>
       <description>Auth0 is a cloud-based service that helps developers add secure user authentication and authorization features to their applications without having to build these components from scratch. Auth0 is designed to simplify the process of implementing user authentication, including features like single sign-on (SSO), multi-factor authentication (MFA), and social login.
 Auth0 allows you to add basic authentication functionality very quickly by delegating it to an external platform, but we should always consider whether such a solution definitely suits us.</description>
     </item>
-    
     <item>
       <title>Integrating CodeIgniter 4 with Auth0</title>
       <link>https://michalsn.dev/posts/integrating-codeigniter-4-with-auth0/</link>
       <pubDate>Sun, 06 Jun 2021 15:51:17 +0200</pubDate>
-      
       <guid>https://michalsn.dev/posts/integrating-codeigniter-4-with-auth0/</guid>
       <description>&lt;p&gt;Integration with &lt;a href=&#34;https://auth0.com/&#34;&gt;Auth0&lt;/a&gt; is quite simple and comes down to a few steps. I assume you already have your Auth0 account so you just need to install the library via &lt;a href=&#34;https://getcomposer.org/&#34;&gt;Composer&lt;/a&gt;:&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

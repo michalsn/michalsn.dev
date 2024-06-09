@@ -4,233 +4,205 @@
     <title>Tags on michalsn</title>
     <link>https://michalsn.dev/tags/</link>
     <description>Recent content in Tags on michalsn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 29 Dec 2023 12:17:23 +0100</lastBuildDate><atom:link href="https://michalsn.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Jun 2024 09:44:19 +0100</lastBuildDate>
+    <atom:link href="https://michalsn.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>codeigniter4</title>
-      <link>https://michalsn.dev/tags/codeigniter4/</link>
-      <pubDate>Fri, 29 Dec 2023 12:17:23 +0100</pubDate>
-      
-      <guid>https://michalsn.dev/tags/codeigniter4/</guid>
+      <title>Embeddings</title>
+      <link>https://michalsn.dev/tags/embeddings/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/embeddings/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>markdown</title>
-      <link>https://michalsn.dev/tags/markdown/</link>
-      <pubDate>Fri, 29 Dec 2023 12:17:23 +0100</pubDate>
-      
-      <guid>https://michalsn.dev/tags/markdown/</guid>
+      <title>Ollama</title>
+      <link>https://michalsn.dev/tags/ollama/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/ollama/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>yaml</title>
-      <link>https://michalsn.dev/tags/yaml/</link>
-      <pubDate>Fri, 29 Dec 2023 12:17:23 +0100</pubDate>
-      
-      <guid>https://michalsn.dev/tags/yaml/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>database</title>
-      <link>https://michalsn.dev/tags/database/</link>
-      <pubDate>Sat, 14 Oct 2023 15:36:19 +0100</pubDate>
-      
-      <guid>https://michalsn.dev/tags/database/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>queue</title>
-      <link>https://michalsn.dev/tags/queue/</link>
-      <pubDate>Sat, 14 Oct 2023 15:36:19 +0100</pubDate>
-      
-      <guid>https://michalsn.dev/tags/queue/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tags</title>
-      <link>https://michalsn.dev/tags/tags/</link>
-      <pubDate>Thu, 28 Sep 2023 09:31:27 +0100</pubDate>
-      
-      <guid>https://michalsn.dev/tags/tags/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>auth0</title>
-      <link>https://michalsn.dev/tags/auth0/</link>
-      <pubDate>Wed, 16 Aug 2023 18:31:53 +0100</pubDate>
-      
-      <guid>https://michalsn.dev/tags/auth0/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>authentication</title>
-      <link>https://michalsn.dev/tags/authentication/</link>
-      <pubDate>Wed, 16 Aug 2023 18:31:53 +0100</pubDate>
-      
-      <guid>https://michalsn.dev/tags/authentication/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>kinde</title>
-      <link>https://michalsn.dev/tags/kinde/</link>
-      <pubDate>Thu, 27 Jul 2023 10:04:27 +0100</pubDate>
-      
-      <guid>https://michalsn.dev/tags/kinde/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>htmx</title>
-      <link>https://michalsn.dev/tags/htmx/</link>
-      <pubDate>Wed, 28 Dec 2022 10:11:43 +0100</pubDate>
-      
-      <guid>https://michalsn.dev/tags/htmx/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>signed-url</title>
-      <link>https://michalsn.dev/tags/signed-url/</link>
-      <pubDate>Wed, 28 Dec 2022 10:11:43 +0100</pubDate>
-      
-      <guid>https://michalsn.dev/tags/signed-url/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>php</title>
+      <title>Php</title>
       <link>https://michalsn.dev/tags/php/</link>
-      <pubDate>Sun, 31 Jul 2022 16:01:38 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/tags/php/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>subdomain</title>
+      <title>Rag</title>
+      <link>https://michalsn.dev/tags/rag/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/rag/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Codeigniter4</title>
+      <link>https://michalsn.dev/tags/codeigniter4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/codeigniter4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Markdown</title>
+      <link>https://michalsn.dev/tags/markdown/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/markdown/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Yaml</title>
+      <link>https://michalsn.dev/tags/yaml/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/yaml/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Database</title>
+      <link>https://michalsn.dev/tags/database/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Queue</title>
+      <link>https://michalsn.dev/tags/queue/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/queue/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tags</title>
+      <link>https://michalsn.dev/tags/tags/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/tags/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Auth0</title>
+      <link>https://michalsn.dev/tags/auth0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/auth0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Authentication</title>
+      <link>https://michalsn.dev/tags/authentication/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/authentication/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kinde</title>
+      <link>https://michalsn.dev/tags/kinde/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/kinde/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Htmx</title>
+      <link>https://michalsn.dev/tags/htmx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/htmx/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Signed-Url</title>
+      <link>https://michalsn.dev/tags/signed-url/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/signed-url/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Subdomain</title>
       <link>https://michalsn.dev/tags/subdomain/</link>
-      <pubDate>Sun, 31 Jul 2022 16:01:38 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/tags/subdomain/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>aws</title>
+      <title>Aws</title>
       <link>https://michalsn.dev/tags/aws/</link>
-      <pubDate>Thu, 07 Jul 2022 18:24:14 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/tags/aws/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>bref</title>
+      <title>Bref</title>
       <link>https://michalsn.dev/tags/bref/</link>
-      <pubDate>Thu, 07 Jul 2022 18:24:14 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/tags/bref/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>serverless</title>
+      <title>Serverless</title>
       <link>https://michalsn.dev/tags/serverless/</link>
-      <pubDate>Thu, 07 Jul 2022 18:24:14 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/tags/serverless/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>cname</title>
+      <title>Cname</title>
       <link>https://michalsn.dev/tags/cname/</link>
-      <pubDate>Mon, 22 Nov 2021 16:10:35 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/tags/cname/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>domain</title>
+      <title>Domain</title>
       <link>https://michalsn.dev/tags/domain/</link>
-      <pubDate>Mon, 22 Nov 2021 16:10:35 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/tags/domain/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>mariadb</title>
+      <title>Mariadb</title>
       <link>https://michalsn.dev/tags/mariadb/</link>
-      <pubDate>Fri, 15 Oct 2021 13:10:11 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/tags/mariadb/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>mysql</title>
+      <title>Mysql</title>
       <link>https://michalsn.dev/tags/mysql/</link>
-      <pubDate>Fri, 15 Oct 2021 13:10:11 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/tags/mysql/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>sql</title>
+      <title>Sql</title>
       <link>https://michalsn.dev/tags/sql/</link>
-      <pubDate>Fri, 15 Oct 2021 13:10:11 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/tags/sql/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>mix</title>
+      <title>Mix</title>
       <link>https://michalsn.dev/tags/mix/</link>
-      <pubDate>Wed, 25 Aug 2021 21:05:40 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/tags/mix/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>dropzone</title>
+      <title>Dropzone</title>
       <link>https://michalsn.dev/tags/dropzone/</link>
-      <pubDate>Sun, 09 May 2021 16:49:45 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/tags/dropzone/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>s3</title>
+      <title>S3</title>
       <link>https://michalsn.dev/tags/s3/</link>
-      <pubDate>Sun, 09 May 2021 16:49:45 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/tags/s3/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>uuid</title>
+      <title>Uuid</title>
       <link>https://michalsn.dev/tags/uuid/</link>
-      <pubDate>Sat, 24 Apr 2021 18:24:51 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/tags/uuid/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

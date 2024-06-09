@@ -1,31 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>authentication on michalsn</title>
+    <title>Authentication on michalsn</title>
     <link>https://michalsn.dev/tags/authentication/</link>
-    <description>Recent content in authentication on michalsn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Authentication on michalsn</description>
+    <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Aug 2023 18:31:53 +0100</lastBuildDate><atom:link href="https://michalsn.dev/tags/authentication/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 16 Aug 2023 18:31:53 +0100</lastBuildDate>
+    <atom:link href="https://michalsn.dev/tags/authentication/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Auth0 CodeIgniter 4 package</title>
       <link>https://michalsn.dev/posts/auth0-codeigniter-4-package/</link>
       <pubDate>Wed, 16 Aug 2023 18:31:53 +0100</pubDate>
-      
       <guid>https://michalsn.dev/posts/auth0-codeigniter-4-package/</guid>
       <description>Auth0 is a cloud-based service that helps developers add secure user authentication and authorization features to their applications without having to build these components from scratch. Auth0 is designed to simplify the process of implementing user authentication, including features like single sign-on (SSO), multi-factor authentication (MFA), and social login.
 Auth0 allows you to add basic authentication functionality very quickly by delegating it to an external platform, but we should always consider whether such a solution definitely suits us.</description>
     </item>
-    
     <item>
       <title>Using Kinde with CodeIgniter 4</title>
       <link>https://michalsn.dev/posts/using-kinde-with-codeigniter-4/</link>
       <pubDate>Thu, 27 Jul 2023 10:04:27 +0100</pubDate>
-      
       <guid>https://michalsn.dev/posts/using-kinde-with-codeigniter-4/</guid>
       <description>Kinde is an identity and access management platform that provides authentication and authorization services for web applications. It&amp;rsquo;s one of the direct auth0 competitors.
 The first thing that strikes you from the business side is that we get more options in the free version as well as higher limits for active users. It is also less expensive than auth0 when we finally reach the free limits. For startups that often use a cloud-based authentication model, this is a significant convenience.</description>
     </item>
-    
   </channel>
 </rss>

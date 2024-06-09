@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>serverless on michalsn</title>
+    <title>Serverless on michalsn</title>
     <link>https://michalsn.dev/tags/serverless/</link>
-    <description>Recent content in serverless on michalsn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Serverless on michalsn</description>
+    <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Jul 2022 18:24:14 +0200</lastBuildDate><atom:link href="https://michalsn.dev/tags/serverless/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 07 Jul 2022 18:24:14 +0200</lastBuildDate>
+    <atom:link href="https://michalsn.dev/tags/serverless/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Serverless Codeigniter 4</title>
       <link>https://michalsn.dev/posts/serverless-codeigniter-4/</link>
       <pubDate>Thu, 07 Jul 2022 18:24:14 +0200</pubDate>
-      
       <guid>https://michalsn.dev/posts/serverless-codeigniter-4/</guid>
       <description>&lt;p&gt;Serverless has been very popular for several years now. When we need very high performance it can be a very good alternative to traditional server solutions. Therefore, this time we will try to run CodeIgniter 4 in a serverless environment.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
