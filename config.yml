@@ -47,7 +47,7 @@ params:
   disableThemeToggle: false
 
   ShowReadingTime: true
-  ShowShareButtons: false
+  ShowShareButtons: true
   ShowPostNavLinks: false
   ShowBreadCrumbs: false
   ShowCodeCopyButtons: true
