@@ -11,7 +11,7 @@ How can we handle generation of a custom domain link in CodeIgniter 4? Although 
 
 Suppose we have an application where each user account is served from its own domain. We can handle this scenarion quite simply through a simple helper:
 
-**A small comment.** The original code used a function that was marked as internal. And as it happens in such cases, this function was removed, with the next update of the framework.
+**Update 20/06/2024**: The original code used a function that was marked as internal. And as it happens in such cases, this function was removed, with the next update of the framework.
 
 Therefore, below is already a new version that works:
 
