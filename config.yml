@@ -1,5 +1,4 @@
 baseURL: "https://michalsn.dev/"
-paginate: 5
 languageCode: en-us
 title: michalsn
 theme: "PaperMod"
@@ -13,8 +12,11 @@ enableEmoji: true
 googleAnalytics: G-74HSH0WCPE
 
 minify:
-    disableXML: true
-    # minifyOutput: true
+  disableXML: true
+  # minifyOutput: true
+
+pagination:
+  pagerSize: 5
 
 menu:
   main:
