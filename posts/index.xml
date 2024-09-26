@@ -6,8 +6,18 @@
     <description>Recent content in Posts on michalsn</description>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Jun 2024 09:44:19 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 26 Sep 2024 12:35:09 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Alerts for htmx and CodeIgniter 4</title>
+      <link>https://michalsn.dev/posts/codeigniter-htmx-alerts/</link>
+      <pubDate>Thu, 26 Sep 2024 12:35:09 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/codeigniter-htmx-alerts/</guid>
+      <description>In a traditional CodeIgniter 4 application, setting up alerts is quite simple. We can simply write a few lines of code or use a dedicated library like codeigniter4-alerts.
+Things get complicated, however, when we use htmx and want the alerts to interact with the way it works. Here a library dedicated to work with htmx can come to the rescue.
+Installation Installation via composer is very simple:
+composer require michalsn/codeigniter-htmx-alerts Next, we can add a container in which alerts will be displayed in our view (or main layout).</description>
+    </item>
     <item>
       <title>Working with PHP, Ollama and embeddings</title>
       <link>https://michalsn.dev/posts/working-with-php-ollama-and-embeddings/</link>

@@ -6,8 +6,29 @@
     <description>Recent content in Tags on michalsn</description>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 09 Jun 2024 09:44:19 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 26 Sep 2024 12:35:09 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Alerts</title>
+      <link>https://michalsn.dev/tags/alerts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/alerts/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Codeigniter4</title>
+      <link>https://michalsn.dev/tags/codeigniter4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/codeigniter4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Htmx</title>
+      <link>https://michalsn.dev/tags/htmx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/htmx/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Embeddings</title>
       <link>https://michalsn.dev/tags/embeddings/</link>
@@ -34,13 +55,6 @@
       <link>https://michalsn.dev/tags/rag/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/tags/rag/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Codeigniter4</title>
-      <link>https://michalsn.dev/tags/codeigniter4/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://michalsn.dev/tags/codeigniter4/</guid>
       <description></description>
     </item>
     <item>
@@ -97,13 +111,6 @@
       <link>https://michalsn.dev/tags/kinde/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/tags/kinde/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Htmx</title>
-      <link>https://michalsn.dev/tags/htmx/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://michalsn.dev/tags/htmx/</guid>
       <description></description>
     </item>
     <item>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Alerts on michalsn</title>
+    <link>https://michalsn.dev/tags/alerts/</link>
+    <description>Recent content in Alerts on michalsn</description>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 26 Sep 2024 12:35:09 +0100</lastBuildDate>
+    <atom:link href="https://michalsn.dev/tags/alerts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Alerts for htmx and CodeIgniter 4</title>
+      <link>https://michalsn.dev/posts/codeigniter-htmx-alerts/</link>
+      <pubDate>Thu, 26 Sep 2024 12:35:09 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/codeigniter-htmx-alerts/</guid>
+      <description>In a traditional CodeIgniter 4 application, setting up alerts is quite simple. We can simply write a few lines of code or use a dedicated library like codeigniter4-alerts.
+Things get complicated, however, when we use htmx and want the alerts to interact with the way it works. Here a library dedicated to work with htmx can come to the rescue.
+Installation Installation via composer is very simple:
+composer require michalsn/codeigniter-htmx-alerts Next, we can add a container in which alerts will be displayed in our view (or main layout).</description>
+    </item>
+  </channel>
+</rss>
