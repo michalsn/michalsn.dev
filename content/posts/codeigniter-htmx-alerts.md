@@ -35,7 +35,7 @@ After this, you can search for the `$views` property array in `app/Config/Alerts
 
 ## Usage
 
-Setting an alert is simple as ths:
+Setting an alert is simple as this:
 
 ```php
 alerts()->set('success', 'Success message goes here.');
