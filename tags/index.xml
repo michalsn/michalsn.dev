@@ -6,8 +6,22 @@
     <description>Recent content in Tags on michalsn</description>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Sep 2024 12:35:09 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 06 Nov 2024 18:06:23 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Javascript</title>
+      <link>https://michalsn.dev/tags/javascript/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/javascript/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tracking</title>
+      <link>https://michalsn.dev/tags/tracking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/tracking/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Alerts</title>
       <link>https://michalsn.dev/tags/alerts/</link>

@@ -6,8 +6,17 @@
     <description>Recent content in Posts on michalsn</description>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Sep 2024 12:35:09 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 06 Nov 2024 18:06:23 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>User tracking with JavaScript</title>
+      <link>https://michalsn.dev/posts/user-tracking-with-javascript/</link>
+      <pubDate>Wed, 06 Nov 2024 18:06:23 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/user-tracking-with-javascript/</guid>
+      <description>If you’ve ever wanted to capture info about your users, you might be interested in this little experiment.
+With features like automatic page view tracking that logs details about your visitors’ browsers, devices, and more, plus the ability to log custom events like clicks, it’s perfect for anyone who enjoys tinkering with web analytics.
+The PageViewEvents JavaScript class provides a streamlined way to capture and send data about page views and user interactions on your site.</description>
+    </item>
     <item>
       <title>Alerts for htmx and CodeIgniter 4</title>
       <link>https://michalsn.dev/posts/codeigniter-htmx-alerts/</link>

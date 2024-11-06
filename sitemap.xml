@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://michalsn.dev/tags/javascript/</loc>
+    <lastmod>2024-11-06T18:06:23+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/</loc>
+    <lastmod>2024-11-06T18:06:23+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/</loc>
+    <lastmod>2024-11-06T18:06:23+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/</loc>
+    <lastmod>2024-11-06T18:06:23+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/tracking/</loc>
+    <lastmod>2024-11-06T18:06:23+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/user-tracking-with-javascript/</loc>
+    <lastmod>2024-11-06T18:06:23+01:00</lastmod>
+  </url><url>
     <loc>https://michalsn.dev/tags/alerts/</loc>
     <lastmod>2024-09-26T12:35:09+01:00</lastmod>
   </url><url>
@@ -12,15 +30,6 @@
     <lastmod>2024-09-26T12:35:09+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/htmx/</loc>
-    <lastmod>2024-09-26T12:35:09+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/</loc>
-    <lastmod>2024-09-26T12:35:09+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/posts/</loc>
-    <lastmod>2024-09-26T12:35:09+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/</loc>
     <lastmod>2024-09-26T12:35:09+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/embeddings/</loc>
