@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Model on michalsn</title>
+    <link>https://michalsn.dev/tags/model/</link>
+    <description>Recent content in Model on michalsn</description>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 12 Dec 2024 10:30:52 +0100</lastBuildDate>
+    <atom:link href="https://michalsn.dev/tags/model/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Eager and Lazy Loading in CodeIgniter 4</title>
+      <link>https://michalsn.dev/posts/codeigniter-model-relations/</link>
+      <pubDate>Thu, 12 Dec 2024 10:30:52 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/codeigniter-model-relations/</guid>
+      <description>Efficiently managing database queries is crucial for application performance. To simplify it, I made a nice CodeIgniter 4 library that provides two techniques for loading related data: eager loading and lazy loading.
+composer require michalsn/codeigniter-nested-model These approaches allow developers to fetch related models in an efficient and intuitive way. Here&amp;rsquo;s a comprehensive guide to understanding and using these techniques.
+Eager Loading Eager loading fetches related data in advance, minimizing the number of database queries.</description>
+    </item>
+  </channel>
+</rss>
