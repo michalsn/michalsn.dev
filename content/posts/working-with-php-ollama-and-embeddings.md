@@ -1,6 +1,6 @@
 ---
 title: "Working with PHP, Ollama and embeddings"
-meta_description: "Learn how to work with PHP, Ollama, and embeddings to enhance your AI capabilities using Retrieval Augmented Generation (RAG)."
+description: "Learn how to work with PHP, Ollama, and embeddings to enhance your AI capabilities using Retrieval Augmented Generation (RAG)."
 date: 2024-06-09T09:44:19+01:00
 tags: ["php", "ollama", "embeddings", "rag"]
 draft: false

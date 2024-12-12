@@ -1,6 +1,6 @@
 ---
 title: "Integrating CodeIgniter 4 with Auth0"
-meta_description: "Understand the basics of setting up a search functionality in your Hugo site."
+description: "Understand the basics of setting up a search functionality in your Hugo site."
 date: 2021-06-06T15:51:17+02:00
 tags: ["auth0", "codeigniter4"]
 draft: false

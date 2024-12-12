@@ -1,6 +1,6 @@
 ---
 title: "Alerts for htmx and CodeIgniter 4"
-meta_description: "Discover how to set up alerts in a CodeIgniter 4 application using htmx and the codeigniter-htmx-alerts library."
+description: "Discover how to set up alerts in a CodeIgniter 4 application using htmx and the codeigniter-htmx-alerts library."
 date: 2024-09-26T12:35:09+01:00
 tags: ["htmx", "codeigniter4", "alerts"]
 draft: false

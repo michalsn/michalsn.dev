@@ -1,6 +1,6 @@
 ---
 title: "Eager and Lazy Loading in CodeIgniter 4"
-meta_description: "Learn how to efficiently manage database queries in CodeIgniter 4 using eager and lazy loading techniques."
+description: "Learn how to efficiently manage database queries in CodeIgniter 4 using eager and lazy loading techniques."
 date: 2024-12-12T10:30:52+01:00
 tags: ["model", "codeigniter4", "relations"]
 draft: false
