@@ -1,5 +1,6 @@
 ---
 title: "Auth0 CodeIgniter 4 package"
+meta_description: "Learn how to integrate Auth0 with CodeIgniter 4 to add secure user authentication and authorization features."
 date: 2023-08-16T18:31:53+01:00
 tags: ["auth0", "authentication", "codeigniter4"]
 draft: false
