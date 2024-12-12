@@ -13,15 +13,14 @@
       <link>https://michalsn.dev/posts/auth0-codeigniter-4-package/</link>
       <pubDate>Wed, 16 Aug 2023 18:31:53 +0100</pubDate>
       <guid>https://michalsn.dev/posts/auth0-codeigniter-4-package/</guid>
-      <description>Auth0 is a cloud-based service that helps developers add secure user authentication and authorization features to their applications without having to build these components from scratch. Auth0 is designed to simplify the process of implementing user authentication, including features like single sign-on (SSO), multi-factor authentication (MFA), and social login.
-Auth0 allows you to add basic authentication functionality very quickly by delegating it to an external platform, but we should always consider whether such a solution definitely suits us.</description>
+      <description>Learn how to integrate Auth0 with CodeIgniter 4 to add secure user authentication and authorization features.</description>
     </item>
     <item>
       <title>Integrating CodeIgniter 4 with Auth0</title>
       <link>https://michalsn.dev/posts/integrating-codeigniter-4-with-auth0/</link>
       <pubDate>Sun, 06 Jun 2021 15:51:17 +0200</pubDate>
       <guid>https://michalsn.dev/posts/integrating-codeigniter-4-with-auth0/</guid>
-      <description>&lt;p&gt;Integration with &lt;a href=&#34;https://auth0.com/&#34;&gt;Auth0&lt;/a&gt; is quite simple and comes down to a few steps. I assume you already have your Auth0 account so you just need to install the library via &lt;a href=&#34;https://getcomposer.org/&#34;&gt;Composer&lt;/a&gt;:&lt;/p&gt;</description>
+      <description>Understand the basics of setting up a search functionality in your Hugo site.</description>
     </item>
   </channel>
 </rss>

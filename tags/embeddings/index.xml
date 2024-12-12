@@ -13,8 +13,7 @@
       <link>https://michalsn.dev/posts/working-with-php-ollama-and-embeddings/</link>
       <pubDate>Sun, 09 Jun 2024 09:44:19 +0100</pubDate>
       <guid>https://michalsn.dev/posts/working-with-php-ollama-and-embeddings/</guid>
-      <description>While LLMs, such as the popular GPT family models, are incredibly advanced, they do have their limitations. Primarily, they rely on a static set of knowledge learned during their training phase, which means they might lack specific knowledge on certain topics.
-One of the key concepts in working with textual data is embeddings. These are representations of text in a dense vector space, where similar items are mapped to nearby points.</description>
+      <description>Learn how to work with PHP, Ollama, and embeddings to enhance your AI capabilities using Retrieval Augmented Generation (RAG).</description>
     </item>
   </channel>
 </rss>

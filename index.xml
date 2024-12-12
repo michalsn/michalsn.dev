@@ -13,9 +13,7 @@
       <link>https://michalsn.dev/posts/codeigniter-model-relations/</link>
       <pubDate>Thu, 12 Dec 2024 10:30:52 +0100</pubDate>
       <guid>https://michalsn.dev/posts/codeigniter-model-relations/</guid>
-      <description>Efficiently managing database queries is crucial for application performance. To simplify it, I made a nice CodeIgniter 4 library that provides two techniques for loading related data: eager loading and lazy loading.
-composer require michalsn/codeigniter-nested-model These approaches allow developers to fetch related models in an efficient and intuitive way. Here&amp;rsquo;s a comprehensive guide to understanding and using these techniques.
-Eager Loading Eager loading fetches related data in advance, minimizing the number of database queries.</description>
+      <description>Learn how to efficiently manage database queries in CodeIgniter 4 using eager and lazy loading techniques.</description>
     </item>
     <item>
       <title>User tracking with JavaScript</title>
@@ -31,18 +29,14 @@ The PageViewEvents JavaScript class provides a streamlined way to capture and se
       <link>https://michalsn.dev/posts/codeigniter-htmx-alerts/</link>
       <pubDate>Thu, 26 Sep 2024 12:35:09 +0100</pubDate>
       <guid>https://michalsn.dev/posts/codeigniter-htmx-alerts/</guid>
-      <description>In a traditional CodeIgniter 4 application, setting up alerts is quite simple. We can simply write a few lines of code or use a dedicated library like codeigniter4-alerts.
-Things get complicated, however, when we use htmx and want the alerts to interact with the way it works. Here a library dedicated to work with htmx can come to the rescue.
-Installation Installation via composer is very simple:
-composer require michalsn/codeigniter-htmx-alerts Next, we can add a container in which alerts will be displayed in our view (or main layout).</description>
+      <description>Discover how to set up alerts in a CodeIgniter 4 application using htmx and the codeigniter-htmx-alerts library.</description>
     </item>
     <item>
       <title>Working with PHP, Ollama and embeddings</title>
       <link>https://michalsn.dev/posts/working-with-php-ollama-and-embeddings/</link>
       <pubDate>Sun, 09 Jun 2024 09:44:19 +0100</pubDate>
       <guid>https://michalsn.dev/posts/working-with-php-ollama-and-embeddings/</guid>
-      <description>While LLMs, such as the popular GPT family models, are incredibly advanced, they do have their limitations. Primarily, they rely on a static set of knowledge learned during their training phase, which means they might lack specific knowledge on certain topics.
-One of the key concepts in working with textual data is embeddings. These are representations of text in a dense vector space, where similar items are mapped to nearby points.</description>
+      <description>Learn how to work with PHP, Ollama, and embeddings to enhance your AI capabilities using Retrieval Augmented Generation (RAG).</description>
     </item>
     <item>
       <title>CodeIgniter Markdown Pages</title>
@@ -76,8 +70,7 @@ Since there was no tags library for CodeIgniter 4, I decided to write one.</desc
       <link>https://michalsn.dev/posts/auth0-codeigniter-4-package/</link>
       <pubDate>Wed, 16 Aug 2023 18:31:53 +0100</pubDate>
       <guid>https://michalsn.dev/posts/auth0-codeigniter-4-package/</guid>
-      <description>Auth0 is a cloud-based service that helps developers add secure user authentication and authorization features to their applications without having to build these components from scratch. Auth0 is designed to simplify the process of implementing user authentication, including features like single sign-on (SSO), multi-factor authentication (MFA), and social login.
-Auth0 allows you to add basic authentication functionality very quickly by delegating it to an external platform, but we should always consider whether such a solution definitely suits us.</description>
+      <description>Learn how to integrate Auth0 with CodeIgniter 4 to add secure user authentication and authorization features.</description>
     </item>
     <item>
       <title>Using Kinde with CodeIgniter 4</title>
@@ -155,7 +148,7 @@ The first thing that strikes you from the business side is that we get more opti
       <link>https://michalsn.dev/posts/integrating-codeigniter-4-with-auth0/</link>
       <pubDate>Sun, 06 Jun 2021 15:51:17 +0200</pubDate>
       <guid>https://michalsn.dev/posts/integrating-codeigniter-4-with-auth0/</guid>
-      <description>&lt;p&gt;Integration with &lt;a href=&#34;https://auth0.com/&#34;&gt;Auth0&lt;/a&gt; is quite simple and comes down to a few steps. I assume you already have your Auth0 account so you just need to install the library via &lt;a href=&#34;https://getcomposer.org/&#34;&gt;Composer&lt;/a&gt;:&lt;/p&gt;</description>
+      <description>Understand the basics of setting up a search functionality in your Hugo site.</description>
     </item>
     <item>
       <title>Upload files directly to S3 with Dropzone.js</title>

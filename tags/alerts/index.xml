@@ -13,10 +13,7 @@
       <link>https://michalsn.dev/posts/codeigniter-htmx-alerts/</link>
       <pubDate>Thu, 26 Sep 2024 12:35:09 +0100</pubDate>
       <guid>https://michalsn.dev/posts/codeigniter-htmx-alerts/</guid>
-      <description>In a traditional CodeIgniter 4 application, setting up alerts is quite simple. We can simply write a few lines of code or use a dedicated library like codeigniter4-alerts.
-Things get complicated, however, when we use htmx and want the alerts to interact with the way it works. Here a library dedicated to work with htmx can come to the rescue.
-Installation Installation via composer is very simple:
-composer require michalsn/codeigniter-htmx-alerts Next, we can add a container in which alerts will be displayed in our view (or main layout).</description>
+      <description>Discover how to set up alerts in a CodeIgniter 4 application using htmx and the codeigniter-htmx-alerts library.</description>
     </item>
   </channel>
 </rss>
