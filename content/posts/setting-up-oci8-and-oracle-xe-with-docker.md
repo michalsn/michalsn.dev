@@ -1,7 +1,7 @@
 ---
 title: "Setting up OCI8 and Oracle XE with Docker on macOS"
 date: 2024-12-23T19:40:57+01:00
-tags: ["oci8", "macos", "docker", "colima", "php""]
+tags: ["oci8", "macos", "docker", "colima", "php"]
 draft: false
 ---
 
