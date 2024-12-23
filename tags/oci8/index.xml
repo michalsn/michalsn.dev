@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Oci8 on michalsn</title>
+    <link>https://michalsn.dev/tags/oci8/</link>
+    <description>Recent content in Oci8 on michalsn</description>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 23 Dec 2024 19:40:57 +0100</lastBuildDate>
+    <atom:link href="https://michalsn.dev/tags/oci8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setting up OCI8 and Oracle XE with Docker on macOS</title>
+      <link>https://michalsn.dev/posts/setting-up-oci8-and-oracle-xe-with-docker/</link>
+      <pubDate>Mon, 23 Dec 2024 19:40:57 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/setting-up-oci8-and-oracle-xe-with-docker/</guid>
+      <description>Integrating OCI8 with a PHP environment can be challenging, but recent updates have simplified the process significantly. Follow this guide to get everything set up seamlessly.
+Adding OCI8 support to PHP Oracle has streamlined the process for adding OCI8 support to PHP. Clear, user-friendly instructions are available in this Gist. Follow the steps outlined to prepare your PHP environment for OCI8.
+Setting up Oracle XE in Docker Once your PHP environment is ready, you can move on to Docker setup.</description>
+    </item>
+  </channel>
+</rss>
