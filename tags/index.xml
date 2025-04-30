@@ -6,8 +6,29 @@
     <description>Recent content in Tags on michalsn</description>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 29 Dec 2024 21:32:17 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 26 Mar 2025 09:21:49 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Canvas</title>
+      <link>https://michalsn.dev/tags/canvas/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/canvas/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Game</title>
+      <link>https://michalsn.dev/tags/game/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/game/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Javascript</title>
+      <link>https://michalsn.dev/tags/javascript/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/javascript/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Codeigniter4</title>
       <link>https://michalsn.dev/tags/codeigniter4/</link>
@@ -76,13 +97,6 @@
       <link>https://michalsn.dev/tags/relations/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/tags/relations/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Javascript</title>
-      <link>https://michalsn.dev/tags/javascript/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://michalsn.dev/tags/javascript/</guid>
       <description></description>
     </item>
     <item>
