@@ -187,5 +187,14 @@ The first thing that strikes you from the business side is that we get more opti
       <guid>https://michalsn.dev/posts/uuid-with-codeigniter-4/</guid>
       <description>&lt;p&gt;Up until now, working with UUIDs and CodeIgniter 4 hasn&amp;rsquo;t been much fun, but that has now changed with the &lt;a href=&#34;https://github.com/michalsn/codeigniter4-uuid&#34;&gt;codeigniter4-uuid&lt;/a&gt; library.&lt;/p&gt;</description>
     </item>
+    <item>
+      <title>Open Source</title>
+      <link>https://michalsn.dev/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/projects/</guid>
+      <description>Here are some of my personal open source projects that I’m currently working on or have worked on in the past.
+CodeIgniter HTMX An integration of HTMX with CodeIgniter 4, this library simplifies building dynamic and interactive front-end features without the need for complex JavaScript frameworks. It enables developers to use HTMX’s powerful AJAX capabilities directly in CodeIgniter, providing a smoother and more efficient user experience.
+CodeIgniter Signed URL This package adds secure, signed URL support to CodeIgniter 4.</description>
+    </item>
   </channel>
 </rss>
