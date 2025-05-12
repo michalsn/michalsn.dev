@@ -2,6 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://michalsn.dev/tags/codeigniter4/</loc>
+    <lastmod>2025-05-06T10:14:47+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/</loc>
+    <lastmod>2025-05-06T10:14:47+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/</loc>
+    <lastmod>2025-05-06T10:14:47+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/queue/</loc>
+    <lastmod>2025-05-06T10:14:47+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/scheduling-unique-tasks-with-codeigniter/</loc>
+    <lastmod>2025-05-06T10:14:47+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/</loc>
+    <lastmod>2025-05-06T10:14:47+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/tasks/</loc>
+    <lastmod>2025-05-06T10:14:47+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/chained-queue-jobs-in-codeigniter/</loc>
+    <lastmod>2025-04-17T20:03:24+01:00</lastmod>
+  </url><url>
     <loc>https://michalsn.dev/tags/canvas/</loc>
     <lastmod>2025-03-26T09:21:49+01:00</lastmod>
   </url><url>
@@ -13,18 +37,6 @@
   </url><url>
     <loc>https://michalsn.dev/tags/javascript/</loc>
     <lastmod>2025-03-26T09:21:49+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/</loc>
-    <lastmod>2025-03-26T09:21:49+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/posts/</loc>
-    <lastmod>2025-03-26T09:21:49+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/</loc>
-    <lastmod>2025-03-26T09:21:49+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/codeigniter4/</loc>
-    <lastmod>2024-12-29T21:32:17+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/posts/effortless-multi-language-content-translation/</loc>
     <lastmod>2024-12-29T21:32:17+01:00</lastmod>
@@ -102,9 +114,6 @@
     <lastmod>2023-10-14T15:36:19+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/database/</loc>
-    <lastmod>2023-10-14T15:36:19+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/queue/</loc>
     <lastmod>2023-10-14T15:36:19+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/posts/codeigniter-tags/</loc>

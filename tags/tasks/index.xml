@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tasks on michalsn</title>
+    <link>https://michalsn.dev/tags/tasks/</link>
+    <description>Recent content in Tasks on michalsn</description>
+    <generator>Hugo -- 0.127.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 06 May 2025 10:14:47 +0100</lastBuildDate>
+    <atom:link href="https://michalsn.dev/tags/tasks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Scheduling Unique Tasks with CodeIgniter</title>
+      <link>https://michalsn.dev/posts/scheduling-unique-tasks-with-codeigniter/</link>
+      <pubDate>Tue, 06 May 2025 10:14:47 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/scheduling-unique-tasks-with-codeigniter/</guid>
+      <description>&lt;p&gt;When you&amp;rsquo;re scheduling tasks in CodeIgniter 4, it&amp;rsquo;s not uncommon to run into issues where the same task gets triggered before the previous one finishes. This can cause anything from duplicate processing to race conditions and even server slowdowns.&lt;/p&gt;
+&lt;p&gt;To help with that, &lt;a href=&#34;https://github.com/codeigniter4/tasks&#34;&gt;CodeIgniter Tasks&lt;/a&gt; provides a built-in method called &lt;code&gt;singleInstance()&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

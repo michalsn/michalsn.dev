@@ -6,8 +6,23 @@
     <description>Recent content in Posts on michalsn</description>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Mar 2025 09:21:49 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 06 May 2025 10:14:47 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Scheduling Unique Tasks with CodeIgniter</title>
+      <link>https://michalsn.dev/posts/scheduling-unique-tasks-with-codeigniter/</link>
+      <pubDate>Tue, 06 May 2025 10:14:47 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/scheduling-unique-tasks-with-codeigniter/</guid>
+      <description>&lt;p&gt;When you&amp;rsquo;re scheduling tasks in CodeIgniter 4, it&amp;rsquo;s not uncommon to run into issues where the same task gets triggered before the previous one finishes. This can cause anything from duplicate processing to race conditions and even server slowdowns.&lt;/p&gt;
+&lt;p&gt;To help with that, &lt;a href=&#34;https://github.com/codeigniter4/tasks&#34;&gt;CodeIgniter Tasks&lt;/a&gt; provides a built-in method called &lt;code&gt;singleInstance()&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Chained Jobs with CodeIgniter Queue</title>
+      <link>https://michalsn.dev/posts/chained-queue-jobs-in-codeigniter/</link>
+      <pubDate>Thu, 17 Apr 2025 20:03:24 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/chained-queue-jobs-in-codeigniter/</guid>
+      <description>&lt;p&gt;Job queues help handle background tasks like sending emails, generating reports, or resizing images - keeping your application fast and responsive. But what if you need tasks to run in a specific order? That’s where chained jobs shine.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Edu Snake Game in Vanilla Javascript</title>
       <link>https://michalsn.dev/posts/edu-snake-game-in-vanilla-javascript/</link>

@@ -6,8 +6,29 @@
     <description>Recent content in Tags on michalsn</description>
     <generator>Hugo -- 0.127.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Mar 2025 09:21:49 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 06 May 2025 10:14:47 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Codeigniter4</title>
+      <link>https://michalsn.dev/tags/codeigniter4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/codeigniter4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Queue</title>
+      <link>https://michalsn.dev/tags/queue/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/queue/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tasks</title>
+      <link>https://michalsn.dev/tags/tasks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/tags/tasks/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Canvas</title>
       <link>https://michalsn.dev/tags/canvas/</link>
@@ -27,13 +48,6 @@
       <link>https://michalsn.dev/tags/javascript/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/tags/javascript/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Codeigniter4</title>
-      <link>https://michalsn.dev/tags/codeigniter4/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://michalsn.dev/tags/codeigniter4/</guid>
       <description></description>
     </item>
     <item>
@@ -160,13 +174,6 @@
       <link>https://michalsn.dev/tags/database/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/tags/database/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Queue</title>
-      <link>https://michalsn.dev/tags/queue/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://michalsn.dev/tags/queue/</guid>
       <description></description>
     </item>
     <item>
