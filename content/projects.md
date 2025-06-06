@@ -2,6 +2,7 @@
 title: "Open Source"
 params:
   ShowReadingTime: false
+  comments: false
 ---
 
 Here are some of my personal open source projects that I’m currently working on or have worked on in the past.
