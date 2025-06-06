@@ -4,7 +4,7 @@
     <title>Tags on michalsn</title>
     <link>https://michalsn.dev/tags/tags/</link>
     <description>Recent content in Tags on michalsn</description>
-    <generator>Hugo -- 0.127.0</generator>
+    <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 28 Sep 2023 09:31:27 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/tags/index.xml" rel="self" type="application/rss+xml" />
@@ -13,8 +13,9 @@
       <link>https://michalsn.dev/posts/codeigniter-tags/</link>
       <pubDate>Thu, 28 Sep 2023 09:31:27 +0100</pubDate>
       <guid>https://michalsn.dev/posts/codeigniter-tags/</guid>
-      <description>Tags provide a way to organize content and improve the user&amp;rsquo;s experience by helping them discover related articles and navigate through a website&amp;rsquo;s content more efficiently. They are particularly useful in content-heavy websites or blogs where there&amp;rsquo;s a wide range of topics and subjects covered. This blog also uses tags system. These tags help categorize and organize content to make it more accessible and searchable.
-Since there was no tags library for CodeIgniter 4, I decided to write one.</description>
+      <description>&lt;p&gt;Tags provide a way to organize content and improve the user&amp;rsquo;s experience by helping them discover related articles and navigate through a website&amp;rsquo;s content more efficiently. They are particularly useful in content-heavy websites or blogs where there&amp;rsquo;s a wide range of topics and subjects covered.
+This blog also uses tags system. These tags help categorize and organize content to make it more accessible and searchable.&lt;/p&gt;
+&lt;p&gt;Since there was no tags library for CodeIgniter 4, I decided to write one. The &lt;a href=&#34;https://github.com/michalsn/codeigniter-tags&#34;&gt;codeigniter-tags&lt;/a&gt; is designed to work with many content types at once, so we can use it in many models.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

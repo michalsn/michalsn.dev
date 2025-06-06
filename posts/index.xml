@@ -4,7 +4,7 @@
     <title>Posts on michalsn</title>
     <link>https://michalsn.dev/posts/</link>
     <description>Recent content in Posts on michalsn</description>
-    <generator>Hugo -- 0.127.0</generator>
+    <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 02 Jun 2025 14:08:21 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/posts/index.xml" rel="self" type="application/rss+xml" />
@@ -13,8 +13,7 @@
       <link>https://michalsn.dev/posts/managing-multiple-env-files-in-codeigniter-4/</link>
       <pubDate>Mon, 02 Jun 2025 14:08:21 +0100</pubDate>
       <guid>https://michalsn.dev/posts/managing-multiple-env-files-in-codeigniter-4/</guid>
-      <description>When building applications that serve multiple clients or domains from a single codebase, developers often face the challenge of managing different configurations for each client. This becomes particularly complex when each client requires separate database credentials, API keys, or other environment-specific settings.
-In this post, we&amp;rsquo;ll explore how to extend CodeIgniter 4 environment configuration system to support multiple .env files, enabling you to maintain separate configurations for each client while keeping your codebase clean and maintainable.</description>
+      <description>Extend CodeIgniter 4 to support multiple .env files for multi-client applications using a custom Boot class that automatically loads client-specific configurations based on domain detection.</description>
     </item>
     <item>
       <title>Scheduling Unique Tasks with CodeIgniter</title>
@@ -50,9 +49,11 @@ In this post, we&amp;rsquo;ll explore how to extend CodeIgniter 4 environment co
       <link>https://michalsn.dev/posts/setting-up-oci8-and-oracle-xe-with-docker/</link>
       <pubDate>Mon, 23 Dec 2024 19:40:57 +0100</pubDate>
       <guid>https://michalsn.dev/posts/setting-up-oci8-and-oracle-xe-with-docker/</guid>
-      <description>Integrating OCI8 with a PHP environment can be challenging, but recent updates have simplified the process significantly. Follow this guide to get everything set up seamlessly.
-Adding OCI8 support to PHP Oracle has streamlined the process for adding OCI8 support to PHP. Clear, user-friendly instructions are available in this Gist. Follow the steps outlined to prepare your PHP environment for OCI8.
-Setting up Oracle XE in Docker Once your PHP environment is ready, you can move on to Docker setup.</description>
+      <description>&lt;p&gt;Integrating OCI8 with a PHP environment can be challenging, but recent updates have simplified the process significantly. Follow this guide to get everything set up seamlessly.&lt;/p&gt;
+&lt;h2 id=&#34;adding-oci8-support-to-php&#34;&gt;Adding OCI8 support to PHP&lt;/h2&gt;
+&lt;p&gt;Oracle has streamlined the process for adding OCI8 support to PHP. Clear, user-friendly instructions are available in &lt;a href=&#34;https://gist.github.com/syahzul/d61d8ccea7c5959a84ed52d14159d8a9&#34;&gt;this Gist&lt;/a&gt;. Follow the steps outlined to prepare your PHP environment for OCI8.&lt;/p&gt;
+&lt;h2 id=&#34;setting-up-oracle-xe-in-docker&#34;&gt;Setting up Oracle XE in Docker&lt;/h2&gt;
+&lt;p&gt;Once your PHP environment is ready, you can move on to Docker setup. We&amp;rsquo;ll use the Oracle XE image available on Docker Hub: &lt;a href=&#34;https://hub.docker.com/r/gvenzl/oracle-xe&#34;&gt;gvenzl/oracle-xe&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Eager and Lazy Loading in CodeIgniter 4</title>
@@ -66,9 +67,9 @@ Setting up Oracle XE in Docker Once your PHP environment is ready, you can move 
       <link>https://michalsn.dev/posts/user-tracking-with-javascript/</link>
       <pubDate>Wed, 06 Nov 2024 18:06:23 +0100</pubDate>
       <guid>https://michalsn.dev/posts/user-tracking-with-javascript/</guid>
-      <description>If you’ve ever wanted to capture info about your users, you might be interested in this little experiment.
-With features like automatic page view tracking that logs details about your visitors’ browsers, devices, and more, plus the ability to log custom events like clicks, it’s perfect for anyone who enjoys tinkering with web analytics.
-The PageViewEvents JavaScript class provides a streamlined way to capture and send data about page views and user interactions on your site.</description>
+      <description>&lt;p&gt;If you’ve ever wanted to capture info about your users, you might be interested in this little experiment.&lt;/p&gt;
+&lt;p&gt;With features like automatic page view tracking that logs details about your visitors’ browsers, devices, and more, plus the ability to log custom events like clicks, it’s perfect for anyone who enjoys tinkering with web analytics.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;PageViewEvents&lt;/code&gt; JavaScript class provides a streamlined way to capture and send data about page views and user interactions on your site.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Alerts for htmx and CodeIgniter 4</title>
@@ -89,27 +90,57 @@ The PageViewEvents JavaScript class provides a streamlined way to capture and se
       <link>https://michalsn.dev/posts/codeigniter-markdown-pages/</link>
       <pubDate>Fri, 29 Dec 2023 12:17:23 +0100</pubDate>
       <guid>https://michalsn.dev/posts/codeigniter-markdown-pages/</guid>
-      <description>Markdown Pages project allows you to map Markdown files to collections and easily list or read data from them.
-In addition to the Markdown parser, we also have the ability to parse YAML sections, where you can put a lot of useful information.
-How to start:
-composer michalsn/codeigniter-markdown-pages Basic usage:
-$markdownPages = service(&amp;#39;markdownpages&amp;#39;, ROOTPATH . &amp;#39;pages&amp;#39;); // Get the first directory $dir = $markdownPages-&amp;gt;dirs()-&amp;gt;first(); echo $dir-&amp;gt;getName() // prints: Quick Start echo $dir-&amp;gt;getSlug() // prints: quick-start foreach($dir-&amp;gt;getFiles()-&amp;gt;items() as $file) { echo $file-&amp;gt;getName(); // prints: Installation echo $file-&amp;gt;getSlug(); // prints: installation echo $file-&amp;gt;getPath(); // prints: quick-start/installation echo $content-&amp;gt;parse()-&amp;gt;getContent(); // prints: parsed markdown from file echo $content-&amp;gt;parse()-&amp;gt;getMeta(); // prints: parsed YAML as key -&amp;gt; value } This project use Collection class pretty much everywhere so please get familiar with it to use this package comfortably.</description>
+      <description>&lt;p&gt;Markdown Pages project allows you to map Markdown files to collections and easily list or read data from them.&lt;/p&gt;
+&lt;p&gt;In addition to the Markdown parser, we also have the ability to parse YAML sections, where you can put a lot of useful information.&lt;/p&gt;
+&lt;p&gt;How to start:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;composer michalsn/codeigniter-markdown-pages
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Basic usage:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$markdownPages &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;service&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;markdownpages&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;ROOTPATH&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;pages&amp;#39;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// Get the first directory
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;$dir &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; $markdownPages&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;dirs&lt;/span&gt;()&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;first&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;echo&lt;/span&gt; $dir&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getName&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// prints: Quick Start
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;echo&lt;/span&gt; $dir&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getSlug&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// prints: quick-start
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;foreach&lt;/span&gt;($dir&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getFiles&lt;/span&gt;()&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;items&lt;/span&gt;() &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; $file) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;echo&lt;/span&gt; $file&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getName&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// prints: Installation
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;echo&lt;/span&gt; $file&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getSlug&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// prints: installation
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;echo&lt;/span&gt; $file&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getPath&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// prints: quick-start/installation
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;echo&lt;/span&gt; $content&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;parse&lt;/span&gt;()&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getContent&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// prints: parsed markdown from file
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;echo&lt;/span&gt; $content&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;parse&lt;/span&gt;()&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getMeta&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// prints: parsed YAML as key -&amp;gt; value
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This project use &lt;a href=&#34;https://github.com/lonnieezell/myth-collection&#34;&gt;Collection&lt;/a&gt; class pretty much everywhere so please get familiar with it to use this package comfortably.&lt;/p&gt;</description>
     </item>
     <item>
       <title>CodeIgniter Queue</title>
       <link>https://michalsn.dev/posts/codeigniter-queue/</link>
       <pubDate>Sat, 14 Oct 2023 15:36:19 +0100</pubDate>
       <guid>https://michalsn.dev/posts/codeigniter-queue/</guid>
-      <description>While CodeIgniter 4 itself doesn&amp;rsquo;t have a built-in queue system, I have built one which rely on the database handler.
-But what is a queue? It&amp;rsquo;s a system that allows you to schedule and manage background tasks or jobs to be executed in the given order. These jobs can include sending emails, processing data, generating reports, and more. Using a queue system helps offload time-consuming or resource-intensive tasks from the main application, ensuring that the application remains responsive.</description>
+      <description>&lt;p&gt;While CodeIgniter 4 itself doesn&amp;rsquo;t have a built-in queue system, I have built one which rely on the database handler.&lt;/p&gt;
+&lt;p&gt;But what is a queue? It&amp;rsquo;s a system that allows you to schedule and manage background tasks or jobs to be executed in the given order. These jobs can include sending emails, processing data, generating reports, and more. Using a queue system helps offload time-consuming or resource-intensive tasks from the main application, ensuring that the application remains responsive.&lt;/p&gt;</description>
     </item>
     <item>
       <title>CodeIgniter Tags</title>
       <link>https://michalsn.dev/posts/codeigniter-tags/</link>
       <pubDate>Thu, 28 Sep 2023 09:31:27 +0100</pubDate>
       <guid>https://michalsn.dev/posts/codeigniter-tags/</guid>
-      <description>Tags provide a way to organize content and improve the user&amp;rsquo;s experience by helping them discover related articles and navigate through a website&amp;rsquo;s content more efficiently. They are particularly useful in content-heavy websites or blogs where there&amp;rsquo;s a wide range of topics and subjects covered. This blog also uses tags system. These tags help categorize and organize content to make it more accessible and searchable.
-Since there was no tags library for CodeIgniter 4, I decided to write one.</description>
+      <description>&lt;p&gt;Tags provide a way to organize content and improve the user&amp;rsquo;s experience by helping them discover related articles and navigate through a website&amp;rsquo;s content more efficiently. They are particularly useful in content-heavy websites or blogs where there&amp;rsquo;s a wide range of topics and subjects covered.
+This blog also uses tags system. These tags help categorize and organize content to make it more accessible and searchable.&lt;/p&gt;
+&lt;p&gt;Since there was no tags library for CodeIgniter 4, I decided to write one. The &lt;a href=&#34;https://github.com/michalsn/codeigniter-tags&#34;&gt;codeigniter-tags&lt;/a&gt; is designed to work with many content types at once, so we can use it in many models.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Auth0 CodeIgniter 4 package</title>
@@ -123,8 +154,8 @@ Since there was no tags library for CodeIgniter 4, I decided to write one.</desc
       <link>https://michalsn.dev/posts/using-kinde-with-codeigniter-4/</link>
       <pubDate>Thu, 27 Jul 2023 10:04:27 +0100</pubDate>
       <guid>https://michalsn.dev/posts/using-kinde-with-codeigniter-4/</guid>
-      <description>Kinde is an identity and access management platform that provides authentication and authorization services for web applications. It&amp;rsquo;s one of the direct auth0 competitors.
-The first thing that strikes you from the business side is that we get more options in the free version as well as higher limits for active users. It is also less expensive than auth0 when we finally reach the free limits. For startups that often use a cloud-based authentication model, this is a significant convenience.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://kinde.com&#34;&gt;Kinde&lt;/a&gt; is an identity and access management platform that provides authentication and authorization services for web applications. It&amp;rsquo;s one of the direct auth0 competitors.&lt;/p&gt;
+&lt;p&gt;The first thing that strikes you from the business side is that we get more options in the free version as well as higher limits for active users. It is also less expensive than auth0 when we finally reach the free limits. For startups that often use a cloud-based authentication model, this is a significant convenience.&lt;/p&gt;</description>
     </item>
     <item>
       <title>CodeIgniter Signed Url</title>

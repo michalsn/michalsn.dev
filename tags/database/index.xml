@@ -4,7 +4,7 @@
     <title>Database on michalsn</title>
     <link>https://michalsn.dev/tags/database/</link>
     <description>Recent content in Database on michalsn</description>
-    <generator>Hugo -- 0.127.0</generator>
+    <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 14 Oct 2023 15:36:19 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/database/index.xml" rel="self" type="application/rss+xml" />
@@ -13,8 +13,8 @@
       <link>https://michalsn.dev/posts/codeigniter-queue/</link>
       <pubDate>Sat, 14 Oct 2023 15:36:19 +0100</pubDate>
       <guid>https://michalsn.dev/posts/codeigniter-queue/</guid>
-      <description>While CodeIgniter 4 itself doesn&amp;rsquo;t have a built-in queue system, I have built one which rely on the database handler.
-But what is a queue? It&amp;rsquo;s a system that allows you to schedule and manage background tasks or jobs to be executed in the given order. These jobs can include sending emails, processing data, generating reports, and more. Using a queue system helps offload time-consuming or resource-intensive tasks from the main application, ensuring that the application remains responsive.</description>
+      <description>&lt;p&gt;While CodeIgniter 4 itself doesn&amp;rsquo;t have a built-in queue system, I have built one which rely on the database handler.&lt;/p&gt;
+&lt;p&gt;But what is a queue? It&amp;rsquo;s a system that allows you to schedule and manage background tasks or jobs to be executed in the given order. These jobs can include sending emails, processing data, generating reports, and more. Using a queue system helps offload time-consuming or resource-intensive tasks from the main application, ensuring that the application remains responsive.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

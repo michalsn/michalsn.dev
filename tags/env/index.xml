@@ -4,7 +4,7 @@
     <title>Env on michalsn</title>
     <link>https://michalsn.dev/tags/env/</link>
     <description>Recent content in Env on michalsn</description>
-    <generator>Hugo -- 0.127.0</generator>
+    <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 02 Jun 2025 14:08:21 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/env/index.xml" rel="self" type="application/rss+xml" />
@@ -13,8 +13,7 @@
       <link>https://michalsn.dev/posts/managing-multiple-env-files-in-codeigniter-4/</link>
       <pubDate>Mon, 02 Jun 2025 14:08:21 +0100</pubDate>
       <guid>https://michalsn.dev/posts/managing-multiple-env-files-in-codeigniter-4/</guid>
-      <description>When building applications that serve multiple clients or domains from a single codebase, developers often face the challenge of managing different configurations for each client. This becomes particularly complex when each client requires separate database credentials, API keys, or other environment-specific settings.
-In this post, we&amp;rsquo;ll explore how to extend CodeIgniter 4 environment configuration system to support multiple .env files, enabling you to maintain separate configurations for each client while keeping your codebase clean and maintainable.</description>
+      <description>Extend CodeIgniter 4 to support multiple .env files for multi-client applications using a custom Boot class that automatically loads client-specific configurations based on domain detection.</description>
     </item>
   </channel>
 </rss>

@@ -4,7 +4,7 @@
     <title>Macos on michalsn</title>
     <link>https://michalsn.dev/tags/macos/</link>
     <description>Recent content in Macos on michalsn</description>
-    <generator>Hugo -- 0.127.0</generator>
+    <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 23 Dec 2024 19:40:57 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/macos/index.xml" rel="self" type="application/rss+xml" />
@@ -13,9 +13,11 @@
       <link>https://michalsn.dev/posts/setting-up-oci8-and-oracle-xe-with-docker/</link>
       <pubDate>Mon, 23 Dec 2024 19:40:57 +0100</pubDate>
       <guid>https://michalsn.dev/posts/setting-up-oci8-and-oracle-xe-with-docker/</guid>
-      <description>Integrating OCI8 with a PHP environment can be challenging, but recent updates have simplified the process significantly. Follow this guide to get everything set up seamlessly.
-Adding OCI8 support to PHP Oracle has streamlined the process for adding OCI8 support to PHP. Clear, user-friendly instructions are available in this Gist. Follow the steps outlined to prepare your PHP environment for OCI8.
-Setting up Oracle XE in Docker Once your PHP environment is ready, you can move on to Docker setup.</description>
+      <description>&lt;p&gt;Integrating OCI8 with a PHP environment can be challenging, but recent updates have simplified the process significantly. Follow this guide to get everything set up seamlessly.&lt;/p&gt;
+&lt;h2 id=&#34;adding-oci8-support-to-php&#34;&gt;Adding OCI8 support to PHP&lt;/h2&gt;
+&lt;p&gt;Oracle has streamlined the process for adding OCI8 support to PHP. Clear, user-friendly instructions are available in &lt;a href=&#34;https://gist.github.com/syahzul/d61d8ccea7c5959a84ed52d14159d8a9&#34;&gt;this Gist&lt;/a&gt;. Follow the steps outlined to prepare your PHP environment for OCI8.&lt;/p&gt;
+&lt;h2 id=&#34;setting-up-oracle-xe-in-docker&#34;&gt;Setting up Oracle XE in Docker&lt;/h2&gt;
+&lt;p&gt;Once your PHP environment is ready, you can move on to Docker setup. We&amp;rsquo;ll use the Oracle XE image available on Docker Hub: &lt;a href=&#34;https://hub.docker.com/r/gvenzl/oracle-xe&#34;&gt;gvenzl/oracle-xe&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
