@@ -3,6 +3,7 @@ title: "Managing Multiple .env Files for Multi-Client Applications in CodeIgnite
 date: 2025-06-02T14:08:21+01:00
 tags: ["env", "configuration", "codeigniter4"]
 draft: false
+summary: "Extend CodeIgniter 4 to support multiple .env files for multi-client applications using a custom Boot class that automatically loads client-specific configurations based on domain detection."
 ---
 
 When building applications that serve multiple clients or domains from a single codebase, developers often face the challenge of managing different configurations for each client. This becomes particularly complex when each client requires separate database credentials, API keys, or other environment-specific settings. 
