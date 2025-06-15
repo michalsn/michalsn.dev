@@ -6,8 +6,15 @@
     <description>Recent content in Codeigniter4 on michalsn</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Jun 2025 14:08:21 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 15 Jun 2025 18:24:44 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/codeigniter4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Beyond MVC: Adding Managers to Your CodeIgniter 4 Applications</title>
+      <link>https://michalsn.dev/posts/beyond-mvc-managers-in-codeigniter/</link>
+      <pubDate>Sun, 15 Jun 2025 18:24:44 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/beyond-mvc-managers-in-codeigniter/</guid>
+      <description>Learn how to extend the traditional MVC pattern with Managers in CodeIgniter 4 to handle complex business logic and create more maintainable applications.</description>
+    </item>
     <item>
       <title>Managing Multiple .env Files for Multi-Client Applications in CodeIgniter 4</title>
       <link>https://michalsn.dev/posts/managing-multiple-env-files-in-codeigniter-4/</link>

@@ -2,8 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://michalsn.dev/tags/architecture/</loc>
+    <lastmod>2025-06-15T18:24:44+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/beyond-mvc-managers-in-codeigniter/</loc>
+    <lastmod>2025-06-15T18:24:44+01:00</lastmod>
+  </url><url>
     <loc>https://michalsn.dev/tags/codeigniter4/</loc>
-    <lastmod>2025-06-02T14:08:21+01:00</lastmod>
+    <lastmod>2025-06-15T18:24:44+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/</loc>
+    <lastmod>2025-06-15T18:24:44+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/mvc/</loc>
+    <lastmod>2025-06-15T18:24:44+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/</loc>
+    <lastmod>2025-06-15T18:24:44+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/</loc>
+    <lastmod>2025-06-15T18:24:44+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/configuration/</loc>
     <lastmod>2025-06-02T14:08:21+01:00</lastmod>
@@ -12,15 +30,6 @@
     <lastmod>2025-06-02T14:08:21+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/posts/managing-multiple-env-files-in-codeigniter-4/</loc>
-    <lastmod>2025-06-02T14:08:21+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/</loc>
-    <lastmod>2025-06-02T14:08:21+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/posts/</loc>
-    <lastmod>2025-06-02T14:08:21+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/</loc>
     <lastmod>2025-06-02T14:08:21+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/queue/</loc>

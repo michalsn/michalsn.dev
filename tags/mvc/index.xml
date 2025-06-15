@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Mvc on michalsn</title>
+    <link>https://michalsn.dev/tags/mvc/</link>
+    <description>Recent content in Mvc on michalsn</description>
+    <generator>Hugo -- 0.147.7</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Jun 2025 18:24:44 +0100</lastBuildDate>
+    <atom:link href="https://michalsn.dev/tags/mvc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Beyond MVC: Adding Managers to Your CodeIgniter 4 Applications</title>
+      <link>https://michalsn.dev/posts/beyond-mvc-managers-in-codeigniter/</link>
+      <pubDate>Sun, 15 Jun 2025 18:24:44 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/beyond-mvc-managers-in-codeigniter/</guid>
+      <description>Learn how to extend the traditional MVC pattern with Managers in CodeIgniter 4 to handle complex business logic and create more maintainable applications.</description>
+    </item>
+  </channel>
+</rss>

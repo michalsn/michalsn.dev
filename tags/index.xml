@@ -6,13 +6,27 @@
     <description>Recent content in Tags on michalsn</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Jun 2025 14:08:21 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 15 Jun 2025 18:24:44 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Architecture</title>
+      <link>https://michalsn.dev/tags/architecture/</link>
+      <pubDate>Sun, 15 Jun 2025 18:24:44 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/architecture/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Codeigniter4</title>
       <link>https://michalsn.dev/tags/codeigniter4/</link>
-      <pubDate>Mon, 02 Jun 2025 14:08:21 +0100</pubDate>
+      <pubDate>Sun, 15 Jun 2025 18:24:44 +0100</pubDate>
       <guid>https://michalsn.dev/tags/codeigniter4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mvc</title>
+      <link>https://michalsn.dev/tags/mvc/</link>
+      <pubDate>Sun, 15 Jun 2025 18:24:44 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/mvc/</guid>
       <description></description>
     </item>
     <item>
