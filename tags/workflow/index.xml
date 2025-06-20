@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Ollama on michalsn</title>
-    <link>https://michalsn.dev/tags/ollama/</link>
-    <description>Recent content in Ollama on michalsn</description>
+    <title>Workflow on michalsn</title>
+    <link>https://michalsn.dev/tags/workflow/</link>
+    <description>Recent content in Workflow on michalsn</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 20 Jun 2025 18:39:09 +0200</lastBuildDate>
-    <atom:link href="https://michalsn.dev/tags/ollama/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://michalsn.dev/tags/workflow/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Getting Started with NeuronAI Workflows</title>
       <link>https://michalsn.dev/posts/getting-started-with-neuronai-workflows/</link>
       <pubDate>Fri, 20 Jun 2025 18:39:09 +0200</pubDate>
       <guid>https://michalsn.dev/posts/getting-started-with-neuronai-workflows/</guid>
       <description>Learn how to get started with NeuronAI Workflows by combining simple AI agents, tools, and APIs to automate basic tasks.</description>
-    </item>
-    <item>
-      <title>Working with PHP, Ollama and embeddings</title>
-      <link>https://michalsn.dev/posts/working-with-php-ollama-and-embeddings/</link>
-      <pubDate>Sun, 09 Jun 2024 09:44:19 +0100</pubDate>
-      <guid>https://michalsn.dev/posts/working-with-php-ollama-and-embeddings/</guid>
-      <description>Learn how to work with PHP, Ollama, and embeddings to enhance your AI capabilities using Retrieval Augmented Generation (RAG).</description>
     </item>
   </channel>
 </rss>

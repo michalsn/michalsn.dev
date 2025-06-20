@@ -6,8 +6,15 @@
     <description>Recent content in Php on michalsn</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 23 Dec 2024 19:40:57 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 20 Jun 2025 18:39:09 +0200</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting Started with NeuronAI Workflows</title>
+      <link>https://michalsn.dev/posts/getting-started-with-neuronai-workflows/</link>
+      <pubDate>Fri, 20 Jun 2025 18:39:09 +0200</pubDate>
+      <guid>https://michalsn.dev/posts/getting-started-with-neuronai-workflows/</guid>
+      <description>Learn how to get started with NeuronAI Workflows by combining simple AI agents, tools, and APIs to automate basic tasks.</description>
+    </item>
     <item>
       <title>Setting up OCI8 and Oracle XE with Docker on macOS</title>
       <link>https://michalsn.dev/posts/setting-up-oci8-and-oracle-xe-with-docker/</link>
