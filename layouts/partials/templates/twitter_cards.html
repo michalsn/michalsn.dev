@@ -1,0 +1,46 @@
+{{- if .Params.cover.image -}}
+<meta name="twitter:card" content="summary_large_image">
+{{- if (ne $.Params.cover.relative true) }}
+<meta name="twitter:image" content="{{ .Params.cover.image | absURL }}">
+{{- else }}
+<meta name="twitter:image" content="{{ (path.Join .RelPermalink .Params.cover.image ) | absURL }}">
+{{- end}}
+{{- else }}
+{{- $images := partial "templates/_funcs/get-page-images" . -}}
+{{- with index $images 0 -}}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ .Permalink }}">
+{{- else -}}
+  {{- if .IsPage -}}
+
+  {{ $base := resources.Get "og_base.png" }}
+  {{ $mediumFont := resources.Get "Inter_24pt-Medium.ttf"}}
+  {{ $img := $base.Filter (images.Text .Page.Title (dict
+    "color" "#ffffff"
+    "size" 64
+    "linespacing" 2
+    "x" 141
+    "y" 291
+    "font" $mediumFont
+  ))}}
+  {{ $img = resources.Copy (path.Join .Page.RelPermalink "og.png") $img }}
+  <meta name="twitter:image" content="{{$img.Permalink}}" />
+  {{- end -}}
+<meta name="twitter:card" content="summary">
+{{- end -}}
+{{- end }}
+<meta name="twitter:title" content="{{ .Title }}">
+<meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}">
+
+{{- $twitterSite := "" }}
+{{- with site.Params.social }}
+  {{- if reflect.IsMap . }}
+    {{- with .twitter }}
+      {{- $content := . }}
+      {{- if not (strings.HasPrefix . "@") }}
+        {{- $content = printf "@%v" . }}
+      {{- end }}
+      <meta name="twitter:site" content="{{ $content }}">
+    {{- end }}
+  {{- end }}
+{{- end }}
