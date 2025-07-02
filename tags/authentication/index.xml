@@ -6,8 +6,15 @@
     <description>Recent content in Authentication on michalsn</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Aug 2023 18:31:53 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 02 Jul 2025 20:10:32 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/authentication/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Implementing User Impersonation in CodeIgniter Shield</title>
+      <link>https://michalsn.dev/posts/impersonation-with-codeigniter-shield/</link>
+      <pubDate>Wed, 02 Jul 2025 20:10:32 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/impersonation-with-codeigniter-shield/</guid>
+      <description>Implement secure user impersonation in CodeIgniter 4 using the Shield authentication system and a modular architecture.</description>
+    </item>
     <item>
       <title>Auth0 CodeIgniter 4 package</title>
       <link>https://michalsn.dev/posts/auth0-codeigniter-4-package/</link>

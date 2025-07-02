@@ -6,8 +6,36 @@
     <description>Recent content in Tags on michalsn</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Jun 2025 18:39:09 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 02 Jul 2025 20:10:32 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Authentication</title>
+      <link>https://michalsn.dev/tags/authentication/</link>
+      <pubDate>Wed, 02 Jul 2025 20:10:32 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/authentication/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Codeigniter4</title>
+      <link>https://michalsn.dev/tags/codeigniter4/</link>
+      <pubDate>Wed, 02 Jul 2025 20:10:32 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/codeigniter4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security</title>
+      <link>https://michalsn.dev/tags/security/</link>
+      <pubDate>Wed, 02 Jul 2025 20:10:32 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Shield</title>
+      <link>https://michalsn.dev/tags/shield/</link>
+      <pubDate>Wed, 02 Jul 2025 20:10:32 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/shield/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Agents</title>
       <link>https://michalsn.dev/tags/agents/</link>
@@ -48,13 +76,6 @@
       <link>https://michalsn.dev/tags/architecture/</link>
       <pubDate>Sun, 15 Jun 2025 18:24:44 +0100</pubDate>
       <guid>https://michalsn.dev/tags/architecture/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Codeigniter4</title>
-      <link>https://michalsn.dev/tags/codeigniter4/</link>
-      <pubDate>Sun, 15 Jun 2025 18:24:44 +0100</pubDate>
-      <guid>https://michalsn.dev/tags/codeigniter4/</guid>
       <description></description>
     </item>
     <item>
@@ -237,13 +258,6 @@
       <link>https://michalsn.dev/tags/auth0/</link>
       <pubDate>Wed, 16 Aug 2023 18:31:53 +0100</pubDate>
       <guid>https://michalsn.dev/tags/auth0/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Authentication</title>
-      <link>https://michalsn.dev/tags/authentication/</link>
-      <pubDate>Wed, 16 Aug 2023 18:31:53 +0100</pubDate>
-      <guid>https://michalsn.dev/tags/authentication/</guid>
       <description></description>
     </item>
     <item>

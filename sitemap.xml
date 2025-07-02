@@ -2,13 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://michalsn.dev/tags/authentication/</loc>
+    <lastmod>2025-07-02T20:10:32+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/codeigniter4/</loc>
+    <lastmod>2025-07-02T20:10:32+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/impersonation-with-codeigniter-shield/</loc>
+    <lastmod>2025-07-02T20:10:32+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/</loc>
+    <lastmod>2025-07-02T20:10:32+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/</loc>
+    <lastmod>2025-07-02T20:10:32+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/security/</loc>
+    <lastmod>2025-07-02T20:10:32+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/shield/</loc>
+    <lastmod>2025-07-02T20:10:32+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/</loc>
+    <lastmod>2025-07-02T20:10:32+01:00</lastmod>
+  </url><url>
     <loc>https://michalsn.dev/tags/agents/</loc>
     <lastmod>2025-06-20T18:39:09+02:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/posts/getting-started-with-neuronai-workflows/</loc>
-    <lastmod>2025-06-20T18:39:09+02:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/</loc>
     <lastmod>2025-06-20T18:39:09+02:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/neuronai/</loc>
@@ -20,12 +41,6 @@
     <loc>https://michalsn.dev/tags/php/</loc>
     <lastmod>2025-06-20T18:39:09+02:00</lastmod>
   </url><url>
-    <loc>https://michalsn.dev/posts/</loc>
-    <lastmod>2025-06-20T18:39:09+02:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/</loc>
-    <lastmod>2025-06-20T18:39:09+02:00</lastmod>
-  </url><url>
     <loc>https://michalsn.dev/tags/workflow/</loc>
     <lastmod>2025-06-20T18:39:09+02:00</lastmod>
   </url><url>
@@ -33,9 +48,6 @@
     <lastmod>2025-06-15T18:24:44+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/posts/beyond-mvc-managers-in-codeigniter/</loc>
-    <lastmod>2025-06-15T18:24:44+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/codeigniter4/</loc>
     <lastmod>2025-06-15T18:24:44+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/mvc/</loc>
@@ -156,9 +168,6 @@
     <lastmod>2023-08-16T18:31:53+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/posts/auth0-codeigniter-4-package/</loc>
-    <lastmod>2023-08-16T18:31:53+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/authentication/</loc>
     <lastmod>2023-08-16T18:31:53+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/kinde/</loc>
