@@ -24,9 +24,11 @@
     "font" $mediumFont
   ))}}
   {{ $img = resources.Copy (path.Join .Page.RelPermalink "og.png") $img }}
-  <meta name="twitter:image" content="{{$img.Permalink}}" />
-  {{- end -}}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{$img.Permalink}}">
+  {{- else }}
 <meta name="twitter:card" content="summary">
+  {{- end -}}
 {{- end -}}
 {{- end }}
 <meta name="twitter:title" content="{{ .Title }}">
