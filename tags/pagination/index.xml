@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Pagination on michalsn</title>
+    <link>https://michalsn.dev/tags/pagination/</link>
+    <description>Recent content in Pagination on michalsn</description>
+    <generator>Hugo -- 0.147.7</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 14 Jul 2025 17:45:17 +0100</lastBuildDate>
+    <atom:link href="https://michalsn.dev/tags/pagination/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Event-Aware Pagination in CodeIgniter 4 Models</title>
+      <link>https://michalsn.dev/posts/event-aware-pagination-in-codeigniter4-models/</link>
+      <pubDate>Mon, 14 Jul 2025 17:45:17 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/event-aware-pagination-in-codeigniter4-models/</guid>
+      <description>Discover why your CodeIgniter 4 pagination shows incorrect total counts when using model events, and implement a simple fix that ensures consistent filtering across both count and result queries.</description>
+    </item>
+  </channel>
+</rss>

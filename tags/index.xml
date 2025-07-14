@@ -6,20 +6,34 @@
     <description>Recent content in Tags on michalsn</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 02 Jul 2025 20:10:32 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 14 Jul 2025 17:45:17 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Codeigniter4</title>
+      <link>https://michalsn.dev/tags/codeigniter4/</link>
+      <pubDate>Mon, 14 Jul 2025 17:45:17 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/codeigniter4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Model-Events</title>
+      <link>https://michalsn.dev/tags/model-events/</link>
+      <pubDate>Mon, 14 Jul 2025 17:45:17 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/model-events/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pagination</title>
+      <link>https://michalsn.dev/tags/pagination/</link>
+      <pubDate>Mon, 14 Jul 2025 17:45:17 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/pagination/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Authentication</title>
       <link>https://michalsn.dev/tags/authentication/</link>
       <pubDate>Wed, 02 Jul 2025 20:10:32 +0100</pubDate>
       <guid>https://michalsn.dev/tags/authentication/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Codeigniter4</title>
-      <link>https://michalsn.dev/tags/codeigniter4/</link>
-      <pubDate>Wed, 02 Jul 2025 20:10:32 +0100</pubDate>
-      <guid>https://michalsn.dev/tags/codeigniter4/</guid>
       <description></description>
     </item>
     <item>

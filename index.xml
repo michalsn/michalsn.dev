@@ -6,8 +6,15 @@
     <description>Recent content on michalsn</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 02 Jul 2025 20:10:32 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 14 Jul 2025 17:45:17 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Event-Aware Pagination in CodeIgniter 4 Models</title>
+      <link>https://michalsn.dev/posts/event-aware-pagination-in-codeigniter4-models/</link>
+      <pubDate>Mon, 14 Jul 2025 17:45:17 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/event-aware-pagination-in-codeigniter4-models/</guid>
+      <description>Discover why your CodeIgniter 4 pagination shows incorrect total counts when using model events, and implement a simple fix that ensures consistent filtering across both count and result queries.</description>
+    </item>
     <item>
       <title>Implementing User Impersonation in CodeIgniter Shield</title>
       <link>https://michalsn.dev/posts/impersonation-with-codeigniter-shield/</link>
