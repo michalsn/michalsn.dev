@@ -3,12 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://michalsn.dev/tags/codeigniter4/</loc>
-    <lastmod>2025-07-14T17:45:17+01:00</lastmod>
+    <lastmod>2025-07-29T07:17:17+01:00</lastmod>
   </url><url>
-    <loc>https://michalsn.dev/posts/event-aware-pagination-in-codeigniter4-models/</loc>
-    <lastmod>2025-07-14T17:45:17+01:00</lastmod>
+    <loc>https://michalsn.dev/tags/cve/</loc>
+    <lastmod>2025-07-29T07:17:17+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/</loc>
+    <lastmod>2025-07-29T07:17:17+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/</loc>
+    <lastmod>2025-07-29T07:17:17+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/security/</loc>
+    <lastmod>2025-07-29T07:17:17+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/</loc>
+    <lastmod>2025-07-29T07:17:17+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/when-false-cves-cause-real-problems/</loc>
+    <lastmod>2025-07-29T07:17:17+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/event-aware-pagination-in-codeigniter4-models/</loc>
     <lastmod>2025-07-14T17:45:17+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/model-events/</loc>
@@ -17,19 +32,10 @@
     <loc>https://michalsn.dev/tags/pagination/</loc>
     <lastmod>2025-07-14T17:45:17+01:00</lastmod>
   </url><url>
-    <loc>https://michalsn.dev/posts/</loc>
-    <lastmod>2025-07-14T17:45:17+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/</loc>
-    <lastmod>2025-07-14T17:45:17+01:00</lastmod>
-  </url><url>
     <loc>https://michalsn.dev/tags/authentication/</loc>
     <lastmod>2025-07-02T20:10:32+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/posts/impersonation-with-codeigniter-shield/</loc>
-    <lastmod>2025-07-02T20:10:32+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/security/</loc>
     <lastmod>2025-07-02T20:10:32+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/shield/</loc>

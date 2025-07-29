@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Security on michalsn</title>
-    <link>https://michalsn.dev/tags/security/</link>
-    <description>Recent content in Security on michalsn</description>
+    <title>Cve on michalsn</title>
+    <link>https://michalsn.dev/tags/cve/</link>
+    <description>Recent content in Cve on michalsn</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 29 Jul 2025 07:17:17 +0100</lastBuildDate>
-    <atom:link href="https://michalsn.dev/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://michalsn.dev/tags/cve/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>When False CVEs Cause Real Problems</title>
       <link>https://michalsn.dev/posts/when-false-cves-cause-real-problems/</link>
       <pubDate>Tue, 29 Jul 2025 07:17:17 +0100</pubDate>
       <guid>https://michalsn.dev/posts/when-false-cves-cause-real-problems/</guid>
       <description>A closer look at CVE-2025-45406. An invalid vulnerability claim against CodeIgniter4 that caused real-world disruption, and a call for responsible disclosure.</description>
-    </item>
-    <item>
-      <title>Implementing User Impersonation in CodeIgniter Shield</title>
-      <link>https://michalsn.dev/posts/impersonation-with-codeigniter-shield/</link>
-      <pubDate>Wed, 02 Jul 2025 20:10:32 +0100</pubDate>
-      <guid>https://michalsn.dev/posts/impersonation-with-codeigniter-shield/</guid>
-      <description>Implement secure user impersonation in CodeIgniter 4 using the Shield authentication system and a modular architecture.</description>
     </item>
   </channel>
 </rss>
