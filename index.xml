@@ -6,8 +6,15 @@
     <description>Recent content on michalsn</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Jul 2025 07:17:17 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 21 Aug 2025 20:10:31 +0200</lastBuildDate>
     <atom:link href="https://michalsn.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unix Signals in PHP: Building Bulletproof CLI Applications</title>
+      <link>https://michalsn.dev/posts/unix-signals-in-php-building-bulletproof-cli-applications/</link>
+      <pubDate>Thu, 21 Aug 2025 20:10:31 +0200</pubDate>
+      <guid>https://michalsn.dev/posts/unix-signals-in-php-building-bulletproof-cli-applications/</guid>
+      <description>Deep dive into Unix signal handling in PHP applications with object-oriented design patterns, edge cases, and production-ready implementations.</description>
+    </item>
     <item>
       <title>When False CVEs Cause Real Problems</title>
       <link>https://michalsn.dev/posts/when-false-cves-cause-real-problems/</link>

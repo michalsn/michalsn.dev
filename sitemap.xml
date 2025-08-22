@@ -2,22 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://michalsn.dev/</loc>
+    <lastmod>2025-08-21T20:10:31+02:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/php/</loc>
+    <lastmod>2025-08-21T20:10:31+02:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/</loc>
+    <lastmod>2025-08-21T20:10:31+02:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/signals/</loc>
+    <lastmod>2025-08-21T20:10:31+02:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/</loc>
+    <lastmod>2025-08-21T20:10:31+02:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/unix/</loc>
+    <lastmod>2025-08-21T20:10:31+02:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/unix-signals-in-php-building-bulletproof-cli-applications/</loc>
+    <lastmod>2025-08-21T20:10:31+02:00</lastmod>
+  </url><url>
     <loc>https://michalsn.dev/tags/codeigniter4/</loc>
     <lastmod>2025-07-29T07:17:17+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/cve/</loc>
     <lastmod>2025-07-29T07:17:17+01:00</lastmod>
   </url><url>
-    <loc>https://michalsn.dev/</loc>
-    <lastmod>2025-07-29T07:17:17+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/posts/</loc>
-    <lastmod>2025-07-29T07:17:17+01:00</lastmod>
-  </url><url>
     <loc>https://michalsn.dev/tags/security/</loc>
-    <lastmod>2025-07-29T07:17:17+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/</loc>
     <lastmod>2025-07-29T07:17:17+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/posts/when-false-cves-cause-real-problems/</loc>
@@ -51,9 +63,6 @@
     <lastmod>2025-06-20T18:39:09+02:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/ollama/</loc>
-    <lastmod>2025-06-20T18:39:09+02:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/php/</loc>
     <lastmod>2025-06-20T18:39:09+02:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/workflow/</loc>

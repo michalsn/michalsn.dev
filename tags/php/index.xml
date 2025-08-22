@@ -6,8 +6,15 @@
     <description>Recent content in Php on michalsn</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Jun 2025 18:39:09 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 21 Aug 2025 20:10:31 +0200</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unix Signals in PHP: Building Bulletproof CLI Applications</title>
+      <link>https://michalsn.dev/posts/unix-signals-in-php-building-bulletproof-cli-applications/</link>
+      <pubDate>Thu, 21 Aug 2025 20:10:31 +0200</pubDate>
+      <guid>https://michalsn.dev/posts/unix-signals-in-php-building-bulletproof-cli-applications/</guid>
+      <description>Deep dive into Unix signal handling in PHP applications with object-oriented design patterns, edge cases, and production-ready implementations.</description>
+    </item>
     <item>
       <title>Getting Started with NeuronAI Workflows</title>
       <link>https://michalsn.dev/posts/getting-started-with-neuronai-workflows/</link>
