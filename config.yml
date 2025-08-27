@@ -9,7 +9,7 @@ buildDrafts: false
 buildFuture: false
 buildExpired: false
 enableEmoji: true
-googleAnalytics: G-74HSH0WCPE
+#googleAnalytics: G-74HSH0WCPE
 
 minify:
   disableXML: true
@@ -42,7 +42,7 @@ outputs:
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: michalsn
-  description: "michalsn dev blog"
+  description: "michalsn dev blog - michal sniatala"
   keywords: [Blog, Developer]
   # author: Me
   # author: ["Me", "You"] # multiple authors
