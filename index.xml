@@ -294,5 +294,25 @@ This blog also uses tags system. These tags help categorize and organize content
 &lt;h3 id=&#34;codeigniter-signed-url&#34;&gt;&lt;a href=&#34;https://github.com/michalsn/codeigniter-signed-url&#34;&gt;CodeIgniter Signed URL&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;This package adds secure, signed URL support to CodeIgniter 4. It allows developers to generate and verify URL signatures, ensuring data integrity and secure access to routes and resources, which is essential for sensitive or time-bound links.&lt;/p&gt;</description>
     </item>
+    <item>
+      <title>Privacy Policy</title>
+      <link>https://michalsn.dev/privacy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://michalsn.dev/privacy/</guid>
+      <description>&lt;p&gt;We use cookies only to improve your experience and to enable optional functionality such as analytics.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You can accept or deny cookies using the cookie banner.&lt;/li&gt;
+&lt;li&gt;No personal data is stored by this website.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;third-party-services&#34;&gt;Third-Party Services&lt;/h3&gt;
+&lt;h4 id=&#34;utterances-comments&#34;&gt;Utterances (Comments)&lt;/h4&gt;
+&lt;p&gt;Comments are powered by &lt;a href=&#34;https://utteranc.es/&#34;&gt;Utterances&lt;/a&gt;, a GitHub-based open-source commenting system. Utterances:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Does &lt;strong&gt;not track visitors&lt;/strong&gt; or serve ads&lt;/li&gt;
+&lt;li&gt;Stores comments as GitHub issues in this repository&lt;/li&gt;
+&lt;li&gt;Loads a script from &lt;code&gt;https://utteranc.es/&lt;/code&gt; to render the comment section&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For more information, see &lt;a href=&#34;https://utteranc.es/&#34;&gt;Utterances&lt;/a&gt; and &lt;a href=&#34;https://docs.github.com/en/site-policy/privacy-policies&#34;&gt;GitHub’s Privacy Statement&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>

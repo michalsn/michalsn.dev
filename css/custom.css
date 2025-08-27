@@ -1,0 +1,52 @@
+/* cookie notice */
+#cookie-notice {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 2147483647; /* very high to beat theme elements */
+    background: rgb(70,70,70);
+    color: rgba(255,255,255,0.95);
+    padding: 0.75rem 1rem;
+    text-align: center;
+    font-size: medium;
+    transform: translateY(0);
+    transition: transform 180ms ease, opacity 180ms ease;
+    opacity: 0;
+    pointer-events: none; /* disable while hidden */
+}
+
+/* show class toggles visibility */
+#cookie-notice.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* inner wrapper */
+#cookie-notice .inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* buttons */
+#cookie-notice a.btn {
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+/* accept / deny colors */
+#cookie-notice-accept { color: rgb(86,228,58); }
+#cookie-notice-deny { color: rgb(243,34,34); }
+html[data-theme="light"] a#cookie-notice-info, a#cookie-notice-info { color: rgb(230, 230, 230) !important; }
+
+@media (max-width: 767px) {
+    #cookie-notice .inner { flex-direction: column; gap: 0.5rem; }
+    #cookie-notice a.btn { margin-left: 0; }
+}
