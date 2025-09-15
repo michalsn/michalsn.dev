@@ -2,19 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://michalsn.dev/tags/codeigniter4/</loc>
+    <lastmod>2025-09-15T16:09:31+02:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/dead-letter-exchanges-in-rabbitmq/</loc>
+    <lastmod>2025-09-15T16:09:31+02:00</lastmod>
+  </url><url>
     <loc>https://michalsn.dev/</loc>
-    <lastmod>2025-08-21T20:10:31+02:00</lastmod>
+    <lastmod>2025-09-15T16:09:31+02:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/</loc>
+    <lastmod>2025-09-15T16:09:31+02:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/queue/</loc>
+    <lastmod>2025-09-15T16:09:31+02:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/rabbitmq/</loc>
+    <lastmod>2025-09-15T16:09:31+02:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/</loc>
+    <lastmod>2025-09-15T16:09:31+02:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/php/</loc>
     <lastmod>2025-08-21T20:10:31+02:00</lastmod>
   </url><url>
-    <loc>https://michalsn.dev/posts/</loc>
-    <lastmod>2025-08-21T20:10:31+02:00</lastmod>
-  </url><url>
     <loc>https://michalsn.dev/tags/signals/</loc>
-    <lastmod>2025-08-21T20:10:31+02:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/</loc>
     <lastmod>2025-08-21T20:10:31+02:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/unix/</loc>
@@ -22,9 +34,6 @@
   </url><url>
     <loc>https://michalsn.dev/posts/unix-signals-in-php-building-bulletproof-cli-applications/</loc>
     <lastmod>2025-08-21T20:10:31+02:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/codeigniter4/</loc>
-    <lastmod>2025-07-29T07:17:17+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/cve/</loc>
     <lastmod>2025-07-29T07:17:17+01:00</lastmod>
@@ -85,9 +94,6 @@
   </url><url>
     <loc>https://michalsn.dev/posts/managing-multiple-env-files-in-codeigniter-4/</loc>
     <lastmod>2025-06-02T14:08:21+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/queue/</loc>
-    <lastmod>2025-05-06T10:14:47+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/posts/scheduling-unique-tasks-with-codeigniter/</loc>
     <lastmod>2025-05-06T10:14:47+01:00</lastmod>

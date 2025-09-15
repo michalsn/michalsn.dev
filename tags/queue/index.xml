@@ -6,8 +6,15 @@
     <description>Recent content in Queue on michalsn</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 May 2025 10:14:47 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 15 Sep 2025 16:09:31 +0200</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/queue/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dead Letter Exchanges in RabbitMQ</title>
+      <link>https://michalsn.dev/posts/dead-letter-exchanges-in-rabbitmq/</link>
+      <pubDate>Mon, 15 Sep 2025 16:09:31 +0200</pubDate>
+      <guid>https://michalsn.dev/posts/dead-letter-exchanges-in-rabbitmq/</guid>
+      <description>Many people think Dead Letter Exchanges can handle only failures. In reality, they&amp;rsquo;re perfect for scheduling messages and delayed job processing. Let&amp;rsquo;s see how we can do it.</description>
+    </item>
     <item>
       <title>Scheduling Unique Tasks with CodeIgniter</title>
       <link>https://michalsn.dev/posts/scheduling-unique-tasks-with-codeigniter/</link>

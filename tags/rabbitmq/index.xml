@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Rabbitmq on michalsn</title>
+    <link>https://michalsn.dev/tags/rabbitmq/</link>
+    <description>Recent content in Rabbitmq on michalsn</description>
+    <generator>Hugo -- 0.147.7</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Sep 2025 16:09:31 +0200</lastBuildDate>
+    <atom:link href="https://michalsn.dev/tags/rabbitmq/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dead Letter Exchanges in RabbitMQ</title>
+      <link>https://michalsn.dev/posts/dead-letter-exchanges-in-rabbitmq/</link>
+      <pubDate>Mon, 15 Sep 2025 16:09:31 +0200</pubDate>
+      <guid>https://michalsn.dev/posts/dead-letter-exchanges-in-rabbitmq/</guid>
+      <description>Many people think Dead Letter Exchanges can handle only failures. In reality, they&amp;rsquo;re perfect for scheduling messages and delayed job processing. Let&amp;rsquo;s see how we can do it.</description>
+    </item>
+  </channel>
+</rss>

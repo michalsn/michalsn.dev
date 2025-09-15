@@ -6,8 +6,29 @@
     <description>Recent content in Tags on michalsn</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 21 Aug 2025 20:10:31 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 15 Sep 2025 16:09:31 +0200</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Codeigniter4</title>
+      <link>https://michalsn.dev/tags/codeigniter4/</link>
+      <pubDate>Mon, 15 Sep 2025 16:09:31 +0200</pubDate>
+      <guid>https://michalsn.dev/tags/codeigniter4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Queue</title>
+      <link>https://michalsn.dev/tags/queue/</link>
+      <pubDate>Mon, 15 Sep 2025 16:09:31 +0200</pubDate>
+      <guid>https://michalsn.dev/tags/queue/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rabbitmq</title>
+      <link>https://michalsn.dev/tags/rabbitmq/</link>
+      <pubDate>Mon, 15 Sep 2025 16:09:31 +0200</pubDate>
+      <guid>https://michalsn.dev/tags/rabbitmq/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Php</title>
       <link>https://michalsn.dev/tags/php/</link>
@@ -27,13 +48,6 @@
       <link>https://michalsn.dev/tags/unix/</link>
       <pubDate>Thu, 21 Aug 2025 20:10:31 +0200</pubDate>
       <guid>https://michalsn.dev/tags/unix/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Codeigniter4</title>
-      <link>https://michalsn.dev/tags/codeigniter4/</link>
-      <pubDate>Tue, 29 Jul 2025 07:17:17 +0100</pubDate>
-      <guid>https://michalsn.dev/tags/codeigniter4/</guid>
       <description></description>
     </item>
     <item>
@@ -132,13 +146,6 @@
       <link>https://michalsn.dev/tags/env/</link>
       <pubDate>Mon, 02 Jun 2025 14:08:21 +0100</pubDate>
       <guid>https://michalsn.dev/tags/env/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Queue</title>
-      <link>https://michalsn.dev/tags/queue/</link>
-      <pubDate>Tue, 06 May 2025 10:14:47 +0100</pubDate>
-      <guid>https://michalsn.dev/tags/queue/</guid>
       <description></description>
     </item>
     <item>
