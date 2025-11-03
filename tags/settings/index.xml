@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Settings on michalsn</title>
+    <link>https://michalsn.dev/tags/settings/</link>
+    <description>Recent content in Settings on michalsn</description>
+    <generator>Hugo -- 0.147.7</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 29 Oct 2025 19:33:19 +0200</lastBuildDate>
+    <atom:link href="https://michalsn.dev/tags/settings/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building a Production-Ready File Handler for CodeIgniter 4 Settings</title>
+      <link>https://michalsn.dev/posts/building-a-production-ready-file-handler-for-codeigniter-4-settings/</link>
+      <pubDate>Wed, 29 Oct 2025 19:33:19 +0200</pubDate>
+      <guid>https://michalsn.dev/posts/building-a-production-ready-file-handler-for-codeigniter-4-settings/</guid>
+      <description>While CodeIgniter 4 Settings includes a database-backed handler, I wanted a file-based option that&amp;rsquo;s lightweight, fast, and safe for production use. I&amp;rsquo;ll walk through the challenges of handling concurrency, file locking, and caching, and explain the design choices behind the new FileHandler.</description>
+    </item>
+  </channel>
+</rss>

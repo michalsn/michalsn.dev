@@ -6,8 +6,15 @@
     <description>Recent content in Posts on michalsn</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Sep 2025 16:09:31 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 29 Oct 2025 19:33:19 +0200</lastBuildDate>
     <atom:link href="https://michalsn.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building a Production-Ready File Handler for CodeIgniter 4 Settings</title>
+      <link>https://michalsn.dev/posts/building-a-production-ready-file-handler-for-codeigniter-4-settings/</link>
+      <pubDate>Wed, 29 Oct 2025 19:33:19 +0200</pubDate>
+      <guid>https://michalsn.dev/posts/building-a-production-ready-file-handler-for-codeigniter-4-settings/</guid>
+      <description>While CodeIgniter 4 Settings includes a database-backed handler, I wanted a file-based option that&amp;rsquo;s lightweight, fast, and safe for production use. I&amp;rsquo;ll walk through the challenges of handling concurrency, file locking, and caching, and explain the design choices behind the new FileHandler.</description>
+    </item>
     <item>
       <title>Dead Letter Exchanges in RabbitMQ</title>
       <link>https://michalsn.dev/posts/dead-letter-exchanges-in-rabbitmq/</link>
