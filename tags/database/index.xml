@@ -6,8 +6,15 @@
     <description>Recent content in Database on michalsn</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 14 Oct 2023 15:36:19 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 30 Nov 2025 10:34:02 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/database/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deferred Writes: Performance Optimization and Database Gotchas</title>
+      <link>https://michalsn.dev/posts/deferred-writes/</link>
+      <pubDate>Sun, 30 Nov 2025 10:34:02 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/deferred-writes/</guid>
+      <description>A look behind the scenes of implementing deferred writes in the CodeIgniter 4 Settings package: how batching write operations improves performance, and the subtle database portability issue caused by NULL values in unique constraints.</description>
+    </item>
     <item>
       <title>CodeIgniter Queue</title>
       <link>https://michalsn.dev/posts/codeigniter-queue/</link>

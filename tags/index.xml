@@ -6,19 +6,26 @@
     <description>Recent content in Tags on michalsn</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 29 Oct 2025 19:33:19 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 30 Nov 2025 10:34:02 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Codeigniter4</title>
       <link>https://michalsn.dev/tags/codeigniter4/</link>
-      <pubDate>Wed, 29 Oct 2025 19:33:19 +0200</pubDate>
+      <pubDate>Sun, 30 Nov 2025 10:34:02 +0100</pubDate>
       <guid>https://michalsn.dev/tags/codeigniter4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Database</title>
+      <link>https://michalsn.dev/tags/database/</link>
+      <pubDate>Sun, 30 Nov 2025 10:34:02 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/database/</guid>
       <description></description>
     </item>
     <item>
       <title>Settings</title>
       <link>https://michalsn.dev/tags/settings/</link>
-      <pubDate>Wed, 29 Oct 2025 19:33:19 +0200</pubDate>
+      <pubDate>Sun, 30 Nov 2025 10:34:02 +0100</pubDate>
       <guid>https://michalsn.dev/tags/settings/</guid>
       <description></description>
     </item>
@@ -286,13 +293,6 @@
       <link>https://michalsn.dev/tags/yaml/</link>
       <pubDate>Fri, 29 Dec 2023 12:17:23 +0100</pubDate>
       <guid>https://michalsn.dev/tags/yaml/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Database</title>
-      <link>https://michalsn.dev/tags/database/</link>
-      <pubDate>Sat, 14 Oct 2023 15:36:19 +0100</pubDate>
-      <guid>https://michalsn.dev/tags/database/</guid>
       <description></description>
     </item>
     <item>
