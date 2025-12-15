@@ -3,7 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://michalsn.dev/tags/codeigniter4/</loc>
-    <lastmod>2025-11-30T10:34:02+01:00</lastmod>
+    <lastmod>2025-12-08T15:20:39+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/</loc>
+    <lastmod>2025-12-08T15:20:39+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/modules/</loc>
+    <lastmod>2025-12-08T15:20:39+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/</loc>
+    <lastmod>2025-12-08T15:20:39+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/</loc>
+    <lastmod>2025-12-08T15:20:39+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/how-to-handle-module-updates/</loc>
+    <lastmod>2025-12-08T15:20:39+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/database/</loc>
     <lastmod>2025-11-30T10:34:02+01:00</lastmod>
@@ -11,16 +26,7 @@
     <loc>https://michalsn.dev/posts/deferred-writes/</loc>
     <lastmod>2025-11-30T10:34:02+01:00</lastmod>
   </url><url>
-    <loc>https://michalsn.dev/</loc>
-    <lastmod>2025-11-30T10:34:02+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/posts/</loc>
-    <lastmod>2025-11-30T10:34:02+01:00</lastmod>
-  </url><url>
     <loc>https://michalsn.dev/tags/settings/</loc>
-    <lastmod>2025-11-30T10:34:02+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/</loc>
     <lastmod>2025-11-30T10:34:02+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/posts/building-a-production-ready-file-handler-for-codeigniter-4-settings/</loc>

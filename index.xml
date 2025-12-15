@@ -6,8 +6,15 @@
     <description>Recent content on michalsn</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 30 Nov 2025 10:34:02 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 08 Dec 2025 15:20:39 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Skipped Version Problem: How To Handle Module Updates</title>
+      <link>https://michalsn.dev/posts/how-to-handle-module-updates/</link>
+      <pubDate>Mon, 08 Dec 2025 15:20:39 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/how-to-handle-module-updates/</guid>
+      <description>Updating modules sounds simple - until users skip versions. Suddenly migrations break, tables are missing, and update logic becomes a headache. See how a lightweight UpdateManifest can turn chaotic upgrades into a predictable, controlled process.</description>
+    </item>
     <item>
       <title>Deferred Writes: Performance Optimization and Database Gotchas</title>
       <link>https://michalsn.dev/posts/deferred-writes/</link>
