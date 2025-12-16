@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Modules on michalsn</title>
-    <link>https://michalsn.dev/tags/modules/</link>
-    <description>Recent content in Modules on michalsn</description>
+    <title>Dependencies on michalsn</title>
+    <link>https://michalsn.dev/tags/dependencies/</link>
+    <description>Recent content in Dependencies on michalsn</description>
     <generator>Hugo -- 0.147.7</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 16 Dec 2025 16:39:11 +0100</lastBuildDate>
-    <atom:link href="https://michalsn.dev/tags/modules/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://michalsn.dev/tags/dependencies/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Managing Dependencies in Application Modules: What Works for Your Users</title>
       <link>https://michalsn.dev/posts/managing-dependencies-in-application-modules/</link>
       <pubDate>Tue, 16 Dec 2025 16:39:11 +0100</pubDate>
       <guid>https://michalsn.dev/posts/managing-dependencies-in-application-modules/</guid>
       <description>How should modules manage their external dependencies? The answer isn&amp;rsquo;t purely technical - it depends on who&amp;rsquo;s installing them. This post explores the real-world trade-offs between Composer-managed, developer-friendly modules and self-contained, user-friendly packages.</description>
-    </item>
-    <item>
-      <title>The Skipped Version Problem: How To Handle Module Updates</title>
-      <link>https://michalsn.dev/posts/how-to-handle-module-updates/</link>
-      <pubDate>Mon, 08 Dec 2025 15:20:39 +0100</pubDate>
-      <guid>https://michalsn.dev/posts/how-to-handle-module-updates/</guid>
-      <description>Updating modules sounds simple - until users skip versions. Suddenly migrations break, tables are missing, and update logic becomes a headache. See how a lightweight UpdateManifest can turn chaotic upgrades into a predictable, controlled process.</description>
     </item>
   </channel>
 </rss>
