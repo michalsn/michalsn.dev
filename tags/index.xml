@@ -4,15 +4,36 @@
     <title>Tags on michalsn</title>
     <link>https://michalsn.dev/tags/</link>
     <description>Recent content in Tags on michalsn</description>
-    <generator>Hugo -- 0.147.7</generator>
+    <generator>Hugo -- 0.154.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 16 Dec 2025 16:39:11 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 03 Jan 2026 17:08:27 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Codeigniter4</title>
       <link>https://michalsn.dev/tags/codeigniter4/</link>
-      <pubDate>Tue, 16 Dec 2025 16:39:11 +0100</pubDate>
+      <pubDate>Sat, 03 Jan 2026 17:08:27 +0100</pubDate>
       <guid>https://michalsn.dev/tags/codeigniter4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Database</title>
+      <link>https://michalsn.dev/tags/database/</link>
+      <pubDate>Sat, 03 Jan 2026 17:08:27 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/database/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Performance</title>
+      <link>https://michalsn.dev/tags/performance/</link>
+      <pubDate>Sat, 03 Jan 2026 17:08:27 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/performance/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Php</title>
+      <link>https://michalsn.dev/tags/php/</link>
+      <pubDate>Sat, 03 Jan 2026 17:08:27 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/php/</guid>
       <description></description>
     </item>
     <item>
@@ -27,13 +48,6 @@
       <link>https://michalsn.dev/tags/modules/</link>
       <pubDate>Tue, 16 Dec 2025 16:39:11 +0100</pubDate>
       <guid>https://michalsn.dev/tags/modules/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Database</title>
-      <link>https://michalsn.dev/tags/database/</link>
-      <pubDate>Sun, 30 Nov 2025 10:34:02 +0100</pubDate>
-      <guid>https://michalsn.dev/tags/database/</guid>
       <description></description>
     </item>
     <item>
@@ -55,13 +69,6 @@
       <link>https://michalsn.dev/tags/rabbitmq/</link>
       <pubDate>Mon, 15 Sep 2025 16:09:31 +0200</pubDate>
       <guid>https://michalsn.dev/tags/rabbitmq/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Php</title>
-      <link>https://michalsn.dev/tags/php/</link>
-      <pubDate>Thu, 21 Aug 2025 20:10:31 +0200</pubDate>
-      <guid>https://michalsn.dev/tags/php/</guid>
       <description></description>
     </item>
     <item>

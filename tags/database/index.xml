@@ -4,10 +4,17 @@
     <title>Database on michalsn</title>
     <link>https://michalsn.dev/tags/database/</link>
     <description>Recent content in Database on michalsn</description>
-    <generator>Hugo -- 0.147.7</generator>
+    <generator>Hugo -- 0.154.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 30 Nov 2025 10:34:02 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 03 Jan 2026 17:08:27 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/database/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Advanced Model Relations for CodeIgniter 4</title>
+      <link>https://michalsn.dev/posts/advanced-model-relations-codeigniter4/</link>
+      <pubDate>Sat, 03 Jan 2026 17:08:27 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/advanced-model-relations-codeigniter4/</guid>
+      <description>Learn how to efficiently manage database relationships in CodeIgniter 4 with eager loading, lazy loading, and advanced relation patterns.</description>
+    </item>
     <item>
       <title>Deferred Writes: Performance Optimization and Database Gotchas</title>
       <link>https://michalsn.dev/posts/deferred-writes/</link>
