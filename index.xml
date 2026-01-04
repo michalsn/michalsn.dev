@@ -330,11 +330,11 @@ This blog also uses tags system. These tags help categorize and organize content
       <link>https://michalsn.dev/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://michalsn.dev/projects/</guid>
-      <description>&lt;p&gt;Here are some of my personal open source projects that I’m currently working on or have worked on in the past.&lt;/p&gt;
-&lt;h3 id=&#34;codeigniter-htmx&#34;&gt;&lt;a href=&#34;https://github.com/michalsn/codeigniter-htmx&#34;&gt;CodeIgniter HTMX&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;An integration of HTMX with CodeIgniter 4, this library simplifies building dynamic and interactive front-end features without the need for complex JavaScript frameworks. It enables developers to use HTMX’s powerful AJAX capabilities directly in CodeIgniter, providing a smoother and more efficient user experience.&lt;/p&gt;
-&lt;h3 id=&#34;codeigniter-signed-url&#34;&gt;&lt;a href=&#34;https://github.com/michalsn/codeigniter-signed-url&#34;&gt;CodeIgniter Signed URL&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;This package adds secure, signed URL support to CodeIgniter 4. It allows developers to generate and verify URL signatures, ensuring data integrity and secure access to routes and resources, which is essential for sensitive or time-bound links.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Here are some of my personal open source projects that I&amp;rsquo;m currently working on or have worked on in the past.&lt;/p&gt;
+&lt;h3 id=&#34;codeigniter-relations&#34;&gt;&lt;a href=&#34;https://github.com/michalsn/codeigniter-relations&#34;&gt;CodeIgniter Relations&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;A powerful package that brings elegant relationship management to CodeIgniter 4 applications. It simplifies working with related data across multiple tables with support for eager loading, lazy loading, and nine different relationship types, while preventing N+1 query problems.&lt;/p&gt;
+&lt;h3 id=&#34;codeigniter-module-manager&#34;&gt;&lt;a href=&#34;https://github.com/michalsn/codeigniter-module-manager&#34;&gt;CodeIgniter Module Manager&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;This package provides a structured system for managing the complete lifecycle of modules in CodeIgniter 4. It enables organizing functionality into self-contained, reusable components with distinct phases for discovery, installation, updates, and maintenance, offering granular control over module activation.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Privacy Policy</title>
