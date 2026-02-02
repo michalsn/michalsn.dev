@@ -6,13 +6,41 @@
     <description>Recent content in Tags on michalsn</description>
     <generator>Hugo -- 0.154.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Jan 2026 17:08:27 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 02 Feb 2026 07:32:17 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Codeigniter4</title>
       <link>https://michalsn.dev/tags/codeigniter4/</link>
-      <pubDate>Sat, 03 Jan 2026 17:08:27 +0100</pubDate>
+      <pubDate>Mon, 02 Feb 2026 07:32:17 +0100</pubDate>
       <guid>https://michalsn.dev/tags/codeigniter4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Frankenphp</title>
+      <link>https://michalsn.dev/tags/frankenphp/</link>
+      <pubDate>Mon, 02 Feb 2026 07:32:17 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/frankenphp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Performance</title>
+      <link>https://michalsn.dev/tags/performance/</link>
+      <pubDate>Mon, 02 Feb 2026 07:32:17 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/performance/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Php</title>
+      <link>https://michalsn.dev/tags/php/</link>
+      <pubDate>Mon, 02 Feb 2026 07:32:17 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/php/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Worker-Mode</title>
+      <link>https://michalsn.dev/tags/worker-mode/</link>
+      <pubDate>Mon, 02 Feb 2026 07:32:17 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/worker-mode/</guid>
       <description></description>
     </item>
     <item>
@@ -20,20 +48,6 @@
       <link>https://michalsn.dev/tags/database/</link>
       <pubDate>Sat, 03 Jan 2026 17:08:27 +0100</pubDate>
       <guid>https://michalsn.dev/tags/database/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Performance</title>
-      <link>https://michalsn.dev/tags/performance/</link>
-      <pubDate>Sat, 03 Jan 2026 17:08:27 +0100</pubDate>
-      <guid>https://michalsn.dev/tags/performance/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Php</title>
-      <link>https://michalsn.dev/tags/php/</link>
-      <pubDate>Sat, 03 Jan 2026 17:08:27 +0100</pubDate>
-      <guid>https://michalsn.dev/tags/php/</guid>
       <description></description>
     </item>
     <item>

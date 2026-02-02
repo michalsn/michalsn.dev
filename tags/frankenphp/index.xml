@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Performance on michalsn</title>
-    <link>https://michalsn.dev/tags/performance/</link>
-    <description>Recent content in Performance on michalsn</description>
+    <title>Frankenphp on michalsn</title>
+    <link>https://michalsn.dev/tags/frankenphp/</link>
+    <description>Recent content in Frankenphp on michalsn</description>
     <generator>Hugo -- 0.154.2</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 02 Feb 2026 07:32:17 +0100</lastBuildDate>
-    <atom:link href="https://michalsn.dev/tags/performance/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://michalsn.dev/tags/frankenphp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Supercharge Your CodeIgniter 4 Applications with FrankenPHP Worker Mode</title>
       <link>https://michalsn.dev/posts/codeigniter-frankenphp-worker-mode/</link>
       <pubDate>Mon, 02 Feb 2026 07:32:17 +0100</pubDate>
       <guid>https://michalsn.dev/posts/codeigniter-frankenphp-worker-mode/</guid>
       <description>Discover how FrankenPHP&amp;rsquo;s worker mode delivers 2-3x performance improvements for CodeIgniter 4 applications with persistent database connections and zero-downtime request handling.</description>
-    </item>
-    <item>
-      <title>Advanced Model Relations for CodeIgniter 4</title>
-      <link>https://michalsn.dev/posts/advanced-model-relations-codeigniter4/</link>
-      <pubDate>Sat, 03 Jan 2026 17:08:27 +0100</pubDate>
-      <guid>https://michalsn.dev/posts/advanced-model-relations-codeigniter4/</guid>
-      <description>Learn how to efficiently manage database relationships in CodeIgniter 4 with eager loading, lazy loading, and advanced relation patterns.</description>
     </item>
   </channel>
 </rss>

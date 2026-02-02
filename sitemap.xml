@@ -2,28 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://michalsn.dev/tags/codeigniter4/</loc>
+    <lastmod>2026-02-02T07:32:17+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/frankenphp/</loc>
+    <lastmod>2026-02-02T07:32:17+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/</loc>
+    <lastmod>2026-02-02T07:32:17+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/performance/</loc>
+    <lastmod>2026-02-02T07:32:17+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/php/</loc>
+    <lastmod>2026-02-02T07:32:17+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/</loc>
+    <lastmod>2026-02-02T07:32:17+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/codeigniter-frankenphp-worker-mode/</loc>
+    <lastmod>2026-02-02T07:32:17+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/</loc>
+    <lastmod>2026-02-02T07:32:17+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/worker-mode/</loc>
+    <lastmod>2026-02-02T07:32:17+01:00</lastmod>
+  </url><url>
     <loc>https://michalsn.dev/posts/advanced-model-relations-codeigniter4/</loc>
     <lastmod>2026-01-03T17:08:27+01:00</lastmod>
   </url><url>
-    <loc>https://michalsn.dev/tags/codeigniter4/</loc>
-    <lastmod>2026-01-03T17:08:27+01:00</lastmod>
-  </url><url>
     <loc>https://michalsn.dev/tags/database/</loc>
-    <lastmod>2026-01-03T17:08:27+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/</loc>
-    <lastmod>2026-01-03T17:08:27+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/performance/</loc>
-    <lastmod>2026-01-03T17:08:27+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/php/</loc>
-    <lastmod>2026-01-03T17:08:27+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/posts/</loc>
-    <lastmod>2026-01-03T17:08:27+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/</loc>
     <lastmod>2026-01-03T17:08:27+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/dependencies/</loc>

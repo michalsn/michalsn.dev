@@ -6,8 +6,15 @@
     <description>Recent content in Codeigniter4 on michalsn</description>
     <generator>Hugo -- 0.154.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Jan 2026 17:08:27 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 02 Feb 2026 07:32:17 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/codeigniter4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Supercharge Your CodeIgniter 4 Applications with FrankenPHP Worker Mode</title>
+      <link>https://michalsn.dev/posts/codeigniter-frankenphp-worker-mode/</link>
+      <pubDate>Mon, 02 Feb 2026 07:32:17 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/codeigniter-frankenphp-worker-mode/</guid>
+      <description>Discover how FrankenPHP&amp;rsquo;s worker mode delivers 2-3x performance improvements for CodeIgniter 4 applications with persistent database connections and zero-downtime request handling.</description>
+    </item>
     <item>
       <title>Advanced Model Relations for CodeIgniter 4</title>
       <link>https://michalsn.dev/posts/advanced-model-relations-codeigniter4/</link>
