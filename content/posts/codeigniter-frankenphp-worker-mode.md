@@ -26,7 +26,7 @@ In a typical PHP-FPM deployment, every HTTP request follows the same expensive p
 
 This works, but it's inefficient. Your application performs the same initialization work thousands of times per day, only to throw it away after each request.
 
-## Enter Worker Mode
+### Enter Worker Mode
 
 FrankenPHP worker mode fundamentally changes this model:
 
@@ -36,11 +36,11 @@ FrankenPHP worker mode fundamentally changes this model:
 
 The result? Your application handles requests significantly faster because it skips all that redundant initialization work.
 
-## CodeIgniter Worker Mode Implementation
+### CodeIgniter Worker Mode Implementation
 
 I'm excited to share that experimental worker mode support is now available for CodeIgniter, starting from v4.7.
 
-### Key Features
+#### Key Features
 
 **Persistent Database Connections**
 - Database connections are maintained across requests and validated with `ping()` before use
@@ -66,15 +66,15 @@ php spark worker:install
 php spark worker:uninstall
 ```
 
-### Zero Impact on Existing Deployments
+#### Zero Impact on Existing Deployments
 
 An important advantage: worker mode is **completely optional** and adds **zero overhead** to traditional PHP-FPM deployments. The worker mode code only executes when you explicitly use `public/frankenphp-worker.php`. Your existing `public/index.php` remains untouched.
 
-## Real-World Performance Benchmarks
+### Real-World Performance Benchmarks
 
 I ran comprehensive benchmarks comparing FrankenPHP worker mode against classic mode on an M1 Mac with 16GB RAM. The tests used `wrk` with 4 threads, 30-second duration, and 100-200 concurrent connections. FrankenPHP was configured with 16 threads/workers.
 
-### Throughput Improvements
+#### Throughput Improvements
 
 Worker mode delivered impressive performance gains across all scenarios:
 
@@ -88,7 +88,7 @@ Worker mode delivered impressive performance gains across all scenarios:
 
 *All measurements at 100 concurrent connections*
 
-### Latency Reductions
+#### Latency Reductions
 
 Lower latency means better user experience. Worker mode significantly reduced response times:
 
@@ -100,14 +100,14 @@ Lower latency means better user experience. Worker mode significantly reduced re
 | **Session** | 150.95ms | 47.43ms | **69%** |
 | **Combined** | 148.56ms | 66.75ms | **55%** |
 
-### Scalability Under Load
+#### Scalability Under Load
 
 When doubling the connection count from 100 to 200:
 
 - **Worker mode** maintained nearly identical throughput with predictable latency increases
 - **Classic mode** showed no improvement and experienced significant failures
 
-### Reliability: The Hidden Advantage
+#### Reliability: The Hidden Advantage
 
 Perhaps the most striking difference wasn't in speed, but in **reliability**:
 
@@ -119,7 +119,7 @@ Perhaps the most striking difference wasn't in speed, but in **reliability**:
 
 Worker mode's persistent connections eliminate the connection pool exhaustion problem entirely.
 
-### Predictable Performance
+#### Predictable Performance
 
 Worker mode also delivers more consistent latency. In session handling tests at 100 connections:
 
@@ -128,7 +128,7 @@ Worker mode also delivers more consistent latency. In session handling tests at 
 
 Tighter latency distribution means more predictable application behavior under load.
 
-## Why Worker Mode Wins
+### Why Worker Mode Wins
 
 The performance improvements come from three key optimizations:
 
@@ -136,11 +136,11 @@ The performance improvements come from three key optimizations:
 2. **Persistent Connections** - Database and cache connections are reused, avoiding connection overhead and pool exhaustion
 3. **Reduced Memory Allocation** - Less object creation and garbage collection per request
 
-## How to Set It Up
+### How to Set It Up
 
 I won't be describing here how we can install FrankenPHP, as this is all covered in the [user guide](https://codeigniter.com/user_guide/installation/worker_mode.html).
 
-## What's Next?
+### What's Next?
 
 Worker mode support for CodeIgniter 4 is currently **experimental**. The implementation is stable and thoroughly tested, but we're gathering feedback from the community before marking it as production-ready.
 
@@ -151,6 +151,6 @@ Key areas we're monitoring:
 - Performance characteristics with various workloads
 - Integration with third-party packages
 
-## Getting Started
+### Getting Started
 
 With 2-3x throughput gains, sub-50ms latencies, and zero failed requests under load, worker mode offers substantial benefits for production CodeIgniter 4 deployments. If you're running CodeIgniter 4 in production, worker mode with FrankenPHP is worth evaluating.
