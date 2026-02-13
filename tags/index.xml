@@ -6,13 +6,55 @@
     <description>Recent content in Tags on michalsn</description>
     <generator>Hugo -- 0.154.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Feb 2026 07:32:17 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 12 Feb 2026 19:55:21 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ai</title>
+      <link>https://michalsn.dev/tags/ai/</link>
+      <pubDate>Thu, 12 Feb 2026 19:55:21 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/ai/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Codeigniter4</title>
       <link>https://michalsn.dev/tags/codeigniter4/</link>
-      <pubDate>Mon, 02 Feb 2026 07:32:17 +0100</pubDate>
+      <pubDate>Thu, 12 Feb 2026 19:55:21 +0100</pubDate>
       <guid>https://michalsn.dev/tags/codeigniter4/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Neuron-Ai</title>
+      <link>https://michalsn.dev/tags/neuron-ai/</link>
+      <pubDate>Thu, 12 Feb 2026 19:55:21 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/neuron-ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ollama</title>
+      <link>https://michalsn.dev/tags/ollama/</link>
+      <pubDate>Thu, 12 Feb 2026 19:55:21 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/ollama/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Php</title>
+      <link>https://michalsn.dev/tags/php/</link>
+      <pubDate>Thu, 12 Feb 2026 19:55:21 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/php/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sse</title>
+      <link>https://michalsn.dev/tags/sse/</link>
+      <pubDate>Thu, 12 Feb 2026 19:55:21 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/sse/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Streaming</title>
+      <link>https://michalsn.dev/tags/streaming/</link>
+      <pubDate>Thu, 12 Feb 2026 19:55:21 +0100</pubDate>
+      <guid>https://michalsn.dev/tags/streaming/</guid>
       <description></description>
     </item>
     <item>
@@ -27,13 +69,6 @@
       <link>https://michalsn.dev/tags/performance/</link>
       <pubDate>Mon, 02 Feb 2026 07:32:17 +0100</pubDate>
       <guid>https://michalsn.dev/tags/performance/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Php</title>
-      <link>https://michalsn.dev/tags/php/</link>
-      <pubDate>Mon, 02 Feb 2026 07:32:17 +0100</pubDate>
-      <guid>https://michalsn.dev/tags/php/</guid>
       <description></description>
     </item>
     <item>
@@ -153,13 +188,6 @@
       <link>https://michalsn.dev/tags/neuronai/</link>
       <pubDate>Fri, 20 Jun 2025 18:39:09 +0200</pubDate>
       <guid>https://michalsn.dev/tags/neuronai/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ollama</title>
-      <link>https://michalsn.dev/tags/ollama/</link>
-      <pubDate>Fri, 20 Jun 2025 18:39:09 +0200</pubDate>
-      <guid>https://michalsn.dev/tags/ollama/</guid>
       <description></description>
     </item>
     <item>

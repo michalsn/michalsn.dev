@@ -6,8 +6,15 @@
     <description>Recent content on michalsn</description>
     <generator>Hugo -- 0.154.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Feb 2026 07:32:17 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 12 Feb 2026 19:55:21 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building an AI Chat with CodeIgniter, Ollama, and Neuron AI</title>
+      <link>https://michalsn.dev/posts/building-an-ai-chat-with-codeigniter-ollama-and-neuron-ai/</link>
+      <pubDate>Thu, 12 Feb 2026 19:55:21 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/building-an-ai-chat-with-codeigniter-ollama-and-neuron-ai/</guid>
+      <description>Learn how to build a modern AI-powered chat application with CodeIgniter 4, featuring real-time SSE streaming, persistent conversation history, and function calling capabilities.</description>
+    </item>
     <item>
       <title>Supercharge Your CodeIgniter 4 Applications with FrankenPHP Worker Mode</title>
       <link>https://michalsn.dev/posts/codeigniter-frankenphp-worker-mode/</link>

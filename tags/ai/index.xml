@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ai on michalsn</title>
+    <link>https://michalsn.dev/tags/ai/</link>
+    <description>Recent content in Ai on michalsn</description>
+    <generator>Hugo -- 0.154.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 12 Feb 2026 19:55:21 +0100</lastBuildDate>
+    <atom:link href="https://michalsn.dev/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building an AI Chat with CodeIgniter, Ollama, and Neuron AI</title>
+      <link>https://michalsn.dev/posts/building-an-ai-chat-with-codeigniter-ollama-and-neuron-ai/</link>
+      <pubDate>Thu, 12 Feb 2026 19:55:21 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/building-an-ai-chat-with-codeigniter-ollama-and-neuron-ai/</guid>
+      <description>Learn how to build a modern AI-powered chat application with CodeIgniter 4, featuring real-time SSE streaming, persistent conversation history, and function calling capabilities.</description>
+    </item>
+  </channel>
+</rss>
