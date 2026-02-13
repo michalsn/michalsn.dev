@@ -1,6 +1,6 @@
 ---
 title: "Building an AI Chat with CodeIgniter, Ollama, and Neuron AI"
-date: 2026-02-12T019:55:21+01:00
+date: 2026-02-12T19:55:21+01:00
 draft: false
 tags: ["codeigniter4", "php", "ai", "ollama", "neuron-ai", "sse", "streaming"]
 summary: "Learn how to build a modern AI-powered chat application with CodeIgniter 4, featuring real-time SSE streaming, persistent conversation history, and function calling capabilities."
