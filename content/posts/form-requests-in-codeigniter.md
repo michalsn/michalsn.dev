@@ -3,7 +3,7 @@ title: "Meet Form Requests in CodeIgniter"
 date: 2026-04-21T20:03:42+01:00
 draft: false
 tags: ["codeigniter4", "validation", "forms", "php"]
-description: "Learn how Form Requests in CodeIgniter move validation and input normalization out of controllers with a small, runnable create-post example."
+summary: "Learn how Form Requests in CodeIgniter move validation and input normalization out of controllers with a small, runnable create-post example."
 ---
 
 Validation code inside controllers often starts small and then slowly takes over the method. A simple `store()` action grows to include rules, custom messages, authorization checks, input normalization, and special handling for web versus JSON requests.
