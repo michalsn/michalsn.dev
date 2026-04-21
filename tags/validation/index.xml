@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Validation on michalsn</title>
+    <link>https://michalsn.dev/tags/validation/</link>
+    <description>Recent content in Validation on michalsn</description>
+    <generator>Hugo -- 0.154.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Apr 2026 20:03:42 +0100</lastBuildDate>
+    <atom:link href="https://michalsn.dev/tags/validation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Meet Form Requests in CodeIgniter</title>
+      <link>https://michalsn.dev/posts/form-requests-in-codeigniter/</link>
+      <pubDate>Tue, 21 Apr 2026 20:03:42 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/form-requests-in-codeigniter/</guid>
+      <description>Learn how Form Requests in CodeIgniter move validation and input normalization out of controllers with a small, runnable create-post example.</description>
+    </item>
+  </channel>
+</rss>

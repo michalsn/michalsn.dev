@@ -6,8 +6,15 @@
     <description>Recent content in Posts on michalsn</description>
     <generator>Hugo -- 0.154.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 12 Feb 2026 19:55:21 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 21 Apr 2026 20:03:42 +0100</lastBuildDate>
     <atom:link href="https://michalsn.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Meet Form Requests in CodeIgniter</title>
+      <link>https://michalsn.dev/posts/form-requests-in-codeigniter/</link>
+      <pubDate>Tue, 21 Apr 2026 20:03:42 +0100</pubDate>
+      <guid>https://michalsn.dev/posts/form-requests-in-codeigniter/</guid>
+      <description>Learn how Form Requests in CodeIgniter move validation and input normalization out of controllers with a small, runnable create-post example.</description>
+    </item>
     <item>
       <title>Building an AI Chat with CodeIgniter, Ollama, and Neuron AI</title>
       <link>https://michalsn.dev/posts/building-an-ai-chat-with-codeigniter-ollama-and-neuron-ai/</link>

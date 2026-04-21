@@ -2,16 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://michalsn.dev/tags/codeigniter4/</loc>
+    <lastmod>2026-04-21T20:03:42+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/forms/</loc>
+    <lastmod>2026-04-21T20:03:42+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/form-requests-in-codeigniter/</loc>
+    <lastmod>2026-04-21T20:03:42+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/</loc>
+    <lastmod>2026-04-21T20:03:42+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/php/</loc>
+    <lastmod>2026-04-21T20:03:42+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/posts/</loc>
+    <lastmod>2026-04-21T20:03:42+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/</loc>
+    <lastmod>2026-04-21T20:03:42+01:00</lastmod>
+  </url><url>
+    <loc>https://michalsn.dev/tags/validation/</loc>
+    <lastmod>2026-04-21T20:03:42+01:00</lastmod>
+  </url><url>
     <loc>https://michalsn.dev/tags/ai/</loc>
     <lastmod>2026-02-12T19:55:21+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/posts/building-an-ai-chat-with-codeigniter-ollama-and-neuron-ai/</loc>
-    <lastmod>2026-02-12T19:55:21+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/codeigniter4/</loc>
-    <lastmod>2026-02-12T19:55:21+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/</loc>
     <lastmod>2026-02-12T19:55:21+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/neuronai/</loc>
@@ -20,19 +38,10 @@
     <loc>https://michalsn.dev/tags/ollama/</loc>
     <lastmod>2026-02-12T19:55:21+01:00</lastmod>
   </url><url>
-    <loc>https://michalsn.dev/tags/php/</loc>
-    <lastmod>2026-02-12T19:55:21+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/posts/</loc>
-    <lastmod>2026-02-12T19:55:21+01:00</lastmod>
-  </url><url>
     <loc>https://michalsn.dev/tags/sse/</loc>
     <lastmod>2026-02-12T19:55:21+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/streaming/</loc>
-    <lastmod>2026-02-12T19:55:21+01:00</lastmod>
-  </url><url>
-    <loc>https://michalsn.dev/tags/</loc>
     <lastmod>2026-02-12T19:55:21+01:00</lastmod>
   </url><url>
     <loc>https://michalsn.dev/tags/frankenphp/</loc>
